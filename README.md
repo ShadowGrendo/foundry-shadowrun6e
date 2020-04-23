@@ -1,8 +1,7 @@
-# Shadowrun5e-FoundryVTT
+# A FoundryVTT System Module for Shadowrun 6th World
 
-Shadowrun 5e System for FoundryVTT.
+**This is the start of a potential project, and given the nature of Shadowrun 6th edition will probably end up including some house rules/clarifications.**
 
-Manifest: https://raw.githubusercontent.com/smilligan93/SR5-FoundryVTT/master/system.json
 
 ### Character Sheet
 
