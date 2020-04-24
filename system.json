@@ -3,11 +3,19 @@
   "title": "Shadowrun 6th World",
   "description": "Shadowrun 6th World game (with some homebrew)",
   "version": "0.0.1",
+  "compatibleCoreVersion": "0.5.5",
   "templateVersion": "0",
   "author": "nevenall",
-  "esmodules": ["shadowrun6e.js"],
+  "esmodules": [
+    "shadowrun6e.js"
+  ],
   "scripts": [],
-  "styles": ["css/main.css", "css/actor.css", "css/config.css", "css/item.css"],
+  "styles": [
+    "css/main.css",
+    "css/actor.css",
+    "css/config.css",
+    "css/item.css"
+  ],
   "languages": [
     {
       "lang": "en",
