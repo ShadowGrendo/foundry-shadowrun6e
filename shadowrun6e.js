@@ -16,7 +16,7 @@ import * as chat from './module/chat.js';
 /* -------------------------------------------- */
 
 Hooks.once("init", function() {
-  console.log("Loading Shadowrun 5e System");
+  console.log("Loading Shadowrun 6e System");
 
   // Create a D&D5E namespace within the game global
   game.shadowrun5e = {

@@ -3,12 +3,12 @@
   "title": "Shadowrun 6th World",
   "description": "Shadowrun 6th World game (with some homebrew)",
   "version": "0.0.0",
-  "templateVersion": "1.1",
+  "templateVersion": "0",
   "author": "nevenall",
   "esmodules": ["shadowrun6e.js"],
   "scripts": [],
   "styles": ["css/main.css", "css/actor.css", "css/config.css", "css/item.css"],
-  "minimumCoreVersion": "0.4.4",
+  "minimumCoreVersion": "0.5.5",
   "languages": [
     {
       "lang": "en",
@@ -17,13 +17,13 @@
     }
   ],
   "packs": [],
-  "initiative": "@initiative.current.base.value + @initiative.current.dice.text - @wounds.value",
+  "initiative": "@initiative.current.base.value + @initiative.current.dice.text",
   "primaryTokenAttribute": "track.physical",
   "secondaryTokenAttribute": "track.stun",
   "gridDistance": 1,
   "gridUnits": "m",
   "socket": true,
-  "manifest": "https://raw.githubusercontent.com/smilligan93/SR5-FoundryVTT/master/system.json",
-  "url": "https://github.com/smilligan93/SR5-FoundryVTT",
-  "download": "https://github.com/smilligan93/SR5-FoundryVTT/archive/master.zip"
+  "manifest": "https://raw.githubusercontent.com/Nevenall/SR6-FoundryVTT/master/system.json",
+  "url": "https://github.com/Nevenall/SR6-FoundryVTT",
+  "download": "https://github.com/Nevenall/SR6-FoundryVTT/archive/master.zip"
 }
