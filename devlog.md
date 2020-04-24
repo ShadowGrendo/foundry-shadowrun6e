@@ -27,4 +27,11 @@ lots of rolling related stuff. And some character stuff.
 Is there a reason to include the edition number in naming? how global is the game global?
 Like will there be conflicts if we just name stuff shadowrun or SR? because when 7th ed comes around its going to be a pain to rename everything. I assume stuff is isolated to the game that is currently launched. 
 
+I think games are isolated enough that we can drop the version from the system. 
+
+
+## Local Development 
+
+Also, the install system is pretty much just a copy of the repo, which means we could make the installed system folder the repo and even attach to the app for debugging. 
+
 

@@ -2,7 +2,7 @@
   "name": "shadowrun6e",
   "title": "Shadowrun 6th World",
   "description": "Shadowrun 6th World game (with some homebrew)",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "minimumCoreVersion": "0.5.2",
   "compatibleCoreVersion": "0.5.5",
   "templateVersion": "0",
@@ -24,7 +24,15 @@
       "path": "lang/en.json"
     }
   ],
-  "packs": [],
+  "packs": [
+    {
+      "name": "spells",
+      "label": "Spells",
+      "system": "shadowrun6e",
+      "path": "./packs/spells.db",
+      "entity": "Item"
+    }
+  ],
   "initiative": "@initiative.current.base.value + @initiative.current.dice.text",
   "primaryTokenAttribute": "track.physical",
   "secondaryTokenAttribute": "track.stun",
