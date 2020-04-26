@@ -35,44 +35,44 @@
   align-items: "center";
 }
 
-.sr5 .character-info {
+.sr6 .character-info {
 }
 
-.sr5.actor .sheet-header {
+.sr6.actor .sheet-header {
   padding: 0;
 }
-.sr5.actor .sheet-header-row-1 {
+.sr6.actor .sheet-header-row-1 {
   margin-bottom: .5rem;
 }
-.sr5.actor .attributes {
+.sr6.actor .attributes {
   width: 100%;
   flex-wrap: nowrap;
   justify-content: space-around;
 }
-.sr5.actor .attribute {
+.sr6.actor .attribute {
   align-items: center;
   justify-content: center;
   border: 1px solid red;
 }
-.sr5.actor .attribute > h3 {
+.sr6.actor .attribute > h3 {
   text-align: center;
 }
 
-.sr5.actor .attribute-rolls {
+.sr6.actor .attribute-rolls {
   width: 100%;
   flex-wrap: nowrap;
   justify-content: space-around;
   border: 1px solid black;
 }
-.sr5.actor .attribute-rolls > h3 {
+.sr6.actor .attribute-rolls > h3 {
   text-align: center;
 }
 
-.sr5.actor .skill {
+.sr6.actor .skill {
   border: 1px solid black;
   padding: .25rem;
 }
 
-.sr5 .profile-img {
+.sr6 .profile-img {
   margin: .25rem;
 }

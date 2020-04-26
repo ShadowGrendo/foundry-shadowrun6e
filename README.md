@@ -5,11 +5,11 @@
 
 ### Character Sheet
 
-![alt text](https://raw.githubusercontent.com/smilligan93/SR5-FoundryVTT/master/screenshots/CharacterSheet.jpg)
+![alt text](https://raw.githubusercontent.com/smilligan93/SR6-FoundryVTT/master/screenshots/CharacterSheet.jpg)
 
 ### Item Sheet
 
-![alt text](https://raw.githubusercontent.com/smilligan93/SR5-FoundryVTT/master/screenshots/Weapon.jpg)
+![alt text](https://raw.githubusercontent.com/smilligan93/SR6-FoundryVTT/master/screenshots/Weapon.jpg)
 
 System is still work in progress but pretty stable now.
 Only Character sheet is available. All items have a sheet.

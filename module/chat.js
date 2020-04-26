@@ -1,4 +1,4 @@
-import { SR5Actor } from './actor/entity.js';
+import { SR6Actor } from './actor/entity.js';
 
 export const addChatMessageContextOptions = function(html, options) {
   let canRoll = li => {
@@ -15,13 +15,13 @@ export const addChatMessageContextOptions = function(html, options) {
   options.push(
     {
       name: 'Push the Limit',
-      callback: li => SR5Actor.pushTheLimit(li),
+      callback: li => SR6Actor.pushTheLimit(li),
       condition: canRoll,
       icon: '<i class="fas fa-meteor"></i>'
     },
     {
       name: 'Second Chance',
-      callback: li => SR5Actor.secondChance(li),
+      callback: li => SR6Actor.secondChance(li),
       condition: canRoll,
       icon: '<i class="fas fa-dice-d6"></i>'
     }

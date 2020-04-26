@@ -4,7 +4,7 @@
   </div>
   <div class="form-line">
     <div class="label">
-      {{localize "SR5.SpellCategory"}}
+      {{localize "SR6.SpellCategory"}}
     </div>
     <div class="inputs">
       <select name="data.category">
@@ -20,7 +20,7 @@
   {{#if data.category}}
   <div class="form-line">
     <div class="label">
-      {{localize "SR5.SpellType"}}
+      {{localize "SR6.SpellType"}}
     </div>
     <div class="inputs">
       <select name="data.type">
@@ -34,7 +34,7 @@
   </div>
   <div class="form-line">
     <div class="label">
-      {{localize "SR5.SpellRange"}}
+      {{localize "SR6.SpellRange"}}
     </div>
     <div class="inputs">
       <select name="data.range">
@@ -48,7 +48,7 @@
   </div>
   <div class="form-line">
     <div class="label">
-      {{localize "SR5.Duration"}}
+      {{localize "SR6.Duration"}}
     </div>
     <div class="inputs">
       <select name="data.duration">
@@ -62,7 +62,7 @@
   </div>
   <div class="form-line">
     <div class="label">
-      {{localize "SR5.DrainValue"}}
+      {{localize "SR6.DrainValue"}}
     </div>
     <div class="inputs">
       <input
@@ -79,7 +79,7 @@
   {{#ife data.category "combat"}}
   <div class="form-line">
     <div class="label">
-      {{localize "SR5.SpellCatCombat"}}
+      {{localize "SR6.SpellCatCombat"}}
     </div>
     <div class="inputs">
       <select name="data.combat.type">
@@ -95,13 +95,13 @@
   {{#ife data.category "detection"}}
   <div class="form-line">
     <div class="label">
-      {{localize "SR5.SpellCatDetection"}}
+      {{localize "SR6.SpellCatDetection"}}
     </div>
     <div class="inputs between">
       <select name="data.detection.passive" data-dtype="Boolean">
       {{#select data.detection.passive}}
-        <option value="false">{{localize "SR5.Active"}}</option>
-        <option value="true">{{localize "SR5.Passive"}}</option>
+        <option value="false">{{localize "SR6.Active"}}</option>
+        <option value="true">{{localize "SR6.Passive"}}</option>
       {{/select}}
       </select>
       <select name="data.detection.type">
@@ -112,7 +112,7 @@
         {{/select}}
       </select>
       <label>
-        <input class='display' type='checkbox' name='data.detection.extended' {{checked data.detection.extended}}/>{{localize "SR5.DetectionSpellExtended"}}
+        <input class='display' type='checkbox' name='data.detection.extended' {{checked data.detection.extended}}/>{{localize "SR6.DetectionSpellExtended"}}
       </label>
     </div>
   </div>
@@ -120,7 +120,7 @@
   {{#ife data.category "illusion"}}
   <div class="form-line">
     <div class="label">
-      {{localize "SR5.SpellCatIllusion"}}
+      {{localize "SR6.SpellCatIllusion"}}
     </div>
     <div class="inputs between">
       <select name="data.illusion.type">
@@ -143,20 +143,20 @@
   {{#ife data.category "manipulation"}}
   <div class="form-line">
     <div class="label">
-      {{localize "SR5.SpellCatManipulation"}}
+      {{localize "SR6.SpellCatManipulation"}}
     </div>
     <div class="inputs">
       <label>
-        {{localize "SR5.SpellManipulationDamaging"}} <input class='display' type='checkbox' name='data.manipulation.damaging' {{checked data.manipulation.damaging}}/>
+        {{localize "SR6.SpellManipulationDamaging"}} <input class='display' type='checkbox' name='data.manipulation.damaging' {{checked data.manipulation.damaging}}/>
       </label>
       <label>
-        {{localize "SR5.SpellManipulationMental"}} <input class='display' type='checkbox' name='data.manipulation.mental' {{checked data.manipulation.mental}}/>
+        {{localize "SR6.SpellManipulationMental"}} <input class='display' type='checkbox' name='data.manipulation.mental' {{checked data.manipulation.mental}}/>
       </label>
       <label>
-        {{localize "SR5.SpellManipulationEnvironmental"}} <input class='display' type='checkbox' name='data.manipulation.environmental' {{checked data.manipulation.environmental}}/>
+        {{localize "SR6.SpellManipulationEnvironmental"}} <input class='display' type='checkbox' name='data.manipulation.environmental' {{checked data.manipulation.environmental}}/>
       </label>
       <label>
-        {{localize "SR5.SpellManipulationPhysical"}} <input class='display' type='checkbox' name='data.manipulation.physical' {{checked data.manipulation.physical}}/>
+        {{localize "SR6.SpellManipulationPhysical"}} <input class='display' type='checkbox' name='data.manipulation.physical' {{checked data.manipulation.physical}}/>
       </label>
     </div>
   </div>

@@ -1,9 +1,9 @@
 // Import Modules
-import { SR5ItemSheet } from "./module/item/sheet.js";
-import { SR5ActorSheet } from "./module/actor/sheet.js";
-import { SR5Actor } from './module/actor/entity.js';
-import { SR5Item } from './module/item/entity.js';
-import { SR5 } from './module/config.js';
+import { SR6ItemSheet } from "./module/item/sheet.js";
+import { SR6ActorSheet } from "./module/actor/sheet.js";
+import { SR6Actor } from './module/actor/entity.js';
+import { SR6Item } from './module/item/entity.js';
+import { SR6 } from './module/config.js';
 import { Helpers } from './module/helpers.js';
 import { preloadHandlebarsTemplates } from './module/templates.js';
 import { DiceSR } from './module/dice.js';
@@ -18,27 +18,25 @@ import * as chat from './module/chat.js';
 Hooks.once("init", function() {
   console.log("Loading Shadowrun 6e System");
 
-  debugger;
-
   // Create a namespace within the game global
-  game.shadowrun5e = {
-    SR5Actor,
+  game.shadowrun6e = {
+    SR6Actor,
     DiceSR,
-    SR5Item,
+    SR6Item,
     rollItemMacro,
   };
 
-  CONFIG.SR5 = SR5;
-  CONFIG.Actor.entityClass = SR5Actor;
-  CONFIG.Item.entityClass = SR5Item;
+  CONFIG.SR6 = SR6;
+  CONFIG.Actor.entityClass = SR6Actor;
+  CONFIG.Item.entityClass = SR6Item;
 
   // Register sheet application classes
   Actors.unregisterSheet("core", ActorSheet);
-  Actors.registerSheet("shadowrun5e", SR5ActorSheet, { makeDefault: true });
+  Actors.registerSheet("shadowrun6e", SR6ActorSheet, { makeDefault: true });
   Items.unregisterSheet("core", ItemSheet);
-  Items.registerSheet("shadowrun5e", SR5ItemSheet, { makeDefault: true});
+  Items.registerSheet("shadowrun6e", SR6ItemSheet, { makeDefault: true});
 
-  ['renderSR5ActorSheet', 'renderSR5ItemSheet'].forEach(s => {
+  ['renderSR6ActorSheet', 'renderSR6ItemSheet'].forEach(s => {
     Hooks.on(s, (app, html, data) => Helpers.setupCustomCheckbox(app, html, data));
   });
 
@@ -52,7 +50,7 @@ Hooks.on('canvasInit', function() {
 });
 
 Hooks.on('ready', () => {
-  game.socket.on("system.shadowrun5e", data => {
+  game.socket.on("system.shadowrun6e", data => {
     if (game.user.isGM && data.gmCombatUpdate) {
       shadowrunCombatUpdate(
         data.gmCombatUpdate.changes,
@@ -65,7 +63,7 @@ Hooks.on('ready', () => {
 
 Hooks.on('preUpdateCombat', preCombatUpdate);
 Hooks.on('renderChatMessage', (app, html, data) => {
-  if (!app.isRoll) SR5Item.chatListeners(html)
+  if (!app.isRoll) SR6Item.chatListeners(html)
 });
 Hooks.on("getChatLogEntryContext", chat.addChatMessageContextOptions);
 
@@ -87,7 +85,7 @@ Hooks.on("hotbarDrop", (bar, data, slot) => {
  * @returns {Promise}
  */
 async function createItemMacro(item, slot) {
-  const command = `game.shadowrun5e.rollItemMacro("${item.name}");`;
+  const command = `game.shadowrun6e.rollItemMacro("${item.name}");`;
   let macro = game.macros.entities.find(m => (m.name === item.name) && (m.command === command));
   if ( !macro ) {
     macro = await Macro.create({
@@ -95,7 +93,7 @@ async function createItemMacro(item, slot) {
       type: "script",
       img: item.img,
       command: command,
-      flags: {"shadowrun5e.itemMacro": true}
+      flags: {"shadowrun6e.itemMacro": true}
     }, {displaySheet: false});
   }
   game.user.assignHotbarMacro(macro, slot);

@@ -1,249 +1,249 @@
-export const SR5 = { };
+export const SR6 = { };
 
-SR5.attributes = {
-  "body": "SR5.AttrBody",
-  "agility": "SR5.AttrAgility",
-  "reaction": "SR5.AttrReaction",
-  "strength": "SR5.AttrStrength",
-  "willpower": "SR5.AttrWillpower",
-  "logic": "SR5.AttrLogic",
-  "intuition": "SR5.AttrIntution",
-  "charisma": "SR5.AttrCharisma",
-  "magic": "SR5.AttrMagic",
-  "resonance": "SR5.AttrResonance",
-  "edge": "SR5.AttrEdge",
-  "essence": "SR5.AttrEssence",
-  "attack": "SR5.MatrixAttrAttack",
-  "sleaze": "SR5.MatrixAttrSleaze",
-  "data_processing": "SR5.MatrixAttrDataProc",
-  "firewall": "SR5.MatrixAttrFirewall"
+SR6.attributes = {
+  "body": "SR6.AttrBody",
+  "agility": "SR6.AttrAgility",
+  "reaction": "SR6.AttrReaction",
+  "strength": "SR6.AttrStrength",
+  "willpower": "SR6.AttrWillpower",
+  "logic": "SR6.AttrLogic",
+  "intuition": "SR6.AttrIntution",
+  "charisma": "SR6.AttrCharisma",
+  "magic": "SR6.AttrMagic",
+  "resonance": "SR6.AttrResonance",
+  "edge": "SR6.AttrEdge",
+  "essence": "SR6.AttrEssence",
+  "attack": "SR6.MatrixAttrAttack",
+  "sleaze": "SR6.MatrixAttrSleaze",
+  "data_processing": "SR6.MatrixAttrDataProc",
+  "firewall": "SR6.MatrixAttrFirewall"
 };
 
-SR5.limits = {
-  "physical": "SR5.LimitPhysical",
-  "social": "SR5.LimitSocial",
-  "mental": "SR5.LimitMental",
-  "attack": "SR5.MatrixAttrAttack",
-  "sleaze": "SR5.MatrixAttrSleaze",
-  "data_processing": "SR5.MatrixAttrDataProc",
-  "firewall": "SR5.MatrixAttrFirewall"
+SR6.limits = {
+  "physical": "SR6.LimitPhysical",
+  "social": "SR6.LimitSocial",
+  "mental": "SR6.LimitMental",
+  "attack": "SR6.MatrixAttrAttack",
+  "sleaze": "SR6.MatrixAttrSleaze",
+  "data_processing": "SR6.MatrixAttrDataProc",
+  "firewall": "SR6.MatrixAttrFirewall"
 };
 
-SR5.specialTypes = {
-  "mundane": "SR5.Mundane",
-  "magic": "SR5.Awakened",
-  "resonance": "SR5.Emerged"
+SR6.specialTypes = {
+  "mundane": "SR6.Mundane",
+  "magic": "SR6.Awakened",
+  "resonance": "SR6.Emerged"
 };
 
-SR5.damageTypes = {
-  "physical": "SR5.DmgTypePhysical",
-  "stun": "SR5.DmgTypeStun",
-  "matrix": "SR5.DmgTypeMatrix"
+SR6.damageTypes = {
+  "physical": "SR6.DmgTypePhysical",
+  "stun": "SR6.DmgTypeStun",
+  "matrix": "SR6.DmgTypeMatrix"
 };
 
-SR5.elementTypes = {
-  "fire": "SR5.ElementFire",
-  "cold": "SR5.ElementCold",
-  "acid": "SR5.ElementAcid",
-  "electricity": "SR5.ElementElectricity",
-  "radiation": "SR5.ElementRadiation"
+SR6.elementTypes = {
+  "fire": "SR6.ElementFire",
+  "cold": "SR6.ElementCold",
+  "acid": "SR6.ElementAcid",
+  "electricity": "SR6.ElementElectricity",
+  "radiation": "SR6.ElementRadiation"
 };
 
-SR5.spellCategories = {
-  "combat": "SR5.SpellCatCombat",
-  "detection": "SR5.SpellCatDetection",
-  "health": "SR5.SpellCatHealth",
-  "illusion": "SR5.SpellCatIllusion",
-  "manipulation": "SR5.SpellCatManipulation"
+SR6.spellCategories = {
+  "combat": "SR6.SpellCatCombat",
+  "detection": "SR6.SpellCatDetection",
+  "health": "SR6.SpellCatHealth",
+  "illusion": "SR6.SpellCatIllusion",
+  "manipulation": "SR6.SpellCatManipulation"
 };
 
-SR5.spellTypes = {
-  "physical": "SR5.SpellTypePhysical",
-  "mana": "SR5.SpellTypeMana"
+SR6.spellTypes = {
+  "physical": "SR6.SpellTypePhysical",
+  "mana": "SR6.SpellTypeMana"
 };
 
-SR5.spellRanges = {
-  "touch": "SR5.SpellRangeTouch",
-  "los": "SR5.SpellRangeLos",
-  "los_a": "SR5.SpellRangeLosA"
+SR6.spellRanges = {
+  "touch": "SR6.SpellRangeTouch",
+  "los": "SR6.SpellRangeLos",
+  "los_a": "SR6.SpellRangeLosA"
 };
 
-SR5.combatSpellTypes = {
-  "direct": "SR5.SpellCombatDirect",
-  "indirect": "SR5.SpellCombatIndirect"
+SR6.combatSpellTypes = {
+  "direct": "SR6.SpellCombatDirect",
+  "indirect": "SR6.SpellCombatIndirect"
 };
 
-SR5.detectionSpellTypes = {
-  "directional": "SR5.SpellDetectionDirectional",
-  "psychic": "SR5.SpellDetectionPsychic",
-  "area": "SR5.SpellDetectionArea"
+SR6.detectionSpellTypes = {
+  "directional": "SR6.SpellDetectionDirectional",
+  "psychic": "SR6.SpellDetectionPsychic",
+  "area": "SR6.SpellDetectionArea"
 };
 
-SR5.illusionSpellTypes = {
-  "obvious": "SR5.SpellIllusionObvious",
-  "realistic": "SR5.SpellIllusionRealistic"
+SR6.illusionSpellTypes = {
+  "obvious": "SR6.SpellIllusionObvious",
+  "realistic": "SR6.SpellIllusionRealistic"
 };
 
-SR5.illusionSpellSenses = {
-  "single-sense": "SR5.SpellIllusionSingleSense",
-  "multi-sense": "SR5.SpellIllusionMultiSense"
+SR6.illusionSpellSenses = {
+  "single-sense": "SR6.SpellIllusionSingleSense",
+  "multi-sense": "SR6.SpellIllusionMultiSense"
 };
 
-SR5.attributeRolls = {
-  'composure': 'SR5.RollComposure',
-  'lift_carry': 'SR5.RollLiftCarry',
-  'judge_intentions': 'SR5.RollJudgeIntentions',
-  'memory': 'SR5.RollMemory'
+SR6.attributeRolls = {
+  'composure': 'SR6.RollComposure',
+  'lift_carry': 'SR6.RollLiftCarry',
+  'judge_intentions': 'SR6.RollJudgeIntentions',
+  'memory': 'SR6.RollMemory'
 }
 
-SR5.matrixTargets = {
-  "persona": "SR5.TargetPersona",
-  "device": "SR5.TargetDevice",
-  "file": "SR5.TargetFile",
-  "self": "SR5.TargetSelf",
-  "sprite": "SR5.TargetSprite",
-  "other": "SR5.TargetOther"
+SR6.matrixTargets = {
+  "persona": "SR6.TargetPersona",
+  "device": "SR6.TargetDevice",
+  "file": "SR6.TargetFile",
+  "self": "SR6.TargetSelf",
+  "sprite": "SR6.TargetSprite",
+  "other": "SR6.TargetOther"
 };
 
-SR5.durations = {
-  "instant": "SR5.DurationInstant",
-  "sustained": "SR5.DurationSustained",
-  "permanent": "SR5.DurationPermanent"
+SR6.durations = {
+  "instant": "SR6.DurationInstant",
+  "sustained": "SR6.DurationSustained",
+  "permanent": "SR6.DurationPermanent"
 };
 
-SR5.weaponCategories = {
-  "range": "SR5.WeaponCatRange",
-  "melee": "SR5.WeaponCatMelee",
-  "thrown": "SR5.WeaponCatThrown"
+SR6.weaponCategories = {
+  "range": "SR6.WeaponCatRange",
+  "melee": "SR6.WeaponCatMelee",
+  "thrown": "SR6.WeaponCatThrown"
 };
 
-SR5.qualityTypes = {
-  "positive": "SR5.QualityTypePositive",
-  "negative": "SR5.QualityTypeNegative"
+SR6.qualityTypes = {
+  "positive": "SR6.QualityTypePositive",
+  "negative": "SR6.QualityTypeNegative"
 };
 
-SR5.deviceCategories = {
-  "commlink": "SR5.DeviceCatCommlink",
-  "cyberdeck": "SR5.DeviceCatCyberdeck"
+SR6.deviceCategories = {
+  "commlink": "SR6.DeviceCatCommlink",
+  "cyberdeck": "SR6.DeviceCatCyberdeck"
 };
 
-SR5.knowledgeSkillCategories = {
-  "street": "SR5.KnowledgeSkillStreet",
-  "academic": "SR5.KnowledgeSkillAcademic",
-  "professional": "SR5.KnowledgeSkillProfessional",
-  "interests": "SR5.KnowledgeSkillInterests"
+SR6.knowledgeSkillCategories = {
+  "street": "SR6.KnowledgeSkillStreet",
+  "academic": "SR6.KnowledgeSkillAcademic",
+  "professional": "SR6.KnowledgeSkillProfessional",
+  "interests": "SR6.KnowledgeSkillInterests"
 };
 
-SR5.activeSkills = {
-  "archery": "SR5.SkillArchery",
-  "automatics": "SR5.SkillAutomatics",
-  "blades": "SR5.SkillBlades",
-  "clubs": "SR5.SkillClubs",
-  "exotic_melee": "SR5.SkillExoticMelee",
-  "exotic_range": "SR5.SkillExoticRange",
-  "heavy_weapons": "SR5.SkillHeavyWeapons",
-  "longarms": "SR5.SkillLongarms",
-  "pistols": "SR5.SkillPistols",
-  "throwing_weapons": "SR5.SkillThrowingWeapons",
-  "unarmed_combat": "SR5.SkillUnarmedCombat",
-  "disguise": "SR5.SkillDisguise",
-  "diving": "SR5.SkillDiving",
-  "escape_artist": "SR5.SkillEscapeArtist",
-  "free_fall": "SR5.SkillFreeFall",
-  "gymnastics": "SR5.SkillGymnastics",
-  "palming": "SR5.SkillPalming",
-  "perception": "SR5.SkillPerception",
-  "running": "SR5.SkillRunning",
-  "sneaking": "SR5.SkillSneaking",
-  "survival": "SR5.SkillSurvival",
-  "swimming": "SR5.SkillSwimming",
-  "tracking": "SR5.SkillTracking",
-  "con": "SR5.SkillCon",
-  "etiquette": "SR5.SkillEtiquette",
-  "impersonation": "SR5.SkillImpersonation",
-  "instruction": "SR5.SkillInstruction",
-  "intimidation": "SR5.SkillIntimidation",
-  "leadership": "SR5.SkillLeadership",
-  "negotiation": "SR5.SkillNegotiation",
-  "performance": "SR5.SkillPerformance",
-  "alchemy": "SR5.SkillAlchemy",
-  "arcana": "SR5.SkillArcana",
-  "artificing": "SR5.SkillArtificing",
-  "assensing": "SR5.SkillAssensing",
-  "astral_combat": "SR5.SkillAstralCombat",
-  "banishing": "SR5.SkillBanishing",
-  "binding": "SR5.SkillBinding",
-  "counterspelling": "SR5.SkillCounterspelling",
-  "disenchanting": "SR5.SkillDisenchanting",
-  "ritual_spellcasting": "SR5.SkillRitualSpellcasting",
-  "spellcasting": "SR5.SkillSpellcasting",
-  "summoning": "SR5.SkillSummoning",
-  "compiling": "SR5.SkillCompiling",
-  "decompiling": "SR5.SkillDecompiling",
-  "registering": "SR5.SkillRegistering",
-  "aeronautics_mechanic": "SR5.SkillAeronauticsMechanic",
-  "automotive_mechanic": "SR5.SkillAutomotiveMechanic",
-  "industrial_mechanic": "SR5.SkillIndustrialMechanic",
-  "nautical_mechanic": "SR5.SkillNauticalMechanic",
-  "animal_handling": "SR5.SkillAnimalHandling",
-  "armorer": "SR5.SkillArmorer",
-  "artisan": "SR5.SkillArtisan",
-  "biotechnology": "SR5.SkillBiotechnology",
-  "chemistry": "SR5.SkillChemistry",
-  "computer": "SR5.SkillComputer",
-  "cybercombat": "SR5.SkillCybercombat",
-  "cybertechnology": "SR5.SkillCybertechnology",
-  "demolitions": "SR5.SkillDemolitions",
-  "electronic_warfare": "SR5.SkillElectronicWarfare",
-  "first_aid": "SR5.SkillFirstAid",
-  "forgery": "SR5.SkillForgery",
-  "hacking": "SR5.SkillHacking",
-  "hardware": "SR5.SkillHardware",
-  "locksmith": "SR5.SkillLocksmith",
-  "medicine": "SR5.SkillMedicine",
-  "navigation": "SR5.SkillNavigation",
-  "software": "SR5.SkillSoftware",
-  "gunnery": "SR5.SkillGunnery",
-  "pilot_aerospace": "SR5.SkillPilotAerospace",
-  "pilot_aircraft": "SR5.SkillPilotAircraft",
-  "pilot_walker": "SR5.SkillPilotWalker",
-  "pilot_ground_craft": "SR5.SkillPilotGroundCraft",
-  "pilot_water_craft": "SR5.SkillPilotWaterCraft",
-  "pilot_exotic_vehicle": "SR5.SkillPilotExoticVehicle"
+SR6.activeSkills = {
+  "archery": "SR6.SkillArchery",
+  "automatics": "SR6.SkillAutomatics",
+  "blades": "SR6.SkillBlades",
+  "clubs": "SR6.SkillClubs",
+  "exotic_melee": "SR6.SkillExoticMelee",
+  "exotic_range": "SR6.SkillExoticRange",
+  "heavy_weapons": "SR6.SkillHeavyWeapons",
+  "longarms": "SR6.SkillLongarms",
+  "pistols": "SR6.SkillPistols",
+  "throwing_weapons": "SR6.SkillThrowingWeapons",
+  "unarmed_combat": "SR6.SkillUnarmedCombat",
+  "disguise": "SR6.SkillDisguise",
+  "diving": "SR6.SkillDiving",
+  "escape_artist": "SR6.SkillEscapeArtist",
+  "free_fall": "SR6.SkillFreeFall",
+  "gymnastics": "SR6.SkillGymnastics",
+  "palming": "SR6.SkillPalming",
+  "perception": "SR6.SkillPerception",
+  "running": "SR6.SkillRunning",
+  "sneaking": "SR6.SkillSneaking",
+  "survival": "SR6.SkillSurvival",
+  "swimming": "SR6.SkillSwimming",
+  "tracking": "SR6.SkillTracking",
+  "con": "SR6.SkillCon",
+  "etiquette": "SR6.SkillEtiquette",
+  "impersonation": "SR6.SkillImpersonation",
+  "instruction": "SR6.SkillInstruction",
+  "intimidation": "SR6.SkillIntimidation",
+  "leadership": "SR6.SkillLeadership",
+  "negotiation": "SR6.SkillNegotiation",
+  "performance": "SR6.SkillPerformance",
+  "alchemy": "SR6.SkillAlchemy",
+  "arcana": "SR6.SkillArcana",
+  "artificing": "SR6.SkillArtificing",
+  "assensing": "SR6.SkillAssensing",
+  "astral_combat": "SR6.SkillAstralCombat",
+  "banishing": "SR6.SkillBanishing",
+  "binding": "SR6.SkillBinding",
+  "counterspelling": "SR6.SkillCounterspelling",
+  "disenchanting": "SR6.SkillDisenchanting",
+  "ritual_spellcasting": "SR6.SkillRitualSpellcasting",
+  "spellcasting": "SR6.SkillSpellcasting",
+  "summoning": "SR6.SkillSummoning",
+  "compiling": "SR6.SkillCompiling",
+  "decompiling": "SR6.SkillDecompiling",
+  "registering": "SR6.SkillRegistering",
+  "aeronautics_mechanic": "SR6.SkillAeronauticsMechanic",
+  "automotive_mechanic": "SR6.SkillAutomotiveMechanic",
+  "industrial_mechanic": "SR6.SkillIndustrialMechanic",
+  "nautical_mechanic": "SR6.SkillNauticalMechanic",
+  "animal_handling": "SR6.SkillAnimalHandling",
+  "armorer": "SR6.SkillArmorer",
+  "artisan": "SR6.SkillArtisan",
+  "biotechnology": "SR6.SkillBiotechnology",
+  "chemistry": "SR6.SkillChemistry",
+  "computer": "SR6.SkillComputer",
+  "cybercombat": "SR6.SkillCybercombat",
+  "cybertechnology": "SR6.SkillCybertechnology",
+  "demolitions": "SR6.SkillDemolitions",
+  "electronic_warfare": "SR6.SkillElectronicWarfare",
+  "first_aid": "SR6.SkillFirstAid",
+  "forgery": "SR6.SkillForgery",
+  "hacking": "SR6.SkillHacking",
+  "hardware": "SR6.SkillHardware",
+  "locksmith": "SR6.SkillLocksmith",
+  "medicine": "SR6.SkillMedicine",
+  "navigation": "SR6.SkillNavigation",
+  "software": "SR6.SkillSoftware",
+  "gunnery": "SR6.SkillGunnery",
+  "pilot_aerospace": "SR6.SkillPilotAerospace",
+  "pilot_aircraft": "SR6.SkillPilotAircraft",
+  "pilot_walker": "SR6.SkillPilotWalker",
+  "pilot_ground_craft": "SR6.SkillPilotGroundCraft",
+  "pilot_water_craft": "SR6.SkillPilotWaterCraft",
+  "pilot_exotic_vehicle": "SR6.SkillPilotExoticVehicle"
 };
 
-SR5.actionTypes = {
-  "none": "SR5.ActionTypeNone",
-  "free": "SR5.ActionTypeFree",
-  "simple": "SR5.ActionTypeSimple",
-  "complex": "SR5.ActionTypeComplex",
-  "varies": "SR5.ActionTypeVaries"
+SR6.actionTypes = {
+  "none": "SR6.ActionTypeNone",
+  "free": "SR6.ActionTypeFree",
+  "simple": "SR6.ActionTypeSimple",
+  "complex": "SR6.ActionTypeComplex",
+  "varies": "SR6.ActionTypeVaries"
 };
 
-SR5.matrixAttributes = {
-  "attack": "SR5.MatrixAttrAttack",
-  "sleaze": "SR5.MatrixAttrSleaze",
-  "data_processing": "SR5.MatrixAttrDataProc",
-  "firewall": "SR5.MatrixAttrFirewall"
+SR6.matrixAttributes = {
+  "attack": "SR6.MatrixAttrAttack",
+  "sleaze": "SR6.MatrixAttrSleaze",
+  "data_processing": "SR6.MatrixAttrDataProc",
+  "firewall": "SR6.MatrixAttrFirewall"
 };
 
-SR5.initiativeCategories = {
-  "meatspace": "SR5.InitCatMeatspace",
-  "astral": "SR5.InitCatAstral",
-  "matrix": "SR5.InitCatMatrix"
+SR6.initiativeCategories = {
+  "meatspace": "SR6.InitCatMeatspace",
+  "astral": "SR6.InitCatAstral",
+  "matrix": "SR6.InitCatMatrix"
 };
 
-SR5.lifestyleTypes = {
-  "street": "SR5.LifestyleStreet",
-  "squatter": "SR5.LifestyleSquatter",
-  "low": "SR5.LifestyleLow",
-  "medium": "SR5.LifestyleMiddle",
-  "high": "SR5.LifestyleHigh",
-  "luxory": "SR5.LifestyleLuxory",
-  "other": "SR5.LifestyleOther"
+SR6.lifestyleTypes = {
+  "street": "SR6.LifestyleStreet",
+  "squatter": "SR6.LifestyleSquatter",
+  "low": "SR6.LifestyleLow",
+  "medium": "SR6.LifestyleMiddle",
+  "high": "SR6.LifestyleHigh",
+  "luxory": "SR6.LifestyleLuxory",
+  "other": "SR6.LifestyleOther"
 };
 
-SR5.kbmod = {
+SR6.kbmod = {
   STANDARD: 'shiftKey',
   EDGE: 'altKey',
   SPEC: 'ctrlKey'

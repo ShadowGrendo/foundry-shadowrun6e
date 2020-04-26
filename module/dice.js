@@ -1,5 +1,5 @@
 import { Helpers } from './helpers.js';
-import { SR5 } from './config.js';
+import { SR6 } from './config.js';
 
 /**
  * @param {Event} event         The triggering event which initiated the roll
@@ -33,7 +33,7 @@ export class DiceSR {
       const hits = roll.total;
       const fails = roll.dice[0].rolls.reduce((fails, r) => (r.roll === 1) ? fails + 1 : fails, 0);
 
-      const template = 'systems/shadowrun5e/templates/rolls/roll-card.html';
+      const template = 'systems/shadowrun6e/templates/rolls/roll-card.html';
       const templateData = {
         actor: actor,
         hits: roll.total,
@@ -81,7 +81,7 @@ export class DiceSR {
     if ((event && Helpers.hasModifiers(event))) {
       if (wounds) total -= wounds;
       if (mod) total += mod;
-      let edge = event[SR5.kbmod.EDGE];
+      let edge = event[SR6.kbmod.EDGE];
       if (edge && actor) {
         total += actor.data.data.attributes.edge.max;
         actor.update({"data.attributes.edge.value": actor.data.data.attributes.edge.value - 1});
@@ -100,7 +100,7 @@ export class DiceSR {
       limitMod: limitMod || "",
       wounds: wounds
     };
-    let template = 'systems/shadowrun5e/templates/rolls/roll-dialog.html';
+    let template = 'systems/shadowrun6e/templates/rolls/roll-dialog.html';
     let edge = false;
     let cancel = true;
     return new Promise(resolve => {
