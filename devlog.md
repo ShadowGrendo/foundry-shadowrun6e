@@ -57,3 +57,63 @@ need defense rating and attack rating
 these are defined range categories and we can include them in the game. Maybe a rules config somewhere.
 
 Also include conditions. Confused, Shocked, etc...
+
+Ok, work backwards from the character sheet to the template, because editing the template will make all kinds of errors and such. 
+
+Personal Data
+
+Attributes (current, max, temp adjustments)
+	all the attributes
+	edge & edge points
+	composure
+	judge intentions
+	…
+	lift/carry
+	awakened?
+	? include stuff like drain and other shortcuts ?
+	
+Skills (rank, attribute, [Pool], specialty, expertise)
+	There is a small enough list I think we can just show them all
+
+Combat
+	movement
+	armor
+		Defense rating
+	ranged
+		dv, mode, close, near, far, extreme, ammo
+	close combat
+		unarmed - dv, close ar
+	
+Condition Monitor
+
+	Physical Damage
+		Boxes 0-18, overflow damage, (just a number, I think)
+	Stun Damage
+		Boxes 0 -12
+	
+	Statuses
+		Blinded I, II or III
+		Burning #
+		Chilled
+		Confused #
+		Corrosive #
+		Cover I, II, III, or IV
+		Dazed
+		Deafened I, II, or III
+		…and so on. Can we get these to update reactively to and from the token? that would be sweet
+
+Qualities
+	your karma qualities, good and bad
+	
+Ids/lifestyle/wealth ?social?
+	Ids, lifestyle, money reputation, heat,…etc
+
+Contacts
+	list of contacts
+	
+	
+
+Then there are all the more details sections about your specific kick. 
+Equipment, matrix, magic, cyberware, adept powers…all that.
+
+start simple, all we really need is the ability to track our attributes and skills and stuff and roll arbitrary dice with or without explodes. and track damage. 
