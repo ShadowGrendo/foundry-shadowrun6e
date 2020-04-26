@@ -22,7 +22,7 @@ Main changes for 6th world,
 lots of rolling related stuff. And some character stuff. 
 
 
-## naming questions
+### naming questions
 
 Is there a reason to include the edition number in naming? how global is the game global?
 Like will there be conflicts if we just name stuff shadowrun or SR? because when 7th ed comes around its going to be a pain to rename everything. I assume stuff is isolated to the game that is currently launched. 
@@ -35,3 +35,25 @@ I think games are isolated enough that we can drop the version from the system.
 Also, the install system is pretty much just a copy of the repo, which means we could make the installed system folder the repo and even attach to the app for debugging. 
 
 
+### 4.25.2020, nevenall
+
+got the rename done. Tried to switch to TabsV2, but it didn't go real well. Switched back for now. 
+going to try editing the template for 6th e
+
+need defense rating and attack rating
+
+  Close: 0-3 meters Every gun has this one, though some are actually less effective here because they’re so bulky.
+
+  Near: 4-50 meters This is the sweet spot across the board. All ranged weapons can get into this range. How effective they are is a whole other question.
+
+  Medium: 51-250 meters You need some barrel length to be effective
+  here. Some smaller arms can get here, but hitting a target falls more into the realm of trickery and magic than skill.
+
+  Far: 251-500 meters Welcome to the land of longarms. This is the place where size matters—well, at least the length of the barrel.
+
+  Extreme: 500+ Sure, your tricked-out Colt M-23 can get here,
+  barely, but that Ranger Arms revels in these ranges.
+
+these are defined range categories and we can include them in the game. Maybe a rules config somewhere.
+
+Also include conditions. Confused, Shocked, etc...
