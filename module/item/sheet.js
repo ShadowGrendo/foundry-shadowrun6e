@@ -3,7 +3,7 @@ import { Helpers } from '../helpers.js';
 /**
  * Extend the basic ItemSheet with some very simple modifications
  */
-export class SR6ItemSheet extends ItemSheet {
+export class ItemSheet6e extends ItemSheet {
    constructor(...args) {
       super(...args);
 

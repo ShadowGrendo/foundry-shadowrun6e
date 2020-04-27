@@ -43,7 +43,8 @@ function handlebars() {
             done(error, null)
          }
       }))
-      .pipe(dest('dist'))
+      // we just register the partials, we don't need to copy the files
+      // .pipe(dest('dist'))
 }
 
 function html() {

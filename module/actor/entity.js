@@ -1,8 +1,8 @@
-import { DiceSR } from '../dice.js';
+import { Dice6e } from '../dice.js';
 import { Helpers } from '../helpers.js';
 import { SR6 } from '../config.js';
 
-export class SR6Actor extends Actor {
+export class Actor6e extends Actor {
 
   update(data, options) {
     super.update(data, options);
@@ -331,7 +331,7 @@ export class SR6Actor extends Actor {
     const resist = this.data.data.rolls.fade;
     let title = "Fade";
     if (incoming >= 0) title += ` (${incoming} incoming)`;
-    DiceSR.d6({
+    Dice6e.d6({
       event: options.event,
       count: resist,
       actor: this,
@@ -344,7 +344,7 @@ export class SR6Actor extends Actor {
     const resist = this.data.data.rolls.drain;
     let title = 'Drain';
     if (incoming >= 0) title += ` (${incoming} incoming)`;
-    DiceSR.d6({
+    Dice6e.d6({
       event: options.event,
       count: resist,
       actor: this,
@@ -355,7 +355,7 @@ export class SR6Actor extends Actor {
 
   rollArmor(options) {
     const armor = this.data.data.armor.value;
-    return DiceSR.d6({
+    return Dice6e.d6({
       event: options.event,
       actor: this,
       count: armor,
@@ -398,7 +398,7 @@ export class SR6Actor extends Actor {
             if (special === 'block') count += this.data.data.skills.active.unarmed_combat.value;
             if (fireMode) count += fireMode;
             if (cover) count += cover;
-            return DiceSR.d6({
+            return Dice6e.d6({
               event: options.event,
               actor: this,
               count: count,
@@ -492,7 +492,7 @@ export class SR6Actor extends Actor {
             const label = Helpers.label(id);
             let title = `Soak - ${label}`;
             if (options.damage) title += ` - Incoming Damage: ${options.damage}`;
-            return DiceSR.d6({
+            return Dice6e.d6({
               event: options.event,
               actor: this,
               count: count,
@@ -507,7 +507,7 @@ export class SR6Actor extends Actor {
 
   rollSingleAttribute(attId, options) {
     const attr = this.data.data.attributes[attId];
-    return DiceSR.d6({
+    return Dice6e.d6({
       event: options.event,
       actor: this,
       count: attr.value,
@@ -521,7 +521,7 @@ export class SR6Actor extends Actor {
     const attr2 = this.data.data.attributes[id2];
     const label1 = Helpers.label(id1);
     const label2 = Helpers.label(id2);
-    return DiceSR.d6({
+    return Dice6e.d6({
       event: options.event,
       actor: this,
       count: attr1.value + attr2.value,
@@ -543,7 +543,7 @@ export class SR6Actor extends Actor {
     let att1 = this.data.data.attributes[id1];
     let att2 = this.data.data.attributes[id2];
 
-    return DiceSR.d6({
+    return Dice6e.d6({
       event: options.event,
       actor: this,
       title: title,
@@ -569,7 +569,7 @@ export class SR6Actor extends Actor {
     let title = game.i18n.localize(CONFIG.SR6.matrixAttributes[attr]);
 
     if (Helpers.hasModifiers(options.event)) {
-      return DiceSR.d6({
+      return Dice6e.d6({
         event: options.event,
         actor: this,
         count: matrix_att.value + (options.event[SR6.kbmod.SPEC] ? 2 : 0),
@@ -610,7 +610,7 @@ export class SR6Actor extends Actor {
             title += ` + ${game.i18n.localize(CONFIG.SR6.attributes[newAtt])}`;
           }
           let count = matrix_att.value + (att.value || 0) + (spec ? 2 : 0);
-          return DiceSR.d6({
+          return Dice6e.d6({
             event: options.event,
             actor: this,
             count: count,
@@ -624,7 +624,7 @@ export class SR6Actor extends Actor {
   }
 
   promptRoll(options) {
-    return DiceSR.d6({
+    return Dice6e.d6({
       event: options.event,
       actor: this,
       dialogOptions: {
@@ -636,7 +636,7 @@ export class SR6Actor extends Actor {
   rollAttributesTest(rollId, options) {
     const title = game.i18n.localize(CONFIG.SR6.attributeRolls[rollId]);
     const roll = this.data.data.rolls[rollId];
-    return DiceSR.d6({
+    return Dice6e.d6({
       event: options.event,
       actor: this,
       count: roll,
@@ -653,7 +653,7 @@ export class SR6Actor extends Actor {
     let limit = this.data.data.limits[att.limit];
 
     if (Helpers.hasModifiers(options.event)) {
-      return DiceSR.d6({
+      return Dice6e.d6({
         event: options.event,
         actor: this,
         count: skill.value + att.value + (options.event[SR6.kbmod.SPEC] ? 2 : 0),
@@ -691,7 +691,7 @@ export class SR6Actor extends Actor {
           title += ` + ${game.i18n.localize(CONFIG.SR6.attributes[newAtt])}`;
           limit = this.data.data.limits[newLimit];
           let count = (skill.value > 0 ? skill.value : -1) + att.value + (spec ? 2 : 0);
-          return DiceSR.d6({
+          return Dice6e.d6({
             event: options.event,
             actor: this,
             count: count,
@@ -760,7 +760,7 @@ export class SR6Actor extends Actor {
             count += att2.value;
             title += ` + ${att2IdLabel}`
           }
-          return DiceSR.d6({
+          return Dice6e.d6({
             event: options.event,
             title: `${title} Test`,
             actor: this,
@@ -781,7 +781,7 @@ export class SR6Actor extends Actor {
 
       let actor = game.actors.get(msg.data.speaker.actor);
 
-      return DiceSR.d6({
+      return Dice6e.d6({
         event: {shiftKey: true, altKey: true},
         title: `${title} - Push the Limit`,
         actor: actor,
@@ -808,7 +808,7 @@ export class SR6Actor extends Actor {
           let actor = game.actors.get(msg.data.speaker.actor);
           let count = pool - hits;
 
-          return DiceSR.d6({
+          return Dice6e.d6({
             event: {shiftKey: true},
             title: `${title} - Second Chance`,
             count: count,

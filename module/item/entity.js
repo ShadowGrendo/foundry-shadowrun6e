@@ -1,7 +1,7 @@
-import { DiceSR } from '../dice.js';
+import { Dice6e } from '../dice.js';
 import { Helpers } from '../helpers.js';
 
-export class SR6Item extends Item {
+export class Item6e extends Item {
 
   get hasOpposedRoll() {
     return !!(this.data.data.action && this.data.data.action.opposed.type);
@@ -476,7 +476,7 @@ export class SR6Item extends Item {
               title += ` - Defender (${Helpers.mapRoundsToDefenseDesc(fireMode)})`
             }
             if (fireMode > rc) count -= (fireMode - rc);
-            DiceSR.d6({
+            Dice6e.d6({
               event: ev,
               count: count,
               actor: this.actor,
@@ -529,7 +529,7 @@ export class SR6Item extends Item {
             const force = parseInt(html.find('[name=force]').val());
             console.log(force);
             limit = force;
-            DiceSR.d6({
+            Dice6e.d6({
               event: ev,
               environmental: true,
               count: count,
@@ -576,7 +576,7 @@ export class SR6Item extends Item {
             if (cancel) return;
             const level = parseInt(html.find('[name=level]').val());
             limit = level;
-            DiceSR.d6({
+            Dice6e.d6({
               event: ev,
               environmental: true,
               count: count,
@@ -592,7 +592,7 @@ export class SR6Item extends Item {
         }).render(true);
       });
     } else {
-      return DiceSR.d6({
+      return Dice6e.d6({
         event: ev,
         count: count,
         environmental: true,

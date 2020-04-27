@@ -131,4 +131,11 @@ maybe even run the sheet.js? depends on wether that's more foundry or handlebars
 
 tried to setup a gulp watch version of the character sheet, but there are too many dependencies to be worth it. We'll just have to do it through the app. 
 
-So, big question is what kind of layout to 
+So, big question is what is the layout for the character? 
+I don't like the book one, we have the power of tabs so might as well use them. 
+
+
+There is totally a bug in the token association. dnd5e works just fine. 
+
+
+

@@ -9,7 +9,7 @@ import { SR6 } from './config.js';
  *
  */
 
-export class DiceSR {
+export class Dice6e {
   static d6({event, count, mod, actor, limit, limitMod, title="Roll", prefix, suffix, after, extended, matrix, dialogOptions, wounds=true}) {
     const roll = async (count, limit, explode) => {
       let formula = `${count}d6`;
@@ -150,7 +150,7 @@ export class DiceSR {
                 count -= 1;
                 // add a bit of a delay to roll again
                 // helps with any updates that happened inside after and to not spam the user
-                setTimeout(() => DiceSR.d6({event, count, mod, actor, limit, limitMod, title, prefix, suffix, extended, dialogOptions, wounds, after}), 400);
+                setTimeout(() => Dice6e.d6({event, count, mod, actor, limit, limitMod, title, prefix, suffix, extended, dialogOptions, wounds, after}), 400);
               }
             });
           }

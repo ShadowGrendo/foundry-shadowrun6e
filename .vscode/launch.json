@@ -20,7 +20,7 @@
       "type": "chrome",
       "request": "launch",
       "name": "Launch Chrome",
-      "url": "http://localhost:30000"
+      "url": "http://localhost:3030"
     },
     {
       "type": "node",
@@ -31,7 +31,7 @@
       ],
       "program": "C:/Program Files/FoundryVTT/resources/app/main.js",
       "args": [
-        "--port=30000",
+        "--port=3030",
         "--dataPath=C:/foundry-dev"
       ]
     },

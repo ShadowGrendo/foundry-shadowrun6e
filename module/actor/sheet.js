@@ -4,7 +4,7 @@ import { ChummerImportForm } from '../apps/chummer-import-form.js';
 /**
  * Extend the basic ActorSheet with some very simple modifications
  */
-export class SR6ActorSheet extends ActorSheet {
+export class ActorSheet6e extends ActorSheet {
    get data() {
       return this.actor.data.data;
    }
