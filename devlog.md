@@ -117,3 +117,18 @@ Then there are all the more details sections about your specific kick.
 Equipment, matrix, magic, cyberware, adept powers…all that.
 
 start simple, all we really need is the ability to track our attributes and skills and stuff and roll arbitrary dice with or without explodes. and track damage. 
+
+
+## 4.26.2020
+
+adding a testing folder with an index.html and a copy of foundry's style.css so that I can dev the sheets without starting foundry. 
+
+just need handlebars and some fake data. The interacts probably won't work, but it will be a start. 
+
+So, we need gulp to run sass and make a shadowrun.css we can copy to a dist directory
+need to gather and compile the handlebar templates, need some test.json to load in probas
+maybe even run the sheet.js? depends on wether that's more foundry or handlebars.
+
+tried to setup a gulp watch version of the character sheet, but there are too many dependencies to be worth it. We'll just have to do it through the app. 
+
+So, big question is what kind of layout to 

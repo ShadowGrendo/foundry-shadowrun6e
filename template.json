@@ -12,15 +12,16 @@
         "sex": "",
         "height": "",
         "weight": "",
-        "reputation": 0,
-        "heat": 0,
+        "street_cred": 0,
+        "notoriety": 0,
+        "public_awareness": 0,
         "special": "mundane",
         "description": {
           "value": ""
         },
         "karma": {
-          "current": 0,
-          "total": 0
+          "value": 0,
+          "max": 0
         },
         "nuyen": 0,
         "rent": {
@@ -59,68 +60,98 @@
           "body": {
             "value": 1,
             "min": 1,
-            "max": 6
+            "limit": "physical"
           },
           "agility": {
             "value": 1,
             "min": 1,
-            "max": 6
+            "limit": "physical"
           },
           "reaction": {
             "value": 1,
             "min": 1,
-            "max": 6
+            "limit": "physical"
           },
           "strength": {
             "value": 1,
             "min": 1,
-            "max": 6
+            "limit": "physical"
           },
           "willpower": {
             "value": 1,
             "min": 1,
-            "max": 6
+            "limit": "mental"
           },
           "logic": {
             "value": 1,
             "min": 1,
-            "max": 6
+            "limit": "mental"
           },
           "intuition": {
             "value": 1,
             "min": 1,
-            "max": 6
+            "limit": "mental"
           },
           "charisma": {
             "value": 1,
             "min": 1,
-            "max": 6
-          },
-          "edge": {
-            "value": 1,
-            "min": 0,
-            "max": 6
-          },
-          "essence": {
-            "value": 6,
-            "min": 0,
-            "max": 6
+            "limit": "social"
           },
           "magic": {
             "value": 0,
             "min": 0,
-            "max": 6
+            "limit": "mental"
           },
           "resonance": {
             "value": 0,
             "min": 0,
-            "max": 6
+            "limit": "mental"
+          },
+          "edge": {
+            "value": 1,
+            "min": 0,
+            "max": 1,
+            "hidden": true
+          },
+          "essence": {
+            "value": 6,
+            "min": 0,
+            "hidden": true
+          }
+        },
+        "limits": {
+          "physical": {
+            "value": 1,
+            "mod": 0,
+            "min": 1
+          },
+          "social": {
+            "value": 1,
+            "mod": 0,
+            "min": 1
+          },
+          "mental": {
+            "value": 1,
+            "mod": 0,
+            "min": 1
           }
         },
         "movement": {
-          "move": 10,
-          "sprint": 15,
-          "per-hit": 1
+          "walk": {
+            "value": 1
+          },
+          "run": {
+            "value": 2
+          },
+          "sprint": 2,
+          "swimming": 2
+        },
+        "magic": {
+          "attribute": "logic",
+          "projecting": false,
+          "drain": {
+            "value": 0
+          }
         },
         "wounds": {
           "value": 0
@@ -135,8 +166,6 @@
           "radiation": 0
         },
         "initiative": {
-          // initiative is just mod plus dice.
-          // need to track major and minor actions as well
           "perception": "meatspace",
           "meatspace": {
             "dice": {
@@ -176,183 +205,574 @@
           }
         },
         "skills": {
-          // you may have 1 specialty at +2 dice
-          // if you turn that into an expertise at +3 dice, you can get a second specialty
-          // one of each is the limit
           "active": {
-            "astral": {
-              "rank": 0,
-              "max": 9,
-              "attribute": "intution",
-              "untrained": false,
-              "specialization": "",
-              "expertise": ""
-            },
-            "athletics": {
-              "rank": 0,
-              "max": 9,
+            "archery": {
+              "value": 0,
               "attribute": "agility",
-              "untrained": true,
-              "specialization": "",
-              "expertise": ""
+              "canDefault": true,
+              "group": "",
+              "specs": ""
             },
-            "biotech": {
-              "rank": 0,
-              "max": 9,
-              "attribute": "logic",
-              "untrained": false,
-              "specialization": "",
-              "expertise": ""
-            },
-            "close_combat": {
-              "rank": 0,
-              "max": 9,
+            "automatics": {
+              "value": 0,
               "attribute": "agility",
-              "untrained": true,
-              "specialization": "",
-              "expertise": ""
+              "canDefault": true,
+              "group": "Firearms",
+              "specs": ""
             },
-            "con": {
-              "rank": 0,
-              "max": 9,
-              "attribute": "charisma",
-              "untrained": true,
-              "specialization": "",
-              "expertise": ""
-            },
-            "conjuring": {
-              "rank": 0,
-              "max": 9,
-              "attribute": "magic",
-              "untrained": false,
-              "specialization": "",
-              "expertise": ""
-            },
-            "cracking": {
-              "rank": 0,
-              "max": 9,
-              "attribute": "logic",
-              "untrained": true,
-              "specialization": "",
-              "expertise": ""
-            },
-            "electronics": {
-              "rank": 0,
-              "max": 9,
-              "attribute": "logic",
-              "untrained": true,
-              "specialization": "",
-              "expertise": ""
-            },
-            "enchanting": {
-              "rank": 0,
-              "max": 9,
-              "attribute": "magic",
-              "untrained": false,
-              "specialization": "",
-              "expertise": ""
-            },
-            "enginnering": {
-              "rank": 0,
-              "max": 9,
-              "attribute": "logic",
-              "untrained": false,
-              "specialization": "",
-              "expertise": ""
-            },
-            "exotic_weapons": {
-              "rank": 0,
-              "max": 9,
+            "blades": {
+              "value": 0,
               "attribute": "agility",
-              "untrained": false,
-              "specialization": "",
-              "expertise": ""
+              "canDefault": true,
+              "group": "Close Combat",
+              "specs": ""
             },
-            "firearms": {
-              "rank": 0,
-              "max": 9,
+            "clubs": {
+              "value": 0,
               "attribute": "agility",
-              "untrained": true,
-              "specialization": "",
-              "expertise": ""
+              "canDefault": true,
+              "group": "Close Combat",
+              "specs": ""
             },
-            "influence": {
-              "rank": 0,
-              "max": 9,
-              "attribute": "charisma",
-              "untrained": true,
-              "specialization": "",
-              "expertise": ""
+            "exotic_melee": {
+              "value": 0,
+              "values": [],
+              "weapons": [],
+              "attribute": "agility",
+              "canDefault": false,
+              "group": ""
             },
-            "outdoors": {
-              "rank": 0,
-              "max": 9,
+            "exotic_range": {
+              "value": 0,
+              "values": [],
+              "weapons": [],
+              "attribute": "agility",
+              "canDefault": false,
+              "group": "",
+              "specs": ""
+            },
+            "heavy_weapons": {
+              "value": 0,
+              "attribute": "agility",
+              "canDefault": true,
+              "group": "",
+              "specs": ""
+            },
+            "longarms": {
+              "value": 0,
+              "attribute": "agility",
+              "canDefault": true,
+              "group": "Firearms",
+              "specs": ""
+            },
+            "pistols": {
+              "value": 0,
+              "attribute": "agility",
+              "canDefault": true,
+              "group": "Firearms",
+              "specs": ""
+            },
+            "throwing_weapons": {
+              "value": 0,
+              "attribute": "agility",
+              "canDefault": true,
+              "group": "",
+              "specs": ""
+            },
+            "unarmed_combat": {
+              "value": 0,
+              "attribute": "agility",
+              "canDefault": true,
+              "group": "Close Combat",
+              "specs": ""
+            },
+            "disguise": {
+              "value": 0,
               "attribute": "intuition",
-              "untrained": true,
-              "specialization": "",
-              "expertise": ""
+              "canDefault": true,
+              "group": "Stealth",
+              "specs": ""
+            },
+            "diving": {
+              "value": 0,
+              "attribute": "body",
+              "canDefault": true,
+              "group": "",
+              "specs": ""
+            },
+            "escape_artist": {
+              "value": 0,
+              "attribute": "agility",
+              "canDefault": true,
+              "group": "",
+              "specs": ""
+            },
+            "free_fall": {
+              "value": 0,
+              "attribute": "body",
+              "canDefault": true,
+              "group": "",
+              "specs": ""
+            },
+            "gymnastics": {
+              "value": 0,
+              "attribute": "agility",
+              "canDefault": true,
+              "group": "Athletics",
+              "specs": ""
+            },
+            "palming": {
+              "value": 0,
+              "attribute": "agility",
+              "canDefault": false,
+              "group": "Stealth",
+              "specs": ""
             },
             "perception": {
-              "rank": 0,
-              "max": 9,
+              "value": 0,
               "attribute": "intuition",
-              "untrained": true,
-              "specialization": "",
-              "expertise": ""
+              "canDefault": true,
+              "group": "Stealth",
+              "specs": ""
             },
-            "piloting": {
-              "rank": 0,
-              "max": 9,
-              "attribute": "reaction",
-              "untrained": true,
-              "specialization": "",
-              "expertise": ""
+            "running": {
+              "value": 0,
+              "attribute": "strength",
+              "canDefault": true,
+              "group": "Athletics",
+              "specs": ""
             },
-            "sorcery": {
-              "rank": 0,
-              "max": 9,
-              "attribute": "magic",
-              "untrained": false,
-              "specialization": "",
-              "expertise": ""
-            },
-            "stealth": {
-              "rank": 0,
-              "max": 9,
+            "sneaking": {
+              "value": 0,
               "attribute": "agility",
-              "untrained": true,
-              "specialization": "",
-              "expertise": ""
+              "canDefault": true,
+              "group": "Stealth",
+              "specs": ""
             },
-            "tasking": {
-              "rank": 0,
-              "max": 9,
+            "survival": {
+              "value": 0,
+              "attribute": "willpower",
+              "canDefault": true,
+              "group": "Outdoors",
+              "specs": ""
+            },
+            "swimming": {
+              "value": 0,
+              "attribute": "strength",
+              "canDefault": true,
+              "group": "Athletics",
+              "specs": ""
+            },
+            "tracking": {
+              "value": 0,
+              "attribute": "intuition",
+              "canDefault": true,
+              "group": "Outdoors",
+              "specs": ""
+            },
+            "con": {
+              "value": 0,
+              "attribute": "charisma",
+              "canDefault": true,
+              "group": "Acting",
+              "specs": ""
+            },
+            "etiquette": {
+              "value": 0,
+              "attribute": "charisma",
+              "canDefault": true,
+              "group": "Influence",
+              "specs": ""
+            },
+            "impersonation": {
+              "value": 0,
+              "attribute": "charisma",
+              "canDefault": true,
+              "group": "Acting",
+              "specs": ""
+            },
+            "instruction": {
+              "value": 0,
+              "attribute": "charisma",
+              "canDefault": true,
+              "group": "",
+              "specs": ""
+            },
+            "intimidation": {
+              "value": 0,
+              "attribute": "charisma",
+              "canDefault": true,
+              "group": "",
+              "specs": ""
+            },
+            "leadership": {
+              "value": 0,
+              "attribute": "charisma",
+              "canDefault": true,
+              "group": "Influence",
+              "specs": ""
+            },
+            "negotiation": {
+              "value": 0,
+              "attribute": "charisma",
+              "canDefault": true,
+              "group": "Influence",
+              "specs": ""
+            },
+            "performance": {
+              "value": 0,
+              "attribute": "charisma",
+              "canDefault": true,
+              "group": "Acting",
+              "specs": ""
+            },
+            "alchemy": {
+              "value": 0,
+              "attribute": "magic",
+              "canDefault": false,
+              "group": "Enchanting",
+              "specs": ""
+            },
+            "arcana": {
+              "value": 0,
+              "attribute": "logic",
+              "canDefault": false,
+              "group": "",
+              "specs": ""
+            },
+            "artificing": {
+              "value": 0,
+              "attribute": "magic",
+              "canDefault": false,
+              "group": "Enchanting",
+              "specs": ""
+            },
+            "assensing": {
+              "value": 0,
+              "attribute": "intuition",
+              "canDefault": false,
+              "group": "",
+              "specs": ""
+            },
+            "astral_combat": {
+              "value": 0,
+              "attribute": "willpower",
+              "canDefault": false,
+              "group": "",
+              "specs": ""
+            },
+            "banishing": {
+              "value": 0,
+              "attribute": "magic",
+              "canDefault": false,
+              "group": "Conjuring",
+              "specs": ""
+            },
+            "binding": {
+              "value": 0,
+              "attribute": "magic",
+              "canDefault": false,
+              "group": "Conjuring",
+              "specs": ""
+            },
+            "counterspelling": {
+              "value": 0,
+              "attribute": "magic",
+              "canDefault": false,
+              "group": "Conjuring",
+              "specs": ""
+            },
+            "disenchanting": {
+              "value": 0,
+              "attribute": "magic",
+              "canDefault": false,
+              "group": "Enchanting",
+              "specs": ""
+            },
+            "ritual_spellcasting": {
+              "value": 0,
+              "attribute": "magic",
+              "canDefault": false,
+              "group": "Sorcery",
+              "specs": ""
+            },
+            "spellcasting": {
+              "value": 0,
+              "attribute": "magic",
+              "canDefault": false,
+              "group": "Sorcery",
+              "specs": ""
+            },
+            "summoning": {
+              "value": 0,
+              "attribute": "magic",
+              "canDefault": false,
+              "group": "Conjuring",
+              "specs": ""
+            },
+            "compiling": {
+              "value": 0,
               "attribute": "resonance",
-              "untrained": false,
-              "specialization": "",
-              "expertise": ""
+              "canDefault": false,
+              "group": "Tasking",
+              "specs": ""
+            },
+            "decompiling": {
+              "value": 0,
+              "attribute": "resonance",
+              "canDefault": false,
+              "group": "Tasking",
+              "specs": ""
+            },
+            "registering": {
+              "value": 0,
+              "attribute": "resonance",
+              "canDefault": false,
+              "group": "Tasking",
+              "specs": ""
+            },
+            "aeronautics_mechanic": {
+              "value": 0,
+              "attribute": "logic",
+              "canDefault": false,
+              "group": "Engineering",
+              "specs": ""
+            },
+            "automotive_mechanic": {
+              "value": 0,
+              "attribute": "logic",
+              "canDefault": false,
+              "group": "Engineering",
+              "specs": ""
+            },
+            "industrial_mechanic": {
+              "value": 0,
+              "attribute": "logic",
+              "canDefault": false,
+              "group": "Engineering",
+              "specs": ""
+            },
+            "nautical_mechanic": {
+              "value": 0,
+              "attribute": "logic",
+              "canDefault": false,
+              "group": "Engineering",
+              "specs": ""
+            },
+            "animal_handling": {
+              "value": 0,
+              "attribute": "charisma",
+              "canDefault": true,
+              "group": "",
+              "specs": ""
+            },
+            "armorer": {
+              "value": 0,
+              "attribute": "logic",
+              "canDefault": true,
+              "group": "",
+              "specs": ""
+            },
+            "artisan": {
+              "value": 0,
+              "attribute": "intuition",
+              "canDefault": false,
+              "group": "",
+              "specs": ""
+            },
+            "biotechnology": {
+              "value": 0,
+              "attribute": "logic",
+              "canDefault": false,
+              "group": "",
+              "specs": ""
+            },
+            "chemistry": {
+              "value": 0,
+              "attribute": "logic",
+              "canDefault": false,
+              "group": "",
+              "specs": ""
+            },
+            "computer": {
+              "value": 0,
+              "attribute": "logic",
+              "canDefault": true,
+              "group": "Electronics",
+              "specs": ""
+            },
+            "cybercombat": {
+              "value": 0,
+              "attribute": "logic",
+              "canDefault": true,
+              "group": "Cracking",
+              "specs": ""
+            },
+            "cybertechnology": {
+              "value": 0,
+              "attribute": "logic",
+              "canDefault": false,
+              "group": "Biotech",
+              "specs": ""
+            },
+            "demolitions": {
+              "value": 0,
+              "attribute": "logic",
+              "canDefault": true,
+              "group": "",
+              "specs": ""
+            },
+            "electronic_warfare": {
+              "value": 0,
+              "attribute": "logic",
+              "canDefault": false,
+              "group": "Cracking",
+              "specs": ""
+            },
+            "first_aid": {
+              "value": 0,
+              "attribute": "logic",
+              "canDefault": true,
+              "group": "Biotech",
+              "specs": ""
+            },
+            "forgery": {
+              "value": 0,
+              "attribute": "logic",
+              "canDefault": true,
+              "group": "",
+              "specs": ""
+            },
+            "hacking": {
+              "value": 0,
+              "attribute": "logic",
+              "canDefault": true,
+              "group": "Cracking",
+              "specs": ""
+            },
+            "hardware": {
+              "value": 0,
+              "attribute": "logic",
+              "canDefault": false,
+              "group": "Electronics",
+              "specs": ""
+            },
+            "locksmith": {
+              "value": 0,
+              "attribute": "agility",
+              "canDefault": false,
+              "group": "",
+              "specs": ""
+            },
+            "medicine": {
+              "value": 0,
+              "attribute": "logic",
+              "canDefault": false,
+              "group": "Biotech",
+              "specs": ""
+            },
+            "navigation": {
+              "value": 0,
+              "attribute": "intuition",
+              "canDefault": true,
+              "group": "Outdoors",
+              "specs": ""
+            },
+            "software": {
+              "value": 0,
+              "attribute": "logic",
+              "canDefault": false,
+              "group": "Electronics",
+              "specs": ""
+            },
+            "gunnery": {
+              "value": 0,
+              "attribute": "agility",
+              "canDefault": true,
+              "group": "",
+              "specs": ""
+            },
+            "pilot_aerospace": {
+              "value": 0,
+              "attribute": "reaction",
+              "canDefault": false,
+              "group": "",
+              "specs": ""
+            },
+            "pilot_aircraft": {
+              "value": 0,
+              "attribute": "reaction",
+              "canDefault": false,
+              "group": "",
+              "specs": ""
+            },
+            "pilot_walker": {
+              "value": 0,
+              "attribute": "reaction",
+              "canDefault": false,
+              "group": "",
+              "specs": ""
+            },
+            "pilot_ground_craft": {
+              "value": 0,
+              "attribute": "reaction",
+              "canDefault": false,
+              "group": "",
+              "specs": ""
+            },
+            "pilot_water_craft": {
+              "value": 0,
+              "attribute": "reaction",
+              "canDefault": false,
+              "group": "",
+              "specs": ""
+            },
+            "pilot_exotic_vehicle": {
+              "value": 0,
+              "attribute": "reaction",
+              "canDefault": false,
+              "group": "",
+              "specs": ""
             }
           },
           "knowledge": {
-            // knowledge skills have no rank, unless they are languages. They give you the opportunity to learn things through other tests or to recall facts with a memory test
+            "street": {
+              "attribute": "intuition",
+              "value": []
+            },
+            "academic": {
+              "attribute": "logic",
+              "value": []
+            },
+            "professional": {
+              "attribute": "logic",
+              "value": []
+            },
+            "interests": {
+              "attribute": "intuition",
+              "value": []
+            }
+          },
+          "language": {
+            "attribute": "intuition",
+            "value": []
           }
         }
-      },
-      "character": {
-        "templates": [
-          "common"
-        ],
-        "track": {
-          "stun": {
-            "value": 0,
-            "max": 0
-          },
-          "physical": {
-            "value": 0,
-            "max": 0,
-            // overflow is Body*2
-            "overflow": 0
-          }
+      }
+    },
+    "character": {
+      "templates": [
+        "common"
+      ],
+      "track": {
+        "stun": {
+          "value": 0,
+          "max": 0
+        },
+        "physical": {
+          "value": 0,
+          "max": 0,
+          "overflow": 0
         }
       }
     }
@@ -381,7 +801,6 @@
           "source": ""
         }
       },
-      // range has defined categories. we can make that part of the game some hows
       "weapon": {
         "category": "",
         "range": {
