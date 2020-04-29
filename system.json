@@ -8,14 +8,11 @@
   "compatibleCoreVersion": "0.5.5",
   "author": "nevenall",
   "esmodules": [
-    "shadowrun6e.js"
+    "module/index.js"
   ],
   "scripts": [],
   "styles": [
-    "css/main.css",
-    "css/actor.css",
-    "css/config.css",
-    "css/item.css"
+    "css/main.css"
   ],
   "languages": [
     {
