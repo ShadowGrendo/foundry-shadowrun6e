@@ -250,4 +250,8 @@ Image    Name/alias
 Favorites | Attributes & Skills | Qualities | Tab
 
 
+figured out how to add alias to the character template and got the font changed
+
+Got a bit of a layout in mind, but, I think I'll change the layout container from flex to grid. we're already using up to data browsers
+so, grid will be good for layout. 
 

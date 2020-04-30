@@ -1,4 +1,25 @@
-<form class="{{cssClass}}" autocomplete="off">
+<form class="{{cssClass}} character" autocomplete="off">
+   <header>
+      <img src="{{actor.img}}" data-edit="img" title="{{actor.name}}" alt="picture of {{actor.img}}" />
+      <div>
+         <div class="field">
+            <label>name:</label>
+            <input name="name" type="text" value="{{actor.name}}" placeholder="NAME" title="Character Name" />
+         </div>
+         <div class="field">
+            <label>alias:</label>
+            <input type="text" name="data.alias" value="{{data.alias}}" placeholder="ALIAS" title="Character Alias" />
+         </div>
+      </div>
+      <div>
+
+      </div>
+   </header>
+
+
+
+
+   <!-- 
 
    {{!-- Sheet Header --}}
    <header class="sheet-header">
@@ -81,5 +102,5 @@
             {{/each}}
          </ol>
       </div>
-   </section>
+   </section> -->
 </form>

@@ -4,6 +4,8 @@
       "character"
     ],
     "character": {
+      
+      "alias": "",
       "biography": "",
       "health": {
         "value": 10,
