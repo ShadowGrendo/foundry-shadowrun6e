@@ -138,4 +138,50 @@ I don't like the book one, we have the power of tabs so might as well use them.
 There is totally a bug in the token association. dnd5e works just fine. 
 
 
+## 4.28.2020
+
+went back to basics with the simple system example. 
+
+Do we need the shadowrun class for css? 
+Also, I think we can set it up so there's one stylesheet per character sheet. 
+
+- styling 
+  - colors
+    - replicate the 6th world colors? purple and white? 
+    - can we find an svg background for character sheet? 
+
+I would like to add a markdown editor for the rich text. Maybe the editor currently being used can be moddied to use markdown also with out special terms? 
+
+foundry.js:4381
+
+looks like tinymce can do some markdown like syntax helpers but that's it. 
+
+can we find a workable md replacement?
+https://github.com/sparksuite/simplemde-markdown-editor can implement our own markdown parser for this. 
+
+https://easymde.tk/ which is a fork of the simple mde that adds autosave, which would be rocken for this.
+
+oh, maybe that custom renderer is just for preview? Ah, preview is all there is. 
+
+find out how foundry stores rich text, as html? I guess if we can keep both the markdown and the current html. 
+And if this is just for one system, we should be able to do what we want.  Consider storing the preview html for performance. 
+
+## 4.29.2020
+
+Colors, can we steal the color scheme from https://github.com/arwes/arwes? dark background with neon blue? 
+
+https://github.com/alpinejs/alpine might be helpful too. It's a lightweight declarative replacement for jquery. 
+
+And fonts, abel is cool. lets see what else we have...
+
+Abel
+Advent Pro
+Aldrich
+Amiko
+Anteb, lightish body font
+Kongress
+
+Shadowrun 1st ed uses the Friz Quadrata family. Bold caps for headers. reg for body text.
+
+the charactersheets are pretty basic and done in those fonts. 
 
