@@ -2,13 +2,15 @@
    /* Sheet Tabs */
    /* Items List */
    /* Attributes */
- }
- .shadowrun .window-content {
+}
+
+.shadowrun .window-content {
    height: 100%;
    padding: 5px;
    overflow-y: hidden;
- }
- .shadowrun .sheet-header {
+}
+
+.shadowrun .sheet-header {
    height: 100px;
    overflow: hidden;
    display: flex;
@@ -16,85 +18,103 @@
    flex-wrap: wrap;
    justify-content: flex-start;
    margin-bottom: 10px;
- }
- .shadowrun .sheet-header .profile-img {
+}
+
+.shadowrun .sheet-header .profile-img {
    flex: 0 0 100px;
    height: 100px;
    margin-right: 10px;
- }
- .shadowrun .sheet-header .header-fields {
+}
+
+.shadowrun .sheet-header .header-fields {
    flex: 1;
    height: 100px;
- }
- .shadowrun .sheet-header h1.charname {
+}
+
+.shadowrun .sheet-header h1.charname {
    height: 50px;
    padding: 0px;
    margin: 5px 0;
    border-bottom: 0;
- }
- .shadowrun .sheet-header h1.charname input {
+}
+
+.shadowrun .sheet-header h1.charname input {
    width: 100%;
    height: 100%;
    margin: 0;
- }
- .shadowrun .resource {
+}
+
+.shadowrun .resource {
    width: 50%;
    height: 40px;
    margin-top: 10px;
    float: left;
    text-align: center;
- }
- .shadowrun .resource input {
+}
+
+.shadowrun .resource input {
    width: 100px;
    height: 28px;
- }
- .shadowrun .tabs {
+}
+
+.shadowrun .tabs {
    height: 40px;
    border-top: 1px solid #AAA;
    border-bottom: 1px solid #AAA;
- }
- .shadowrun .tabs .item {
+}
+
+.shadowrun .tabs .item {
    line-height: 40px;
    font-weight: bold;
- }
- .shadowrun .tabs .item.active {
+}
+
+.shadowrun .tabs .item.active {
    text-decoration: underline;
    text-shadow: none;
- }
- .shadowrun .sheet-body {
+}
+
+.shadowrun .sheet-body {
    overflow: hidden;
- }
- .shadowrun .sheet-body .tab {
+}
+
+.shadowrun .sheet-body .tab {
    height: 100%;
    overflow-y: auto;
- }
- .shadowrun .editor,
- .shadowrun .editor-content {
+}
+
+.shadowrun .editor,
+.shadowrun .editor-content {
    height: 100%;
- }
- .shadowrun .items-list {
+}
+
+.shadowrun .items-list {
    list-style: none;
    margin: 7px 0;
    padding: 0;
    overflow-y: auto;
- }
- .shadowrun .items-list .item {
+}
+
+.shadowrun .items-list .item {
    height: 30px;
    line-height: 24px;
    padding: 3px 0;
    border-bottom: 1px solid #BBB;
- }
- .shadowrun .items-list .item img {
+}
+
+.shadowrun .items-list .item img {
    flex: 0 0 24px;
    margin-right: 5px;
- }
- .shadowrun .items-list .item-name {
+}
+
+.shadowrun .items-list .item-name {
    margin: 0;
- }
- .shadowrun .items-list .item-controls {
+}
+
+.shadowrun .items-list .item-controls {
    flex: 0 0 36px;
- }
- .shadowrun .attributes-header {
+}
+
+.shadowrun .attributes-header {
    padding: 5px;
    margin: 5px 0;
    background: rgba(0, 0, 0, 0.05);
@@ -102,19 +122,23 @@
    border-radius: 2px;
    text-align: center;
    font-weight: bold;
- }
- .shadowrun .attributes-header .attribute-label {
+}
+
+.shadowrun .attributes-header .attribute-label {
    flex: 1.5;
- }
- .shadowrun .attributes-header .attribute-control {
+}
+
+.shadowrun .attributes-header .attribute-control {
    flex: 0 0 20px;
- }
- .shadowrun .attributes-list {
+}
+
+.shadowrun .attributes-list {
    list-style: none;
    margin: 0;
    padding: 0;
- }
- .shadowrun .attributes-list li > * {
+}
+
+.shadowrun .attributes-list li>* {
    margin: 0 3px;
    height: 28px;
    line-height: 24px;
@@ -122,19 +146,21 @@
    border: none;
    border-radius: 0;
    border-bottom: 1px solid #AAA;
- }
- .shadowrun .attributes-list a.attribute-control {
+}
+
+.shadowrun .attributes-list a.attribute-control {
    flex: 0 0 20px;
    text-align: center;
    line-height: 28px;
    border: none;
- }
- .shadowrun.sheet.actor {
+}
+
+.shadowrun.sheet.actor {
    min-width: 560px;
    min-height: 420px;
- }
- .shadowrun.sheet.item {
+}
+
+.shadowrun.sheet.item {
    min-width: 460px;
    min-height: 400px;
- }
- 
+}

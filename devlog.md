@@ -185,3 +185,69 @@ Shadowrun 1st ed uses the Friz Quadrata family. Bold caps for headers. reg for b
 
 the charactersheets are pretty basic and done in those fonts. 
 
+
+
+Personal Data
+  Name/Alias
+
+
+Attributes (current, max, temp adjustments)
+	all the attributes
+	edge & edge points
+	composure
+	judge intentions
+	…
+	lift/carry
+	awakened?
+	? include stuff like drain and other shortcuts ?
+	
+Skills (rank, attribute, [Pool], specialty, expertise)
+	There is a small enough list I think we can just show them all
+
+Combat
+	movement
+	armor
+		Defense rating
+	ranged
+		dv, mode, close, near, far, extreme, ammo
+	close combat
+		unarmed - dv, close ar
+	
+Condition Monitor
+
+	Physical Damage
+		Boxes 0-18, overflow damage, (just a number, I think)
+	Stun Damage
+		Boxes 0 -12
+	
+	Statuses
+		Blinded I, II or III
+		Burning #
+		Chilled
+		Confused #
+		Corrosive #
+		Cover I, II, III, or IV
+		Dazed
+		Deafened I, II, or III
+		…and so on. Can we get these to update reactively to and from the token? that would be sweet
+
+Qualities
+	your karma qualities, good and bad
+	
+Ids/lifestyle/wealth ?social?
+	Ids, lifestyle, money reputation, heat,…etc
+
+Contacts
+	list of contacts
+
+
+So, Name and image are the header. 
+
+
+Image    Name/alias
+         [awakened/mundane dropdown] [metatype dropdown] ethnicity age gender height weight
+
+Favorites | Attributes & Skills | Qualities | Tab
+
+
+

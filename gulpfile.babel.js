@@ -71,7 +71,7 @@ let content = series(handlebars, html)
 function scss() {
    return src('scss/main.scss')
       .pipe(gulpSass().on('error', gulpSass.logError))
-      .pipe(dest('dist'))
+      .pipe(dest('css/'))
 }
 
 function styles() {
@@ -103,8 +103,8 @@ function develop(done) {
 let build = parallel(
    // assets,
    // components,
-   content,
-   styles,
+   // content,
+   // styles,
    // internals,
    // js,
    scss,
