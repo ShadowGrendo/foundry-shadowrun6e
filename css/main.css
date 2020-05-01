@@ -1,3 +1,4 @@
+@import 'https://unpkg.com/augmented-ui/augmented.css';
 @font-face {
   font-family: "Friz Quadrata";
   font-style: italic;
@@ -30,26 +31,58 @@
   font-family: "Friz Quadrata", sans-serif;
   font-size: 18px; }
   .shadowrun form.character header {
-    display: flex;
-    flex-flow: row nowrap; }
+    display: grid;
+    grid-template-columns: 10rem 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas: "image name" "image nature" "image vitals"; }
     .shadowrun form.character header img {
+      grid-area: image;
       height: 10rem;
       object-fit: cover;
       border: none;
       margin-right: .5rem; }
-    .shadowrun form.character header > div {
-      width: 100%;
+    .shadowrun form.character header .field {
+      display: flex;
+      flex-flow: column nowrap;
+      flex-grow: 1;
+      margin-right: .5rem; }
+    .shadowrun form.character header .field:last-child {
+      margin-right: 0; }
+    .shadowrun form.character header .name {
+      grid-area: name; }
+    .shadowrun form.character header .nature {
+      grid-area: nature; }
+    .shadowrun form.character header .vitals {
+      grid-area: vitals; }
+    .shadowrun form.character header .row {
       display: flex;
       flex-flow: row nowrap;
-      flex-shrink: 0; }
-    .shadowrun form.character header div.field {
-      display: flex;
-      flex-flow: column nowrap; }
-      .shadowrun form.character header div.field label {
-        font-size: .75em; }
+      justify-content: space-between;
+      align-items: center; }
+    .shadowrun form.character header label {
+      font-size: .75em; }
+    .shadowrun form.character header select {
+      font-family: inherit;
+      font-size: inherit; }
+    .shadowrun form.character header option {
+      font-family: inherit;
+      font-size: inherit; }
     .shadowrun form.character header input::placeholder {
       font-style: italic;
       opacity: .5; }
+  .shadowrun form.character nav {
+    margin-top: 1rem; }
+    .shadowrun form.character nav a {
+      --aug-border: 5px;
+      --aug-inset: 5px;
+      padding: 10px;
+      /* mind the gap */
+      text-align: center;
+      --aug-border-bg: gold;
+      --aug-inset-bg: gold;
+      margin-right: .5rem; }
+    .shadowrun form.character nav a:last-child {
+      margin-right: 0; }
 
 .shadowrun.sheet.actor {
   min-width: 560px;

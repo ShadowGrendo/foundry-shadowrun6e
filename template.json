@@ -4,8 +4,14 @@
       "character"
     ],
     "character": {
-      
       "alias": "",
+      "nature": "",
+      "metatype": "",
+      "ethnicity": "",
+      "gender": "",
+      "age": "",
+      "height": "",
+      "weight": "",
       "biography": "",
       "health": {
         "value": 10,

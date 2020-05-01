@@ -1,43 +1,81 @@
 <form class="{{cssClass}} character" autocomplete="off">
    <header>
       <img src="{{actor.img}}" data-edit="img" title="{{actor.name}}" alt="picture of {{actor.img}}" />
-      <div>
+      <div class="name row">
          <div class="field">
             <label>name:</label>
-            <input name="name" type="text" value="{{actor.name}}" placeholder="NAME" title="Character Name" />
+            <input type="text" name="actor.name" value="{{actor.name}}" placeholder="NAME" title="Name" />
          </div>
          <div class="field">
             <label>alias:</label>
-            <input type="text" name="data.alias" value="{{data.alias}}" placeholder="ALIAS" title="Character Alias" />
+            <input type="text" name="data.alias" value="{{data.alias}}" placeholder="ALIAS" title="Alias" />
          </div>
       </div>
-      <div>
 
+      <div class="nature row">
+         <div class="field">
+            <label>nature:</label>
+            <select name="data.nature" title="Nature">
+               {{#select data.nature}}
+               <option value="mundane">Mundane</option>
+               <option value="awakened">Awakened</option>
+               <option value="emerged">Emerged</option>
+               {{/select}}
+            </select>
+         </div>
+         <div class="field">
+            <label>metatype:</label>
+            <select name="data.metatype" title="Metatype">
+               {{#select data.metatype}}
+               <option value="human">Human</option>
+               <option value="dwarf">Dwarf</option>
+               <option value="elf">Elf</option>
+               <option value="ork">Ork</option>
+               <option value="troll">Troll</option>
+               {{/select}}
+            </select>
+         </div>
+         <div class="field">
+            <label>ethnicity:</label>
+            <input type="text" name="data.ethnicity" value="{{data.ethnicity}}" placeholder="ETHNICITY" title="Ethnicity" />
+         </div>
+      </div>
+      <div class="vitals row">
+         <div class="field">
+            <label>gender:</label>
+            <input type="text" name="data.gender" value="{{data.gender}}" placeholder="GENDER" title="gender" />
+         </div>
+         <div class="field">
+            <label>age:</label>
+            <input type="text" name="data.age" value="{{data.age}}" placeholder="AGE" title="age" />
+         </div>
+         <div class="field">
+            <label>height:</label>
+            <input type="text" name="data.height" value="{{data.height}}" placeholder="HEIGHT" title="height" />
+         </div>
+         <div class="field">
+            <label>weight:</label>
+            <input type="text" name="data.weight" value="{{data.weight}}" placeholder="WEIGHT" title="weight" />
+         </div>
       </div>
    </header>
 
+   <nav class="sheet-tabs tabs" data-group="primary">
+      <a class="item" data-tab="attribute" augmented-ui="tl-clip br-clip exe">Attribute</a>
+      <a class="item" data-tab="items" augmented-ui="tl-clip br-clip exe">Items</a>
+      <a class="item" data-tab="attributes" augmented-ui="tl-clip br-clip exe">Attributes</a>
+   </nav>
+
+
+   <section>
+      <div class="tab attribute" data-group="primary" data-tab="attribute"></div>
+      <div class="tab items" data-group="primary" data-tab="items"></div>
+      <div class="tab attributes" data-group="primary" data-tab="attributes"></div>
+   </section>
 
 
 
    <!-- 
-
-   {{!-- Sheet Header --}}
-   <header class="sheet-header">
-      <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" />
-      <div class="header-fields">
-         <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name" /></h1>
-         <div class="resource">
-            <input type="text" name="data.health.value" value="{{data.health.value}}" data-dtype="Number" />
-            <span> / </span>
-            <input type="text" name="data.health.max" value="{{data.health.max}}" data-dtype="Number" />
-         </div>
-         <div class="resource">
-            <input type="text" name="data.power.value" value="{{data.power.value}}" data-dtype="Number" />
-            <span> / </span>
-            <input type="text" name="data.power.max" value="{{data.power.max}}" data-dtype="Number" />
-         </div>
-      </div>
-   </header>
 
    {{!-- Sheet Tab Navigation --}}
    <nav class="sheet-tabs tabs" data-group="primary">

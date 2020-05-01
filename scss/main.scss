@@ -1,4 +1,5 @@
 @import 'fonts.scss';
+@import 'https://unpkg.com/augmented-ui/augmented.css';
 
 .shadowrun {
 
@@ -9,32 +10,66 @@
 
       header {
 
-         display: flex;
-         flex-flow: row nowrap;
+         display: grid;
+
+         grid-template-columns: 10rem 1fr;
+         grid-template-rows: 1fr 1fr 1fr;
+
+         grid-template-areas:
+            "image name"
+            "image nature"
+            "image vitals";
 
          img {
+            grid-area: image;
             height: 10rem;
             object-fit: cover;
             border: none;
             margin-right: .5rem;
          }
 
-         >div {
-            width: 100%;
-            display: flex;
-            flex-flow: row nowrap;
-            flex-shrink: 0;
-            // justify-content: space-around;
-         }
-
-         div.field {
+         .field {
             display: flex;
             flex-flow: column nowrap;
+            flex-grow: 1;
+            margin-right: .5rem;
+         }
 
-            label {
-               font-size: .75em;
-            }
+         .field:last-child {
+            margin-right: 0;
+         }
 
+         .name {
+            grid-area: name;
+         }
+
+         .nature {
+            grid-area: nature;
+         }
+
+         .vitals {
+            grid-area: vitals;
+         }
+
+         .row {
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-between;
+            align-items: center;
+         }
+
+         label {
+            font-size: .75em;
+         }
+
+         select {
+            font-family: inherit;
+            font-size: inherit;
+         }
+
+         option {
+            font-family: inherit;
+            font-size: inherit;
          }
 
          input::placeholder {
@@ -44,6 +79,31 @@
 
 
       }
+
+      nav {
+         margin-top: 1rem;
+
+         a {
+            --aug-border: 5px;
+            --aug-inset: 5px;
+            padding: 10px;
+            /* mind the gap */
+            text-align: center;
+            --aug-border-bg: gold;
+            --aug-inset-bg: gold;
+
+
+            margin-right: .5rem;
+
+         }
+
+         a:last-child {
+            margin-right: 0;
+         }
+      }
+
+      section {}
+
    }
 
    // .window-content {
