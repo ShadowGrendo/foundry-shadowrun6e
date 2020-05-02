@@ -265,9 +265,25 @@ image   ______  _______   _________
 image   age: gender: height: weight:
 image   ____ ______  ______  _______  
 
-
-
-
-
 3 grid rows
 2 grid columns
+
+## 5.1.2020
+
+maybe consider placing attributes above the tabs and making the default tab skills. 
+then the skills tab can be active and knowledge skills. 
+
+I'm thinking each attribute is a box with a centered number for current. The base is in a small box in the lower left, then there are 2 adj boxes for cyberware and magic and stuff. Once centered the other lower right. 
+
+Strength
+
+   3
+
+2  +1 adj
+
+Want the attribute name to scale based on the length of the word? Naw each box has a fix size. 
+
+### Packs
+
+I was thinking that packs could also be local to the world. In fact, they could be a private repo that you can clone into your world. Except when I copied the world from one to the other, it didn't really take. There's some kind of config that needs including I believe. 
+

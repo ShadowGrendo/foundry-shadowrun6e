@@ -30,6 +30,22 @@
 .shadowrun form.character {
   font-family: "Friz Quadrata", sans-serif;
   font-size: 18px; }
+  .shadowrun form.character input {
+    background-color: inherit;
+    font-family: inherit;
+    font-size: inherit; }
+  .shadowrun form.character select {
+    background-color: inherit;
+    font-family: inherit;
+    font-size: inherit; }
+  .shadowrun form.character option {
+    background-color: inherit;
+    font-family: inherit;
+    font-size: inherit; }
+  .shadowrun form.character input::placeholder {
+    background-color: inherit;
+    font-style: italic;
+    opacity: .5; }
   .shadowrun form.character header {
     display: grid;
     grid-template-columns: 10rem 1fr;
@@ -61,25 +77,35 @@
       align-items: center; }
     .shadowrun form.character header label {
       font-size: .75em; }
-    .shadowrun form.character header select {
-      font-family: inherit;
-      font-size: inherit; }
-    .shadowrun form.character header option {
-      font-family: inherit;
-      font-size: inherit; }
-    .shadowrun form.character header input::placeholder {
-      font-style: italic;
-      opacity: .5; }
+  .shadowrun form.character .attributes {
+    height: 6rem;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: stretch;
+    margin-top: 1rem; }
+    .shadowrun form.character .attributes p {
+      text-align: center;
+      margin: 0; }
+    .shadowrun form.character .attributes .attribute {
+      min-width: 6rem;
+      text-align: center;
+      padding: .5rem;
+      --aug-border: 1px;
+      --aug-inset: 2px;
+      --aug-border-bg: rgb(82, 81, 78);
+      --aug-inset-bg: rgba(255, 255, 255, 0);
+      --aug-b-width: 65%;
+      --aug-b-height: 10px; }
   .shadowrun form.character nav {
     margin-top: 1rem; }
     .shadowrun form.character nav a {
-      --aug-border: 5px;
-      --aug-inset: 5px;
-      padding: 10px;
-      /* mind the gap */
+      --aug-border: 1px;
+      --aug-inset: 2px;
+      padding: .5rem;
       text-align: center;
-      --aug-border-bg: gold;
-      --aug-inset-bg: gold;
+      --aug-border-bg: rgb(82, 81, 78);
+      --aug-inset-bg: rgba(255, 255, 255, 0);
       margin-right: .5rem; }
     .shadowrun form.character nav a:last-child {
       margin-right: 0; }

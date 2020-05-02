@@ -43,32 +43,83 @@
       <div class="vitals row">
          <div class="field">
             <label>gender:</label>
-            <input type="text" name="data.gender" value="{{data.gender}}" placeholder="GENDER" title="gender" />
+            <input type="text" name="data.gender" value="{{data.gender}}" placeholder="GENDER" title="Gender" />
          </div>
          <div class="field">
             <label>age:</label>
-            <input type="text" name="data.age" value="{{data.age}}" placeholder="AGE" title="age" />
+            <input type="text" name="data.age" value="{{data.age}}" placeholder="AGE" title="Age" />
          </div>
          <div class="field">
             <label>height:</label>
-            <input type="text" name="data.height" value="{{data.height}}" placeholder="HEIGHT" title="height" />
+            <input type="text" name="data.height" value="{{data.height}}" placeholder="HEIGHT" title="Height" />
          </div>
          <div class="field">
             <label>weight:</label>
-            <input type="text" name="data.weight" value="{{data.weight}}" placeholder="WEIGHT" title="weight" />
+            <input type="text" name="data.weight" value="{{data.weight}}" placeholder="WEIGHT" title="Weight" />
          </div>
       </div>
    </header>
 
+   <div class="attributes">
+      <div class="attribute" augmented-ui="b-clip-x exe">
+         <p>Body</p>
+         <input type="number" name="data.attributes.body.current" value="{{data.attributes.body.current}}" title="Current Body" />
+         <input type="number" name="data.attributes.body.adj" value="{{data.attributes.body.adj}}" placeholder="adj" title="Body Adjustment" />
+         <input type="number" name="data.attributes.body.base" value="{{data.attributes.body.base}}" placeholder="base" title="Base Body" />
+      </div>
+
+      <div class="attribute" augmented-ui="b-clip-x exe">
+         <p>Agility</p>
+
+      </div>
+
+      <div class="attribute" augmented-ui="b-clip-x exe">
+         <p>Reaction</p>
+
+      </div>
+
+      <div class="attribute" augmented-ui="b-clip-x exe">
+         <p>Strength</p>
+
+      </div>
+
+
+      <div class="attribute" augmented-ui="b-clip-x exe">
+         <p>Willpower</p>
+
+      </div>
+
+
+      <div class="attribute" augmented-ui="b-clip-x exe">
+         <p>Logic</p>
+
+      </div>
+      <div class="attribute" augmented-ui="b-clip-x exe">
+         <p>Intuition</p>
+
+      </div>
+      <div class="attribute" augmented-ui="b-clip-x exe">
+         <p>Charisma</p>
+
+      </div>
+   </div>
+
+
    <nav class="sheet-tabs tabs" data-group="primary">
-      <a class="item" data-tab="attribute" augmented-ui="tl-clip br-clip exe">Attribute</a>
+      <a class="item" data-tab="skills" augmented-ui="tl-clip br-clip exe">Skills</a>
       <a class="item" data-tab="items" augmented-ui="tl-clip br-clip exe">Items</a>
       <a class="item" data-tab="attributes" augmented-ui="tl-clip br-clip exe">Attributes</a>
    </nav>
 
 
    <section>
-      <div class="tab attribute" data-group="primary" data-tab="attribute"></div>
+      <div class="tab skills" data-group="primary" data-tab="skills">
+
+
+
+
+
+      </div>
       <div class="tab items" data-group="primary" data-tab="items"></div>
       <div class="tab attributes" data-group="primary" data-tab="attributes"></div>
    </section>

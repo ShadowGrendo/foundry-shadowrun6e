@@ -8,6 +8,34 @@
       font-family: "Friz Quadrata", sans-serif;
       font-size: 18px;
 
+
+
+      select {
+         background-color: inherit;
+         font-family: inherit;
+         font-size: inherit;
+      }
+
+      option {
+         background-color: inherit;
+         font-family: inherit;
+         font-size: inherit;
+      }
+
+      input {
+         background-color: inherit;
+         font-family: inherit;
+         font-size: inherit;
+      }
+
+
+      input::placeholder {
+         background-color: inherit;
+         font-style: italic;
+         opacity: .5;
+      }
+
+
       header {
 
          display: grid;
@@ -62,21 +90,40 @@
             font-size: .75em;
          }
 
-         select {
-            font-family: inherit;
-            font-size: inherit;
+
+
+
+      }
+
+
+      .attributes {
+         height: 6rem;
+         display: flex;
+         flex-flow: row nowrap;
+         justify-content: space-between;
+         align-items: stretch;
+         margin-top: 1rem;
+
+         p {
+            text-align: center;
+            margin: 0;
          }
 
-         option {
-            font-family: inherit;
-            font-size: inherit;
-         }
 
-         input::placeholder {
-            font-style: italic;
-            opacity: .5;
-         }
+         .attribute {
+            min-width: 6rem;
 
+            text-align: center;
+            padding: .5rem;
+
+            --aug-border: 1px;
+            --aug-inset: 2px;
+            --aug-border-bg: rgb(82, 81, 78);
+            --aug-inset-bg: rgba(255, 255, 255, 0);
+
+            --aug-b-width: 65%;
+            --aug-b-height: 10px;
+         }
 
       }
 
@@ -84,13 +131,12 @@
          margin-top: 1rem;
 
          a {
-            --aug-border: 5px;
-            --aug-inset: 5px;
-            padding: 10px;
-            /* mind the gap */
+            --aug-border: 1px;
+            --aug-inset: 2px;
+            padding: .5rem;
             text-align: center;
-            --aug-border-bg: gold;
-            --aug-inset-bg: gold;
+            --aug-border-bg: rgb(82, 81, 78);
+            --aug-inset-bg: rgba(255, 255, 255, 0);
 
 
             margin-right: .5rem;
