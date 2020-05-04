@@ -5,10 +5,22 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "type": "node",
+      "request": "launch",
+      "name": "Run Gulp Build",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "program": "${workspaceFolder}/node_modules/gulp/bin/gulp.js",
+      "args": [
+        "build"
+      ]
+    },
+    {
       "type": "chrome",
       "request": "launch",
       "name": "Launch Chrome",
-      "url": "http://localhost:30000"
+      "url": "http://localhost:3030"
     },
     {
       "type": "node",
@@ -19,7 +31,7 @@
       ],
       "program": "C:/Program Files/FoundryVTT/resources/app/main.js",
       "args": [
-        "--port=30000",
+        "--port=3030",
         "--dataPath=C:/foundry-dev"
       ]
     },

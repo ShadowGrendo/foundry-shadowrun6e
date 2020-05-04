@@ -1,486 +1,364 @@
-@import "config.scss";
-@import "item.scss";
-@import "actor.scss";
+@import 'fonts.scss';
+@import 'https://unpkg.com/augmented-ui/augmented.css';
 
-@font-face {
-  font-family: "Nodesto";
-  src: url('../fonts/NodestoCapsCondensed.otf');
-}
-.roll {
-  @include rollable;
-}
+.shadowrun {
 
-.flexrow {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-}
-.nowrap {
-  flex-wrap: nowrap;
-}
-.align-start {
-  align-items: flex-start;
-}
-.center {
-  justify-content: center;
-}
-.flex-end {
-  justify-content: flex-end;
-}
-.space-between {
-  justify-content: space-between;
-}
-.space-around {
-  justify-content: space-around;
-}
-.align-center {
-  align-items: center;
-}
-.flexcol {
-  display: flex;
-  flex-direction: col;
-  flex-wrap: nowrap;
+   form.character {
 
-  > * {
-    flex: 0;
-  }
-}
-.align-items-center {
-  align-items: 'center';
-}
-.align-content-center {
-  align-content: 'center';
-}
-.flex0 {
-  flex: 0;
-}
-.flex1 {
-  flex: 1;
-}
-.flex2 {
-  flex: 2;
-}
-.flex3 {
-  flex: 3;
-}
-.flex4 {
-  flex: 4;
-}
+      font-family: "Friz Quadrata", sans-serif;
+      font-size: 18px;
 
-.input {
-  position: relative;
-  .unit {
-    @include textOutline;
-    position: absolute;
-    display: block;
-    left: 5px;
-    top: 2px;
-    z-index: 9;
-  }
-}
 
-label.checkbox {
-  display: block;
-  position: relative;
-  top: 0;
-  left: 0;
-  cursor: pointer;
-  user-select: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  &:hover input ~ .checkmark {
-    text-shadow: 0 0 .2em $rollcolor;
-  }
-  &.init-edge-label {
-    margin-right: 1.75em;
-    font-size: .75em;
-    top: .95em;
-    left: -.5em;
-  }
 
-  input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-  }
-  .checkmark {
-    position: absolute;
-    font-size: 1.25em;
-    top: -.5em;
-    left: .8em;
-  }
-}
-
-button.display {
-  color: $color;
-  border-color: $black;
-  background: rgba($light, 0.1);
-  border-radius: .3em;
-  text-align: center;
-  &:hover {
-    cursor: pointer;
-  }
-}
-
-input[type='checkbox'].hidden {
-  display: none;
-}
-
-input[type='checkbox'].display {
-  background: transparent;
-  color: $color;
-  border: none;
-  text-align: center;
-  font-size: 1em;
-  &:hover {
-    background: transparent;
-    border: $groove;
-  }
-}
-
-input[type="text"].display {
-  @include textOutline;
-  background: rgba($light, 0.1);
-  color: $color;
-  border-radius: .3em;
-  border-color: $black;
-  text-align: center;
-  min-height: 1em;
-  &.short {
-    font-size: .75em;
-    background: rgba($dark, 0.1);
-  }
-  &.text {
-    background: rgba($dark, 0.1);
-    border-radius: 0;
-  }
-  &.right {
-    text-align: right;
-  }
-  &.left {
-    text-align: left;
-  }
-  &:disabled {
-    color: $color;
-    background: transparent;
-    border-color: transparent;
-    padding-left: 0;
-    padding-right: 0;
-    margin-left: 0;
-    margin-right: 0;
-  }
-}
-
-select.display {
-  color: $color;
-  background: rgba($black, 0.05);
-  border-radius: .3em;
-  border-color: $dark;
-  >option {
-    background-color: $dark;
-  }
-}
-
-.sr5 {
-  .window-content {
-    font-size: 115%;
-    background: $sheetbackground;
-    color: $color;
-    overflow: hidden;
-  }
-  .editor {
-    height: 15em;
-    width: 100%;
-    color: $color;
-  }
-  .scroll-area {
-    height: 100%;
-    margin-bottom: .5em;
-    flex: 1;
-    overflow-y: auto;
-  }
-
-  .profile-img {
-    padding: .25em;
-    max-width: 100px;
-    border-right: $groove;
-    border-bottom: $groove;
-  }
-  .tabs {
-    flex: 0;
-    margin: .25em;
-    margin-bottom: -5px;
-    border-bottom: 1px solid $light-border;
-    >a {
-      margin: .25em;
-      padding: .25em;
-      margin-bottom: 0;
-      position: relative;
-      font-size: 1.15em;
-      border: 1px solid $light-border;
-      border-top-left-radius: .25em;
-      border-top-right-radius: .25em;
-      border-bottom: none;
-      @include rollable;
-      &.active {
-        @include rolloutline;
-        background-color: rgba($black, .4);
-      }
-    }
-  }
-  .tab {
-    border-radius: $radius;
-    margin-top: .25em;
-    height: 100%;
-    .tabbody {
-      height: 100%;
-      display: flex;
-      flex-flow: column nowrap;
-
-      > * {
-        flex: 0;
-      }
-      > .inventory {
-        flex: 1;
-      }
-    }
-  }
-  .split-container {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: center;
-    align-items: stretch;
-    align-content: stretch;
-    height: 100%;
-    > * {
-      flex: 1;
-      width: 100%;
-    }
-    > *:not(:first-child) {
-      margin-left: .25em;
-    }
-    > *:not(:last-child) {
-      border-right: $groove;
-      padding-right: .25em;
-    }
-  }
-  .inventory {
-    overflow-y: hidden;
-    height: 100%;
-    width: 100%;
-    font-size: 85%;
-    display: flex;
-    flex-flow: column nowrap;
-    .item {
-      display: flex;
-      flex-flow: row nowrap;
-      justify-content: space-between;
-      align-items: center;
-      align-content: center;
-      padding: .1em .25em;
-      margin: .1em;
-      margin-right: $groove-width;
-      margin-left: $groove-width;
-      border-bottom: 1px solid $grey;
-      .has-desc {
-        @include rollable;
-      }
-      &.no-border {
-        border-bottom: none;
-      }
-      &.item-section {
-        border: $groove-width solid $black;;
-        margin-right: 0;
-        margin-left: 0;
-        background: rgba($grey, 0.2);
-        padding: .25em;
-        border-radius: .2em;
-      }
-      .item-left {
-        display: flex;
-        flex-flow: row nowrap;
-        justify-content: flex-start;
-        align-items: center;
-      }
-      .item-right {
-        display: flex;
-        flex-flow: row nowrap;
-        justify-content: flex-end;
-        align-items: center;
-      }
-      .item-img {
-        padding-right: .25em;
-        max-width: 50px;
-        @include rollable;
-        &:hover {
-          >img {
-            content:url('../ui/dice-solid.svg');
-            filter: invert(1);
-          }
-        }
-        >img {
-          margin: 0;
-          transform: translateY(10%);
-        }
-        & + .item-name {
-          border-left: none !important;
-        }
-      }
-      .item-input {
-        width: 9.5em;
-      }
-      .item-desc {
-        padding: .25em;
-        font-size: 1em;
-        width: 100%;
-        .props {
-          border-top: $groove;
-          padding-top: .25em;
-          > *{
-            padding: .25em .5em;
-          }
-          > :not(:last-child) {
-            border-right: $groove;
-          }
-        }
-      }
-      .item-icons {
-        display: flex;
-        flex-flow: row nowrap;
-        justify-content: space-evenly;
-        align-items: center;
-        color: $grey;
-        font-size: .75em;
-        height: 100%;
-        .create-item {
-          @include rollable;
-        }
-        .create-matrix-action {
-          @include rollable;
-        }
-      }
-      .item-text {
-        width: 5em;
-        margin: 0 .1rem;
-        margin-bottom: 0;
-        flex: 1 0 auto;
-        text-align: center;
-        height: 100%;
-        border: $light;
-        &.center {
-          display: flex;
-          flex-flow: row;
-          justify-content: space-around;
-          align-items: center;
-          align-content: center;
-        }
-        &.item-name {
-          text-align: left;
-          width: auto;
-        }
-        &.element {
-          width: 7em;
-        }
-        &.radius {
-          width: 4em;
-        }
-        &.dropoff {
-          width: 4em;
-        }
-        &.rtg {
-          width: 3em;
-          &.active-skills-rating {
-            padding-right: 1em;
-          }
-        }
-        &.input {
-          text-align: right;
-          width: 9.5em;
-        }
-        &.desc {
-          width: 16em;
-        }
-      }
-      .skill-item {
-        width: 8em;
-      }
-      &.skill-header {
-        @include rollable;
-      }
-    }
-  }
-  &.chat-card {
-    font-style: normal;
-    font-size: 1rem;
-
-    .card-header {
-      padding: .25em 0;
-      border-top: $groove;
-      border-bottom: $groove;
-
-      img {
-        flex: 0 0 36px;
-        margin-right: .5em;
+      select {
+         background-color: inherit;
+         font-family: inherit;
+         font-size: inherit;
       }
 
-      h3 {
-        font-size: 1.75em;
-        align-self: center;
-        flex: 1;
-        margin: 0;
-        @include nodesto;
-      }
-    }
-    .card-content {
-      padding: .5em 0;
-      border-bottom: $groove;
-      p {
-        font-size: .8em;
-      }
-      h3 {
-        font-size: 1em;
-        margin: 0;
-        font-weight: bold;
-      }
-    }
-
-    .card-buttons {
-      margin: .5em 0;
-      span {
-        display: block;
-        line-height: 2em;
-        text-align: center;
+      option {
+         background-color: inherit;
+         font-family: inherit;
+         font-size: inherit;
       }
 
-      button {
-        font-size: 1em;
-        height: 1.5em;
-        line-height: 1.25em;
-        margin: .25em 0;
-        color: $light;
-        background: $dark;
+      input {
+         background-color: inherit;
+         font-family: inherit;
+         font-size: inherit;
       }
-    }
 
-    .card-footer {
-      padding: .25em 0 0;
-      border-top: $groove;
-
-      span {
-        border-right: $groove;
-        padding: 0;
-        padding-right: .3em;
-        font-size: .75em;
-
-        &:last-child {
-          border-right: none;
-          padding-right: 0;
-        }
+      input[type=number] {
+         -moz-appearance: textfield;
+         -webkit-appearance: textfield;
       }
-    }
-  }
+
+
+      input::placeholder {
+         background-color: inherit;
+         font-style: italic;
+         opacity: .5;
+      }
+
+
+      header {
+
+         display: grid;
+
+         grid-template-columns: 10rem 1fr;
+         grid-template-rows: 1fr 1fr 1fr;
+
+         grid-template-areas:
+            "image name"
+            "image nature"
+            "image vitals";
+
+         img {
+            grid-area: image;
+            height: 10rem;
+            object-fit: cover;
+            border: none;
+            margin-right: .5rem;
+         }
+
+         .field {
+            display: flex;
+            flex-flow: column nowrap;
+            flex-grow: 1;
+            margin-right: .5rem;
+         }
+
+         .field:last-child {
+            margin-right: 0;
+         }
+
+         .name {
+            grid-area: name;
+         }
+
+         .nature {
+            grid-area: nature;
+         }
+
+         .vitals {
+            grid-area: vitals;
+         }
+
+         .row {
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-between;
+            align-items: center;
+         }
+
+         label {
+            font-size: .75em;
+         }
+
+
+
+
+      }
+
+
+      .attributes {
+         height: 6rem;
+         display: flex;
+         flex-flow: row nowrap;
+         justify-content: space-between;
+         align-items: stretch;
+         margin-top: 1rem;
+
+
+
+         .attribute {
+            min-width: 6rem;
+            text-align: center;
+            padding: .5rem;
+
+            display: flex;
+            flex-flow: column nowrap;
+            justify-items: flex-start;
+
+            --aug-border: 1px;
+            --aug-inset: 2px;
+            --aug-border-bg: rgb(82, 81, 78);
+            --aug-inset-bg: rgba(255, 255, 255, 0);
+
+            --aug-b-width: 33%;
+            --aug-b-height: 10px;
+
+            position: relative;
+
+            p {
+               text-align: center;
+               margin: 0;
+            }
+
+            span {
+               font-size: 1.125rem;
+               margin-top: .5rem;
+            }
+
+
+            input[type=number] {
+               width: 2rem;
+               text-align: center;
+
+            }
+
+            input:nth-of-type(1)::placeholder {
+               font-size: .75rem;
+            }
+            input:nth-of-type(1) {
+               font-size: .89rem;
+               position: absolute;
+               bottom: 0;
+               left: 0;
+            }
+
+            input:nth-of-type(2)::placeholder {
+               font-size: .75rem;
+            }
+            input:nth-of-type(2) {
+               font-size: .89rem;
+               position: absolute;
+               bottom: 0;
+               right: 0;
+            }
+
+
+         }
+
+      }
+
+      nav {
+         margin-top: 1rem;
+
+         a {
+            --aug-border: 1px;
+            --aug-inset: 2px;
+            padding: .5rem;
+            text-align: center;
+            --aug-border-bg: rgb(82, 81, 78);
+            --aug-inset-bg: rgba(255, 255, 255, 0);
+
+
+            margin-right: .5rem;
+
+         }
+
+         a:last-child {
+            margin-right: 0;
+         }
+      }
+
+      section {}
+
+   }
+
+   // .window-content {
+   //    height: 100%;
+   //    padding: 5px;
+   //    overflow-y: hidden;
+   // }
+
+   // .sheet-header {
+   //    height: 100px;
+   //    overflow: hidden;
+   //    display: flex;
+   //    flex-direction: row;
+   //    flex-wrap: wrap;
+   //    justify-content: flex-start;
+   //    margin-bottom: 10px;
+
+   //    .profile-img {
+   //       flex: 0 0 100px;
+   //       height: 100px;
+   //       margin-right: 10px;
+   //    }
+
+   //    .header-fields {
+   //       flex: 1;
+   //       height: 100px;
+   //    }
+
+   //    h1.charname {
+   //       height: 50px;
+   //       padding: 0px;
+   //       margin: 5px 0;
+   //       border-bottom: 0;
+
+   //       input {
+   //          width: 100%;
+   //          height: 100%;
+   //          margin: 0;
+   //       }
+   //    }
+   // }
+
+   // .resource {
+   //    width: 50%;
+   //    height: 40px;
+   //    margin-top: 10px;
+   //    float: left;
+   //    text-align: center;
+
+   //    input {
+   //       width: 100px;
+   //       height: 28px;
+   //    }
+   // }
+
+   // /* Sheet Tabs */
+   // .tabs {
+   //    height: 40px;
+   //    border-top: 1px solid #AAA;
+   //    border-bottom: 1px solid #AAA;
+
+   //    .item {
+   //       line-height: 40px;
+   //       font-weight: bold;
+   //    }
+
+   //    .item.active {
+   //       text-decoration: underline;
+   //       text-shadow: none;
+   //    }
+   // }
+
+   // .sheet-body {
+   //    overflow: hidden;
+
+   //    .tab {
+   //       height: 100%;
+   //       overflow-y: auto;
+   //    }
+   // }
+
+   // .editor,
+   // .editor-content {
+   //    height: 100%;
+   // }
+
+   // /* Items List */
+   // .items-list {
+   //    list-style: none;
+   //    margin: 7px 0;
+   //    padding: 0;
+   //    overflow-y: auto;
+
+   //    .item {
+   //       height: 30px;
+   //       line-height: 24px;
+   //       padding: 3px 0;
+   //       border-bottom: 1px solid #BBB;
+
+   //       img {
+   //          flex: 0 0 24px;
+   //          margin-right: 5px;
+   //       }
+   //    }
+
+   //    .item-name {
+   //       margin: 0;
+   //    }
+
+   //    .item-controls {
+   //       flex: 0 0 36px;
+   //    }
+   // }
+
+   // /* Attributes */
+   // .attributes-header {
+   //    padding: 5px;
+   //    margin: 5px 0;
+   //    background: rgba(0, 0, 0, 0.05);
+   //    border: 1px solid #AAA;
+   //    border-radius: 2px;
+   //    text-align: center;
+   //    font-weight: bold;
+
+   //    .attribute-label {
+   //       flex: 1.5;
+   //    }
+
+   //    .attribute-control {
+   //       flex: 0 0 20px;
+   //    }
+   // }
+
+   // .attributes-list {
+   //    list-style: none;
+   //    margin: 0;
+   //    padding: 0;
+
+   //    li>* {
+   //       margin: 0 3px;
+   //       height: 28px;
+   //       line-height: 24px;
+   //       background: transparent;
+   //       border: none;
+   //       border-radius: 0;
+   //       border-bottom: 1px solid #AAA;
+   //    }
+
+   //    a.attribute-control {
+   //       flex: 0 0 20px;
+   //       text-align: center;
+   //       line-height: 28px;
+   //       border: none;
+   //    }
+   // }
+}
+
+.shadowrun.sheet.actor {
+   min-width: 560px;
+   min-height: 420px;
+}
+
+
+.shadowrun.sheet.item {
+   min-width: 460px;
+   min-height: 400px;
 }

@@ -2,5 +2,5 @@
 *.swp
 # don't check packs into a public repo without the appropriate permissions
 packs/
-node_modules
+node_modules/
 dist/

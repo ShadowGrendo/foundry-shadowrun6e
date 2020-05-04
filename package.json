@@ -1,0 +1,46 @@
+{
+  "name": "shadowrun6e",
+  "version": "0.0.4",
+  "description": "Shadowrun 6th World System for FoundryVTT",
+  "main": "shadowrun6e.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nevenall/SR6-FoundryVTT.git"
+  },
+  "keywords": [
+    "FoundryVTT",
+    "RPG",
+    "Shadowrun"
+  ],
+  "author": "nevenall",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nevenall/SR6-FoundryVTT/issues"
+  },
+  "homepage": "https://github.com/Nevenall/SR6-FoundryVTT#readme",
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "@babel/register": "^7.9.0",
+    "browser-sync": "^2.26.7",
+    "delete": "^1.1.0",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-if": "^3.0.0",
+    "gulp-replace": "^1.0.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.5",
+    "handlebars": "^4.7.6",
+    "node-sass": "^4.13.1",
+    "through2": "^3.0.1"
+  }
+}
