@@ -4,6 +4,17 @@
  */
 export class ShadowrunActor extends Actor {
 
+
+
+
+   /** @override */
+   async update(data, options = {}) {
+      console.log('[update]', data)
+      return super.update(data, options)
+   }
+
+
+
    /** @override */
    getRollData() {
       const data = super.getRollData();

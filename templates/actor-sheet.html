@@ -58,53 +58,52 @@
          </div>
       </div>
    </header>
-
    <div class="attributes">
-      <div class="attribute" augmented-ui="b-clip-x exe" x-data="{base: {{data.attributes.body.base}}, adj: {{data.attributes.body.adj}} }">
+      <div class="attribute" augmented-ui="b-clip-x exe">
          <p>Body</p>
-         <span x-text="base+adj"></span>
-         <input type="number" name="data.attributes.body.base" value="{{data.attributes.body.base}}" placeholder="base" title="Base Body" min="{{data.attributes.body.min}}" max="{{data.attributes.body.max}}" />
-         <input type="number" name="data.attributes.body.adj" value="{{data.attributes.body.adj}}" placeholder="±adj" title="Body Adjustment" />
+         <span>{{add data.attributes.body.base data.attributes.body.adj }}</span>
+         <input type="number" data-dtype="Number" name="data.attributes.body.base" value="{{data.attributes.body.base}}" placeholder="base" title="Base Body" min="{{data.attributes.body.min}}" max="{{data.attributes.body.max}}" />
+         <input type="number" data-dtype="Number" name="data.attributes.body.adj" value="{{data.attributes.body.adj}}" placeholder="±adj" title="Body Adjustment" />
       </div>
       <div class="attribute" augmented-ui="b-clip-x exe">
          <p>Agility</p>
-         <span>{{data.attributes.agility.current}}</span>
+         <span x-text="agility.base + agility.adj"></span>
          <input type="number" name="data.attributes.agility.base" value="{{data.attributes.agility.base}}" placeholder="base" title="Base Agility" min="{{data.attributes.agility.min}}" max="{{data.attributes.agility.max}}" />
          <input type="number" name="data.attributes.agility.adj" value="{{data.attributes.agility.adj}}" placeholder="±adj" title="Agility Adjustment" />
       </div>
       <div class="attribute" augmented-ui="b-clip-x exe">
          <p>Reaction</p>
-         <span>{{data.attributes.reaction.current}}</span>
+         <span x-text="reaction.base + reaction.adj"></span>
          <input type="number" name="data.attributes.reaction.base" value="{{data.attributes.reaction.base}}" placeholder="base" title="Base Reaction" min="{{data.attributes.reaction.min}}" max="{{data.attributes.reaction.max}}" />
          <input type="number" name="data.attributes.reaction.adj" value="{{data.attributes.reaction.adj}}" placeholder="±adj" title="Reaction Adjustment" />
       </div>
       <div class="attribute" augmented-ui="b-clip-x exe">
          <p>Strength</p>
-         <span>{{data.attributes.strength.current}}</span>
+         <span x-text="strength.base + strength.adj"></span>
          <input type="number" name="data.attributes.strength.base" value="{{data.attributes.strength.base}}" placeholder="base" title="Base Strength" min="{{data.attributes.strength.min}}" max="{{data.attributes.strength.max}}" />
          <input type="number" name="data.attributes.strength.adj" value="{{data.attributes.strength.adj}}" placeholder="±adj" title="Strength Adjustment" />
       </div>
       <div class="attribute" augmented-ui="b-clip-x exe">
          <p>Willpower</p>
-         <span>{{data.attributes.willpower.current}}</span>
+         <span x-text="willpower.base + willpower.adj"></span>
          <input type="number" name="data.attributes.willpower.base" value="{{data.attributes.willpower.base}}" placeholder="base" title="Base Willpower" min="{{data.attributes.willpower.min}}" max="{{data.attributes.willpower.max}}" />
          <input type="number" name="data.attributes.willpower.adj" value="{{data.attributes.willpower.adj}}" placeholder="±adj" title="Willpower Adjustment" />
       </div>
       <div class="attribute" augmented-ui="b-clip-x exe">
          <p>Logic</p>
-         <span>{{data.attributes.logic.current}}</span>
+         <span x-text="logic.base + logic.adj"></span>
          <input type="number" name="data.attributes.logic.base" value="{{data.attributes.logic.base}}" placeholder="base" title="Base Logic" min="{{data.attributes.logic.min}}" max="{{data.attributes.logic.max}}" />
          <input type="number" name="data.attributes.logic.adj" value="{{data.attributes.logic.adj}}" placeholder="±adj" title="Logic Adjustment" />
       </div>
       <div class="attribute" augmented-ui="b-clip-x exe">
          <p>Intuition</p>
-         <span>{{data.attributes.intuition.current}}</span>
+         <span x-text="intuition.base + intuition.adj"></span>
          <input type="number" name="data.attributes.intuition.base" value="{{data.attributes.intuition.base}}" placeholder="base" title="Base Intuition" min="{{data.attributes.intuition.min}}" max="{{data.attributes.intuition.max}}" />
          <input type="number" name="data.attributes.intuition.adj" value="{{data.attributes.intuition.adj}}" placeholder="±adj" title="Intuition Adjustment" />
       </div>
       <div class="attribute" augmented-ui="b-clip-x exe">
          <p>Charisma</p>
-         <span>{{data.attributes.charisma.current}}</span>
+         <span x-text="charisma.base + charisma.adj"></span>
          <input type="number" name="data.attributes.charisma.base" value="{{data.attributes.charisma.base}}" placeholder="base" title="Base Charisma" min="{{data.attributes.charisma.min}}" max="{{data.attributes.charisma.max}}" />
          <input type="number" name="data.attributes.charisma.adj" value="{{data.attributes.charisma.adj}}" placeholder="±adj" title="Charisma Adjustment" />
       </div>
@@ -119,14 +118,14 @@
          <input readonly type="number" name="data.attributes.essence.base" value="{{data.attributes.essence.base}}" placeholder="base" title="Base Essence" min="{{data.attributes.essence.min}}" max="{{data.attributes.essence.max}}" step=".1" />
          <input type="number" name="data.attributes.essence.adj" value="{{data.attributes.essence.adj}}" placeholder="±adj" title="Essence Adjustment" step=".1" />
       </div>
-      {{#if (isEquals data.nature 'awakened') }}
+      {{#if (isEqual data.nature 'awakened') }}
       <div class="attribute" augmented-ui="b-clip-x exe">
          <p>Magic</p>
          <span>{{data.attributes.magic.current}}</span>
          <input readonly type="number" name="data.attributes.magic.base" value="{{data.attributes.magic.base}}" placeholder="base" title="Base Magic" min="{{data.attributes.magic.min}}" max="{{data.attributes.magic.max}}" />
       </div>
       {{/if}}
-      {{#if (isEquals data.nature 'emerged') }}
+      {{#if (isEqual data.nature 'emerged') }}
       <div class="attribute" augmented-ui="b-clip-x exe">
          <p>Resonance</p>
          <span>{{data.attributes.resonance.current}}</span>

@@ -287,3 +287,17 @@ Want the attribute name to scale based on the length of the word? Naw each box h
 
 I was thinking that packs could also be local to the world. In fact, they could be a private repo that you can clone into your world. Except when I copied the world from one to the other, it didn't really take. There's some kind of config that needs including I believe. 
 
+## 5.4.2020
+
+working on sheet calculations. Looking at dnd5e it looks like they use the prepareData function in the 5e Actor to do dynamic calcs. Which, I believe means that they all run whenever the sheet is updated. That could cause some perf issues eventually. 
+
+Can we do better? Seems like there is a loop that is based on the form? we get data from the actor sheet class and pass that to handlebars? If we don't include a form element can we stop the handlebars look and do something different? 
+
+Take the data json and use alpine to bind the various inputs and calcs? can we programmatically give alpine data? the problem is how does the data for the character get saved as changes are made? I think that's what the update function does? 
+mm...if we can programmatically give alpine the data object and if we can appropriately reflect data changes. 
+
+Or we could leave it as-is and create helpers to do math. 
+
+There is indeed a whole cycle of getdata from actor class whenever there's an update, so actor class, update fuction
+Also, with the  data-dtype="Number" we can fix the saved as text issue. 
+

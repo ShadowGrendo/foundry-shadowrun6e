@@ -24,6 +24,8 @@ export class ShadowrunActorSheet extends ActorSheet {
       // for (let attr of Object.values(data.data.attributes)) {
       //    attr.isCheckbox = attr.dtype === "Boolean";
       // }
+
+      console.log(`[get data]`, data)
       return data;
    }
 
