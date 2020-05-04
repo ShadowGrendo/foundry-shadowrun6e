@@ -53,9 +53,7 @@
     display: grid;
     grid-template-columns: 10rem 1fr;
     grid-template-rows: 1fr 1fr 1fr;
-    grid-template-areas: "image name"
- "image nature"
- "image vitals"; }
+    grid-template-areas: "image name" "image nature" "image vitals"; }
     .shadowrun form.character header img {
       grid-area: image;
       height: 10rem;
@@ -138,6 +136,16 @@
       margin-right: .5rem; }
     .shadowrun form.character nav a:last-child {
       margin-right: 0; }
+
+.shadowrun .window-content {
+  height: 100%;
+  overflow-y: hidden; }
+
+.shadowrun .tab.active {
+  height: 100%; }
+
+.shadowrun .editor {
+  height: 100%; }
 
 .shadowrun.sheet.actor {
   min-width: 560px;
