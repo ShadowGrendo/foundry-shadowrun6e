@@ -38,4 +38,11 @@ Hooks.once("init", async function () {
       default: true,
       config: true
    })
+
+
+   // if-is 
+   Handlebars.registerHelper("isEquals", function (v1, v2) {
+      return v1 === v2;
+   });
+
 })

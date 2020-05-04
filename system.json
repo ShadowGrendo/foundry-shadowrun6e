@@ -10,7 +10,9 @@
   "esmodules": [
     "module/index.js"
   ],
-  "scripts": [],
+  "scripts": [
+    "scripts/alpine.js"
+  ],
   "styles": [
     "css/main.css"
   ],

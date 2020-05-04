@@ -4,14 +4,13 @@
       <div class="name row">
          <div class="field">
             <label>name:</label>
-            <input type="text" name="actor.name" value="{{actor.name}}" placeholder="NAME" title="Name" />
+            <input type="text" name="name" value="{{actor.name}}" placeholder="NAME" title="Name" />
          </div>
          <div class="field">
             <label>alias:</label>
             <input type="text" name="data.alias" value="{{data.alias}}" placeholder="ALIAS" title="Alias" />
          </div>
       </div>
-
       <div class="nature row">
          <div class="field">
             <label>nature:</label>
@@ -61,135 +60,90 @@
    </header>
 
    <div class="attributes">
-      <div class="attribute" augmented-ui="b-clip-x exe">
+      <div class="attribute" augmented-ui="b-clip-x exe" x-data="{base: {{data.attributes.body.base}}, adj: {{data.attributes.body.adj}} }">
          <p>Body</p>
-         <input type="number" name="data.attributes.body.current" value="{{data.attributes.body.current}}" title="Current Body" />
-         <input type="number" name="data.attributes.body.adj" value="{{data.attributes.body.adj}}" placeholder="adj" title="Body Adjustment" />
-         <input type="number" name="data.attributes.body.base" value="{{data.attributes.body.base}}" placeholder="base" title="Base Body" />
+         <span x-text="base+adj"></span>
+         <input type="number" name="data.attributes.body.base" value="{{data.attributes.body.base}}" placeholder="base" title="Base Body" min="{{data.attributes.body.min}}" max="{{data.attributes.body.max}}" />
+         <input type="number" name="data.attributes.body.adj" value="{{data.attributes.body.adj}}" placeholder="±adj" title="Body Adjustment" />
       </div>
-
       <div class="attribute" augmented-ui="b-clip-x exe">
          <p>Agility</p>
-
+         <span>{{data.attributes.agility.current}}</span>
+         <input type="number" name="data.attributes.agility.base" value="{{data.attributes.agility.base}}" placeholder="base" title="Base Agility" min="{{data.attributes.agility.min}}" max="{{data.attributes.agility.max}}" />
+         <input type="number" name="data.attributes.agility.adj" value="{{data.attributes.agility.adj}}" placeholder="±adj" title="Agility Adjustment" />
       </div>
-
       <div class="attribute" augmented-ui="b-clip-x exe">
          <p>Reaction</p>
-
+         <span>{{data.attributes.reaction.current}}</span>
+         <input type="number" name="data.attributes.reaction.base" value="{{data.attributes.reaction.base}}" placeholder="base" title="Base Reaction" min="{{data.attributes.reaction.min}}" max="{{data.attributes.reaction.max}}" />
+         <input type="number" name="data.attributes.reaction.adj" value="{{data.attributes.reaction.adj}}" placeholder="±adj" title="Reaction Adjustment" />
       </div>
-
       <div class="attribute" augmented-ui="b-clip-x exe">
          <p>Strength</p>
-
+         <span>{{data.attributes.strength.current}}</span>
+         <input type="number" name="data.attributes.strength.base" value="{{data.attributes.strength.base}}" placeholder="base" title="Base Strength" min="{{data.attributes.strength.min}}" max="{{data.attributes.strength.max}}" />
+         <input type="number" name="data.attributes.strength.adj" value="{{data.attributes.strength.adj}}" placeholder="±adj" title="Strength Adjustment" />
       </div>
-
-
       <div class="attribute" augmented-ui="b-clip-x exe">
          <p>Willpower</p>
-
+         <span>{{data.attributes.willpower.current}}</span>
+         <input type="number" name="data.attributes.willpower.base" value="{{data.attributes.willpower.base}}" placeholder="base" title="Base Willpower" min="{{data.attributes.willpower.min}}" max="{{data.attributes.willpower.max}}" />
+         <input type="number" name="data.attributes.willpower.adj" value="{{data.attributes.willpower.adj}}" placeholder="±adj" title="Willpower Adjustment" />
       </div>
-
-
       <div class="attribute" augmented-ui="b-clip-x exe">
          <p>Logic</p>
-
+         <span>{{data.attributes.logic.current}}</span>
+         <input type="number" name="data.attributes.logic.base" value="{{data.attributes.logic.base}}" placeholder="base" title="Base Logic" min="{{data.attributes.logic.min}}" max="{{data.attributes.logic.max}}" />
+         <input type="number" name="data.attributes.logic.adj" value="{{data.attributes.logic.adj}}" placeholder="±adj" title="Logic Adjustment" />
       </div>
       <div class="attribute" augmented-ui="b-clip-x exe">
          <p>Intuition</p>
-
+         <span>{{data.attributes.intuition.current}}</span>
+         <input type="number" name="data.attributes.intuition.base" value="{{data.attributes.intuition.base}}" placeholder="base" title="Base Intuition" min="{{data.attributes.intuition.min}}" max="{{data.attributes.intuition.max}}" />
+         <input type="number" name="data.attributes.intuition.adj" value="{{data.attributes.intuition.adj}}" placeholder="±adj" title="Intuition Adjustment" />
       </div>
       <div class="attribute" augmented-ui="b-clip-x exe">
          <p>Charisma</p>
-
+         <span>{{data.attributes.charisma.current}}</span>
+         <input type="number" name="data.attributes.charisma.base" value="{{data.attributes.charisma.base}}" placeholder="base" title="Base Charisma" min="{{data.attributes.charisma.min}}" max="{{data.attributes.charisma.max}}" />
+         <input type="number" name="data.attributes.charisma.adj" value="{{data.attributes.charisma.adj}}" placeholder="±adj" title="Charisma Adjustment" />
       </div>
+      <div class="attribute" augmented-ui="b-clip-x exe">
+         <p>Edge</p>
+         <span>{{data.attributes.edge.current}}</span>
+         <input type="number" name="data.attributes.edge.base" value="{{data.attributes.edge.base}}" placeholder="base" title="Base Edge" min="{{data.attributes.edge.min}}" max="{{data.attributes.edge.max}}" />
+      </div>
+      <div class="attribute" augmented-ui="b-clip-x exe">
+         <p>Essence</p>
+         <span>{{data.attributes.essence.current}}</span>
+         <input readonly type="number" name="data.attributes.essence.base" value="{{data.attributes.essence.base}}" placeholder="base" title="Base Essence" min="{{data.attributes.essence.min}}" max="{{data.attributes.essence.max}}" step=".1" />
+         <input type="number" name="data.attributes.essence.adj" value="{{data.attributes.essence.adj}}" placeholder="±adj" title="Essence Adjustment" step=".1" />
+      </div>
+      {{#if (isEquals data.nature 'awakened') }}
+      <div class="attribute" augmented-ui="b-clip-x exe">
+         <p>Magic</p>
+         <span>{{data.attributes.magic.current}}</span>
+         <input readonly type="number" name="data.attributes.magic.base" value="{{data.attributes.magic.base}}" placeholder="base" title="Base Magic" min="{{data.attributes.magic.min}}" max="{{data.attributes.magic.max}}" />
+      </div>
+      {{/if}}
+      {{#if (isEquals data.nature 'emerged') }}
+      <div class="attribute" augmented-ui="b-clip-x exe">
+         <p>Resonance</p>
+         <span>{{data.attributes.resonance.current}}</span>
+         <input readonly type="number" name="data.attributes.resonance.base" value="{{data.attributes.resonance.base}}" placeholder="base" title="Base Resonance" min="{{data.attributes.resonance.min}}" max="{{data.attributes.resonance.max}}" />
+      </div>
+      {{/if}}
+
    </div>
-
-
    <nav class="sheet-tabs tabs" data-group="primary">
       <a class="item" data-tab="skills" augmented-ui="tl-clip br-clip exe">Skills</a>
       <a class="item" data-tab="items" augmented-ui="tl-clip br-clip exe">Items</a>
       <a class="item" data-tab="attributes" augmented-ui="tl-clip br-clip exe">Attributes</a>
    </nav>
-
-
-   <section>
-      <div class="tab skills" data-group="primary" data-tab="skills">
-
-
-
-
-
-      </div>
+   <section class="sheet-body">
+      <div class="tab skills" data-group="primary" data-tab="skills"></div>
       <div class="tab items" data-group="primary" data-tab="items"></div>
       <div class="tab attributes" data-group="primary" data-tab="attributes"></div>
    </section>
 
-
-
-   <!-- 
-
-   {{!-- Sheet Tab Navigation --}}
-   <nav class="sheet-tabs tabs" data-group="primary">
-      <a class="item" data-tab="description">Description</a>
-      <a class="item" data-tab="items">Items</a>
-      <a class="item" data-tab="attributes">Attributes</a>
-   </nav>
-
-   {{!-- Sheet Body --}}
-   <section class="sheet-body">
-
-      {{!-- Biography Tab --}}
-      <div class="tab biography" data-group="primary" data-tab="description">
-         {{editor content=data.biography target="data.biography" button=true owner=owner editable=editable}}
-      </div>
-
-      {{!-- Owned Items Tab --}}
-      <div class="tab items" data-group="primary" data-tab="items">
-         <ol class="items-list">
-            {{#each actor.items as |item id|}}
-            <li class="item flexrow" data-item-id="{{item._id}}">
-               <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" />
-               <h4 class="item-name">{{item.name}}</h4>
-               <div class="item-controls">
-                  <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
-                  <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
-               </div>
-            </li>
-            {{/each}}
-         </ol>
-      </div>
-
-      {{!-- Attributes Tab --}}
-      <div class="tab attributes" data-group="primary" data-tab="attributes">
-         <header class="attributes-header flexrow">
-            <span class="attribute-key">Attribute Key</span>
-            <span class="attribute-value">Value</span>
-            <span class="attribute-label">Label</span>
-            <span class="attribute-dtype">Data Type</span>
-            <a class="attribute-control" data-action="create"><i class="fas fa-plus"></i></a>
-         </header>
-
-         <ol class="attributes-list">
-            {{#each data.attributes as |attr key|}}
-            <li class="attribute flexrow" data-attribute="{{key}}">
-               <input class="attribute-key" type="text" name="data.attributes.{{key}}.key" value="{{key}}" />
-               {{#if attr.isCheckbox}}
-               <label class="attribute-value checkbox"><input type="checkbox" name="data.attributes.{{key}}.value" {{checked attr.value}} /></label>
-               {{else}}
-               <input class="attribute-value" type="text" name="data.attributes.{{key}}.value" value="{{attr.value}}" data-dtype="{{attr.dtype}}" />
-               {{/if}}
-               <input class="attribute-label" type="text" name="data.attributes.{{key}}.label" value="{{attr.label}}" />
-               <select class="attribute-dtype" name="data.attributes.{{key}}.dtype">
-                  {{#select attr.dtype}}
-                  {{#each ../dtypes as |t|}}
-                  <option value="{{t}}">{{t}}</option>
-                  {{/each}}
-                  {{/select}}
-               </select>
-               <a class="attribute-control" data-action="delete"><i class="fas fa-trash"></i></a>
-            </li>
-            {{/each}}
-         </ol>
-      </div>
-   </section> -->
 </form>

@@ -13,17 +13,91 @@
       "height": "",
       "weight": "",
       "biography": "",
-      "health": {
-        "value": 10,
-        "min": 0,
-        "max": 10
-      },
-      "power": {
-        "value": 5,
-        "min": 0,
-        "max": 5
-      },
-      "attributes": {}
+      "attributes": {
+        "body": {
+          "base": 1,
+          "adj": 0,
+          "current": 0,
+          "min": 1,
+          "max": 6
+        },
+        "agility": {
+          "base": 1,
+          "adj": 0,
+          "current": 0,
+          "min": 1,
+          "max": 6
+        },
+        "reaction": {
+          "base": 1,
+          "adj": 0,
+          "current": 0,
+          "min": 1,
+          "max": 6
+        },
+        "strength": {
+          "base": 1,
+          "adj": 0,
+          "current": 0,
+          "min": 1,
+          "max": 6
+        },
+        "willpower": {
+          "base": 1,
+          "adj": 0,
+          "current": 0,
+          "min": 1,
+          "max": 6
+        },
+        "logic": {
+          "base": 1,
+          "adj": 0,
+          "current": 0,
+          "min": 1,
+          "max": 6
+        },
+        "intuition": {
+          "base": 1,
+          "adj": 0,
+          "current": 0,
+          "min": 1,
+          "max": 6
+        },
+        "charisma": {
+          "base": 1,
+          "adj": 0,
+          "current": 0,
+          "min": 1,
+          "max": 6
+        },
+        "edge": {
+          "base": 1,
+          "current": 0,
+          "min": 1,
+          "max": 6
+        },
+        "essence": {
+          "base": 6.0,
+          "adj": 0.0,
+          "current": 0,
+          "min": 0.1,
+          "max": 6
+        },
+        "magic": {
+          "base": 1,
+          "adj": 0,
+          "current": 0,
+          "min": 0,
+          "max": 6
+        },
+        "resonance": {
+          "base": 1,
+          "adj": 0,
+          "current": 0,
+          "min": 0,
+          "max": 6
+        }
+      }
     }
   },
   "Item": {

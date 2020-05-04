@@ -28,6 +28,11 @@
          font-size: inherit;
       }
 
+      input[type=number] {
+         -moz-appearance: textfield;
+         -webkit-appearance: textfield;
+      }
+
 
       input::placeholder {
          background-color: inherit;
@@ -104,25 +109,65 @@
          align-items: stretch;
          margin-top: 1rem;
 
-         p {
-            text-align: center;
-            margin: 0;
-         }
 
 
          .attribute {
             min-width: 6rem;
-
             text-align: center;
             padding: .5rem;
+
+            display: flex;
+            flex-flow: column nowrap;
+            justify-items: flex-start;
 
             --aug-border: 1px;
             --aug-inset: 2px;
             --aug-border-bg: rgb(82, 81, 78);
             --aug-inset-bg: rgba(255, 255, 255, 0);
 
-            --aug-b-width: 65%;
+            --aug-b-width: 33%;
             --aug-b-height: 10px;
+
+            position: relative;
+
+            p {
+               text-align: center;
+               margin: 0;
+            }
+
+            span {
+               font-size: 1.125rem;
+               margin-top: .5rem;
+            }
+
+
+            input[type=number] {
+               width: 2rem;
+               text-align: center;
+
+            }
+
+            input:nth-of-type(1)::placeholder {
+               font-size: .75rem;
+            }
+            input:nth-of-type(1) {
+               font-size: .89rem;
+               position: absolute;
+               bottom: 0;
+               left: 0;
+            }
+
+            input:nth-of-type(2)::placeholder {
+               font-size: .75rem;
+            }
+            input:nth-of-type(2) {
+               font-size: .89rem;
+               position: absolute;
+               bottom: 0;
+               right: 0;
+            }
+
+
          }
 
       }
