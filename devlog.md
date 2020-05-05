@@ -301,3 +301,34 @@ Or we could leave it as-is and create helpers to do math.
 There is indeed a whole cycle of getdata from actor class whenever there's an update, so actor class, update fuction
 Also, with the  data-dtype="Number" we can fix the saved as text issue. 
 
+Added description to the character sheet so that we have something we can use until the character is more fleshed out. 
+
+so two outstanding questions for today: 
+1. can we use alpinejs or reactivejs to do the dynamic parts of the character sheet? can we get it work with the form based saving loop?
+can we replace the form and do more of a targeted reactive update? maybe even fancy with redux and such? 
+2. can we replace the tinymce with an embedded markdown version?
+
+Need to document the stuff that we do for this. 
+
+### 5.5.2020
+
+the inline markdown editor seems like it will work. There's some foundy specific stuff that processes html. We can run it after we generate html. 
+
+I would like the md editor to be the inline editor for the whole system. Not sure how to make that switch. 
+
+for now lets get the character sheet done. 
+
+We need to calc magic based on your current essence. 
+perhaps we ought to setup actor sheet calcs in the code like the dnd sheet does. 
+
+we can externalize a fair amount to a shadowrun rules module. 
+
+We need to have the current value of attributes for other calcs and rules and such
+Right click on an attribute box to adjust your min and max? 
+
+should we calc the currents on get data or on update data? 
+
+
+Let's calc on update data, we can create one function that does the updates. Might eventually move to a web worker
+
+

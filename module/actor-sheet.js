@@ -25,6 +25,7 @@ export class ShadowrunActorSheet extends ActorSheet {
       //    attr.isCheckbox = attr.dtype === "Boolean";
       // }
 
+      // todo - 
       console.log(`[get data]`, data)
       return data;
    }
