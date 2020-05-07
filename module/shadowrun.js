@@ -16,15 +16,19 @@ export default function (_) {
    _.data.attributes.edge.current = _.data.attributes.edge.base + _.data.attributes.edge.adj
    _.data.attributes.essence.current = _.data.attributes.essence.base + _.data.attributes.essence.adj
 
-   // magic and resonance
-   // base, reduced by every full int of essence loss
+   // magic and resonance reduced by 1 for every full 
    let essenceLoss = 6 - Math.ceil(_.data.attributes.essence.current)
 
    _.data.attributes.magic.current = _.data.attributes.magic.base + _.data.attributes.magic.adj - essenceLoss
    _.data.attributes.resonance.current = _.data.attributes.resonance.base + _.data.attributes.resonance.adj - essenceLoss
 
+   // set maximums based on metatype
+   // it's not a huge calc, but wish I didn't have to do it every time. 
+
+
+
    // condition tracks
-   
+
    
    return _
 

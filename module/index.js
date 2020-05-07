@@ -53,7 +53,6 @@ Hooks.once("init", async function () {
 
       // texteditor enrich html. 
 
-
       let target = options.hash['target'],
          content = options.hash['content'] || "",
          button = Boolean(options.hash['button']),
