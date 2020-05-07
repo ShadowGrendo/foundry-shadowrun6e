@@ -331,4 +331,4 @@ should we calc the currents on get data or on update data?
 
 Let's calc on update data, we can create one function that does the updates. Might eventually move to a web worker
 
-
+so, there is the actor data and the entity. where is that extra duplciate of data coming from and what can I do about it?

@@ -81,16 +81,16 @@
     .shadowrun form.character header label {
       font-size: .75em; }
   .shadowrun form.character .attributes {
-    height: 6rem;
+    height: 5.25rem;
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
     align-items: stretch;
     margin-top: 1rem; }
     .shadowrun form.character .attributes .attribute {
-      min-width: 6rem;
+      min-width: 5.25rem;
       text-align: center;
-      padding: .5rem;
+      padding: .25rem;
       display: flex;
       flex-flow: column nowrap;
       justify-items: flex-start;
@@ -106,7 +106,7 @@
         margin: 0; }
       .shadowrun form.character .attributes .attribute span {
         font-size: 1.125rem;
-        margin-top: .5rem; }
+        margin-top: .25rem; }
       .shadowrun form.character .attributes .attribute .field {
         display: flex;
         flex-flow: column nowrap; }

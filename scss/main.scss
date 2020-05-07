@@ -102,7 +102,7 @@
 
 
       .attributes {
-         height: 6rem;
+         height: 5.25rem;
          display: flex;
          flex-flow: row nowrap;
          justify-content: space-between;
@@ -112,9 +112,9 @@
 
 
          .attribute {
-            min-width: 6rem;
+            min-width: 5.25rem;
             text-align: center;
-            padding: .5rem;
+            padding: .25rem;
 
             display: flex;
             flex-flow: column nowrap;
@@ -137,7 +137,7 @@
 
             span {
                font-size: 1.125rem;
-               margin-top: .5rem;
+               margin-top: .25rem;
             }
 
             .field {

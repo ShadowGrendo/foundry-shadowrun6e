@@ -17,10 +17,6 @@ Hooks.once("init", async function () {
 	 * Set an initiative formula for the system
 	 * @type {String}
 	 */
-   // CONFIG.Combat.initiative = {
-   //    formula: "1d20",
-   //    decimals: 2
-   // }
 
    // Define custom Entity classes
    CONFIG.Actor.entityClass = ShadowrunActor
@@ -48,8 +44,6 @@ Hooks.once("init", async function () {
    })
 
    Handlebars.registerHelper("add", function (a, b) {
-      console.log('[add]', a, b)
-      // return a+b
       return Number(a) + Number(b)
    })
 
@@ -80,7 +74,7 @@ Hooks.once("init", async function () {
       if (button && editable) editor.append($('<a class="editor-edit"><i class="fas fa-edit"></i></a>'));
       return new Handlebars.SafeString(editor[0].outerHTML);
 
-      
+
    });
 
 
