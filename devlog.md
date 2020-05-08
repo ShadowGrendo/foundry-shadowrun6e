@@ -312,7 +312,7 @@ Need to document the stuff that we do for this.
 
 ### 5.5.2020
 
-the inline markdown editor seems like it will work. There's some foundy specific stuff that processes html. We can run it after we generate html. 
+the inline markdown editor seems like it will work. There's some foundry specific stuff that processes html. We can run it after we generate html. 
 
 I would like the md editor to be the inline editor for the whole system. Not sure how to make that switch. 
 
@@ -331,9 +331,18 @@ should we calc the currents on get data or on update data?
 
 Let's calc on update data, we can create one function that does the updates. Might eventually move to a web worker
 
-so, there is the actor data and the entity. where is that extra duplciate of data coming from and what can I do about it?
+so, there is the actor data and the entity. where is that extra duplicate of data coming from and what can I do about it?
 
 ## 5.7.2020
 
 got the character sheet calculation going. 
 Need to do metatype maximums for attributes and then skills. and then a roll template.
+
+Time to do Skills:
+have the combined attributes at the top, have a roll x dice button
+maybe a die with a number input? 
+
+compendiums can always be world specific right? the system ones are just pre-defined ones. 
+
+
+separate tab for augmentations?

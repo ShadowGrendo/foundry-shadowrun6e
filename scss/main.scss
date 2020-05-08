@@ -2,13 +2,9 @@
 @import 'https://unpkg.com/augmented-ui/augmented.css';
 
 .shadowrun {
-
    form.character {
-
       font-family: "Friz Quadrata", sans-serif;
       font-size: 18px;
-
-
 
       select {
          background-color: inherit;
@@ -30,9 +26,15 @@
 
       input[type=number] {
          -moz-appearance: textfield;
-         -webkit-appearance: textfield;
+         width: 2rem;
+         text-align: center;
       }
 
+      input[type=number]::-webkit-inner-spin-button,
+      input[type=number]::-webkit-outer-spin-button {
+         -webkit-appearance: none;
+         margin: 0;
+      }
 
       input::placeholder {
          background-color: inherit;
@@ -40,9 +42,7 @@
          opacity: .5;
       }
 
-
       header {
-
          display: grid;
 
          grid-template-columns: 10rem 1fr;
@@ -94,12 +94,7 @@
          label {
             font-size: .75em;
          }
-
-
-
-
       }
-
 
       .attributes {
          height: 5.25rem;
@@ -108,8 +103,6 @@
          justify-content: space-between;
          align-items: stretch;
          margin-top: 1rem;
-
-
 
          .attribute {
             min-width: 5.25rem;
@@ -145,13 +138,6 @@
                flex-flow: column nowrap;
             }
 
-
-            input[type=number] {
-               width: 2rem;
-               text-align: center;
-
-            }
-
             input::placeholder,
             label {
                font-size: .75rem;
@@ -170,10 +156,7 @@
                bottom: 0;
                right: 0;
             }
-
-
          }
-
       }
 
       nav {
@@ -182,14 +165,11 @@
          a {
             --aug-border: 1px;
             --aug-inset: 2px;
-            padding: .5rem;
+            padding: .25rem;
             text-align: center;
             --aug-border-bg: rgb(82, 81, 78);
             --aug-inset-bg: rgba(255, 255, 255, 0);
-
-
-            margin-right: .5rem;
-
+            margin-right: .25rem;
          }
 
          a:last-child {
@@ -197,7 +177,25 @@
          }
       }
 
-      section {}
+      section {
+         .skills {
+
+            display: flex;
+            flex-flow: row nowrap;
+
+            div {
+               flex-basis: 50%;
+            }
+
+            font-size: .89rem;
+
+            table {}
+
+         }
+      }
+
+
+
 
    }
 

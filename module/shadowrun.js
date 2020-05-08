@@ -1,35 +1,129 @@
+let metatypes = {
+   human: {
+      attributes: {
+         body: { min: 1, max: 6 },
+         agility: { min: 1, max: 6 },
+         reaction: { min: 1, max: 6 },
+         strength: { min: 1, max: 6 },
+         willpower: { min: 1, max: 6 },
+         logic: { min: 1, max: 6 },
+         intuition: { min: 1, max: 6 },
+         charisma: { min: 1, max: 6 },
+         edge: { min: 1, max: 7 },
+      },
+      qualities: []
+   },
+   dwarf: {
+      attributes: {
+         body: { min: 1, max: 7 },
+         agility: { min: 1, max: 6 },
+         reaction: { min: 1, max: 5 },
+         strength: { min: 1, max: 8 },
+         willpower: { min: 1, max: 7 },
+         logic: { min: 1, max: 6 },
+         intuition: { min: 1, max: 6 },
+         charisma: { min: 1, max: 6 },
+         edge: { min: 1, max: 6 },
+      },
+      qualities: ["Toxin Resistance", "Thermographic Vision"]
+   },
+   elf: {
+      attributes: {
+         body: { min: 1, max: 6 },
+         agility: { min: 1, max: 7 },
+         reaction: { min: 1, max: 6 },
+         strength: { min: 1, max: 6 },
+         willpower: { min: 1, max: 6 },
+         logic: { min: 1, max: 6 },
+         intuition: { min: 1, max: 6 },
+         charisma: { min: 1, max: 8 },
+         edge: { min: 1, max: 6 },
+      },
+      qualities: ["Low-Light Vision"]
+   },
+   ork: {
+      attributes: {
+         body: { min: 1, max: 8 },
+         agility: { min: 1, max: 6 },
+         reaction: { min: 1, max: 6 },
+         strength: { min: 1, max: 8 },
+         willpower: { min: 1, max: 6 },
+         logic: { min: 1, max: 6 },
+         intuition: { min: 1, max: 6 },
+         charisma: { min: 1, max: 5 },
+         edge: { min: 1, max: 6 },
+      },
+      qualities: ["Low-Light Vision", "Build Tough 1"]
+   },
+   troll: {
+      attributes: {
+         body: { min: 1, max: 9 },
+         agility: { min: 1, max: 5 },
+         reaction: { min: 1, max: 6 },
+         strength: { min: 1, max: 9 },
+         willpower: { min: 1, max: 6 },
+         logic: { min: 1, max: 6 },
+         intuition: { min: 1, max: 6 },
+         charisma: { min: 1, max: 5 },
+         edge: { min: 1, max: 6 },
+      },
+      qualities: ["Dermal Deposits", "Thermographic Vision", "Built Tough 2"]
+   }
+}
 
-export default function (_) {
+let abbreviations = {
+   "body": "B",
+   "agility": "A",
+   "reaction": "R",
+   "strength": "S",
+   "willpower": "W",
+   "logic": "L",
+   "intuition": "I",
+   "charisma": "C",
+   "edge": "EDG",
+   "essence": "ESS",
+   "magic": "M",
+   "resonance": "RES"
+}
 
-   //todo - probably need a function to run per sheet type
-   console.log('[shadowrun]', _)
-
+let calculateCharacterData = function (character) {
+   console.log('[shadowrun]', character)
    // determine current values for attributes
-   _.data.attributes.body.current = _.data.attributes.body.base + _.data.attributes.body.adj
-   _.data.attributes.agility.current = _.data.attributes.agility.base + _.data.attributes.agility.adj
-   _.data.attributes.reaction.current = _.data.attributes.reaction.base + _.data.attributes.reaction.adj
-   _.data.attributes.strength.current = _.data.attributes.strength.base + _.data.attributes.strength.adj
-   _.data.attributes.willpower.current = _.data.attributes.willpower.base + _.data.attributes.willpower.adj
-   _.data.attributes.logic.current = _.data.attributes.logic.base + _.data.attributes.logic.adj
-   _.data.attributes.intuition.current = _.data.attributes.intuition.base + _.data.attributes.intuition.adj
-   _.data.attributes.charisma.current = _.data.attributes.charisma.base + _.data.attributes.charisma.adj
-   _.data.attributes.edge.current = _.data.attributes.edge.base + _.data.attributes.edge.adj
-   _.data.attributes.essence.current = _.data.attributes.essence.base + _.data.attributes.essence.adj
+   character.data.attributes.body.current = character.data.attributes.body.base + character.data.attributes.body.adj
+   character.data.attributes.agility.current = character.data.attributes.agility.base + character.data.attributes.agility.adj
+   character.data.attributes.reaction.current = character.data.attributes.reaction.base + character.data.attributes.reaction.adj
+   character.data.attributes.strength.current = character.data.attributes.strength.base + character.data.attributes.strength.adj
+   character.data.attributes.willpower.current = character.data.attributes.willpower.base + character.data.attributes.willpower.adj
+   character.data.attributes.logic.current = character.data.attributes.logic.base + character.data.attributes.logic.adj
+   character.data.attributes.intuition.current = character.data.attributes.intuition.base + character.data.attributes.intuition.adj
+   character.data.attributes.charisma.current = character.data.attributes.charisma.base + character.data.attributes.charisma.adj
+   character.data.attributes.edge.current = character.data.attributes.edge.base + character.data.attributes.edge.adj
+   character.data.attributes.essence.current = character.data.attributes.essence.base + character.data.attributes.essence.adj
 
-   // magic and resonance reduced by 1 for every full 
-   let essenceLoss = 6 - Math.ceil(_.data.attributes.essence.current)
+   // magic and resonance reduced by 1 for every full point of essence loss
+   let essenceLoss = 6 - Math.ceil(character.data.attributes.essence.current)
 
-   _.data.attributes.magic.current = _.data.attributes.magic.base + _.data.attributes.magic.adj - essenceLoss
-   _.data.attributes.resonance.current = _.data.attributes.resonance.base + _.data.attributes.resonance.adj - essenceLoss
+   character.data.attributes.magic.current = character.data.attributes.magic.base + character.data.attributes.magic.adj - essenceLoss
+   character.data.attributes.resonance.current = character.data.attributes.resonance.base + character.data.attributes.resonance.adj - essenceLoss
 
    // set maximums based on metatype
    // it's not a huge calc, but wish I didn't have to do it every time. 
-
-
+   let meta = metatypes[character.data.metatype]
+   character.data.attributes.body.max = meta.attributes.body.max
+   character.data.attributes.agility.max = meta.attributes.agility.max
+   character.data.attributes.reaction.max = meta.attributes.reaction.max
+   character.data.attributes.strength.max = meta.attributes.strength.max
+   character.data.attributes.willpower.max = meta.attributes.willpower.max
+   character.data.attributes.logic.max = meta.attributes.logic.max
+   character.data.attributes.intuition.max = meta.attributes.intuition.max
+   character.data.attributes.charisma.max = meta.attributes.charisma.max
+   character.data.attributes.edge.max = meta.attributes.edge.max
 
    // condition tracks
 
-   
-   return _
+
+   return character
 
 }
+
+export { calculateCharacterData as CalculateCharacterData, metatypes as Metatypes, abbreviations as Abbreviations }

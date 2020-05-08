@@ -11,15 +11,13 @@
         "common"
       ],
       "alias": "",
-      "nature": "",
-      "metatype": "",
+      "nature": "mundane",
+      "metatype": "human",
       "ethnicity": "",
       "gender": "",
       "age": "",
       "height": "",
       "weight": "",
-      "biography": "",
-      "description": "",
       "attributes": {
         "body": {
           "base": 1,
@@ -105,7 +103,212 @@
           "min": 0,
           "max": 6
         }
-      }
+      },
+      "skills": {
+        "active": {
+          "astral": {
+            "name": "Astral",
+            "untrained": false,
+            "primaryAttribute": "intuition",
+            "rank": 0,
+            "pool": 0,
+            "max": 9,
+            "speciality": "",
+            "expertise": ""
+          },
+          "athletics": {
+            "name": "Athletics",
+            "untrained": true,
+            "primaryAttribute": "agility",
+            "rank": 0,
+            "pool": 0,
+            "max": 9,
+            "speciality": "",
+            "expertise": ""
+          },
+          "biotech": {
+            "name": "Biotech",
+            "untrained": false,
+            "primaryAttribute": "logic",
+            "rank": 0,
+            "pool": 0,
+            "max": 9,
+            "speciality": "",
+            "expertise": ""
+          },
+          "closecombat": {
+            "name": "Close Combat",
+            "untrained": true,
+            "primaryAttribute": "agility",
+            "rank": 0,
+            "pool": 0,
+            "max": 9,
+            "speciality": "",
+            "expertise": ""
+          },
+          "con": {
+            "name": "Con",
+            "untrained": true,
+            "primaryAttribute": "charisma",
+            "rank": 0,
+            "pool": 0,
+            "max": 9,
+            "speciality": "",
+            "expertise": ""
+          },
+          "conjuring": {
+            "name": "Conjuring",
+            "untrained": false,
+            "primaryAttribute": "magic",
+            "rank": 0,
+            "pool": 0,
+            "max": 9,
+            "speciality": "",
+            "expertise": ""
+          },
+          "cracking": {
+            "name": "Cracking",
+            "untrained": false,
+            "primaryAttribute": "logic",
+            "rank": 0,
+            "pool": 0,
+            "max": 9,
+            "speciality": "",
+            "expertise": ""
+          },
+          "electronics": {
+            "name": "Electronics",
+            "untrained": true,
+            "primaryAttribute": "logic",
+            "rank": 0,
+            "pool": 0,
+            "max": 9,
+            "speciality": "",
+            "expertise": ""
+          },
+          "enchanting": {
+            "name": "Enchanting",
+            "untrained": false,
+            "primaryAttribute": "magic",
+            "rank": 0,
+            "pool": 0,
+            "max": 9,
+            "speciality": "",
+            "expertise": ""
+          },
+          "engineering": {
+            "name": "Engineering",
+            "untrained": true,
+            "primaryAttribute": "logic",
+            "rank": 0,
+            "pool": 0,
+            "max": 9,
+            "speciality": "",
+            "expertise": ""
+          },
+          "exoticweapons": {
+            "name": "Exotic Weapons",
+            "untrained": false,
+            "primaryAttribute": "agility",
+            "rank": 0,
+            "pool": 0,
+            "max": 9,
+            "speciality": "",
+            "expertise": ""
+          },
+          "firearms": {
+            "name": "Firearms",
+            "untrained": true,
+            "primaryAttribute": "agility",
+            "rank": 0,
+            "pool": 0,
+            "max": 9,
+            "speciality": "",
+            "expertise": ""
+          },
+          "influence": {
+            "name": "Influence",
+            "untrained": true,
+            "primaryAttribute": "charisma",
+            "rank": 0,
+            "pool": 0,
+            "max": 9,
+            "speciality": "",
+            "expertise": ""
+          },
+          "outdoors": {
+            "name": "Outdoors",
+            "untrained": true,
+            "primaryAttribute": "intuition",
+            "rank": 0,
+            "pool": 0,
+            "max": 9,
+            "speciality": "",
+            "expertise": ""
+          },
+          "perception": {
+            "name": "Perception",
+            "untrained": true,
+            "primaryAttribute": "intuition",
+            "rank": 0,
+            "pool": 0,
+            "max": 9,
+            "speciality": "",
+            "expertise": ""
+          },
+          "piloting": {
+            "name": "Piloting",
+            "untrained": true,
+            "primaryAttribute": "reaction",
+            "rank": 0,
+            "pool": 0,
+            "max": 9,
+            "speciality": "",
+            "expertise": ""
+          },
+          "sorcery": {
+            "name": "Sorcery",
+            "untrained": false,
+            "primaryAttribute": "magic",
+            "rank": 0,
+            "pool": 0,
+            "max": 9,
+            "speciality": "",
+            "expertise": ""
+          },
+          "stealth": {
+            "name": "Stealth",
+            "untrained": true,
+            "primaryAttribute": "agility",
+            "rank": 0,
+            "pool": 0,
+            "max": 9,
+            "speciality": "",
+            "expertise": ""
+          },
+          "tasking": {
+            "name": "Tasking",
+            "untrained": false,
+            "primaryAttribute": "resonance",
+            "rank": 0,
+            "pool": 0,
+            "max": 9,
+            "speciality": "",
+            "expertise": ""
+          }
+        },
+        "knowledge": [
+          {
+            "name": "native language"
+          }
+        ]
+      },
+      "journal": [
+        {
+          "title": "entry name",
+          "content": ""
+        }
+      ]
     }
   },
   "Item": {

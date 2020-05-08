@@ -144,15 +144,64 @@
 
    </div>
    <nav class="sheet-tabs tabs" data-group="primary">
+      <a class="item" data-tab="overview" augmented-ui="tl-clip br-clip exe">Overview</a>
       <a class="item" data-tab="skills" augmented-ui="tl-clip br-clip exe">Skills</a>
-      <a class="item" data-tab="items" augmented-ui="tl-clip br-clip exe">Items</a>
-      <a class="item" data-tab="description" augmented-ui="tl-clip br-clip exe">Description</a>
+      <a class="item" data-tab="combat" augmented-ui="tl-clip br-clip exe">Combat</a>
+      <a class="item" data-tab="qualities" augmented-ui="tl-clip br-clip exe">Qualities</a>
+      <a class="item" data-tab="augments" augmented-ui="tl-clip br-clip exe">Augments</a>
+      <a class="item" data-tab="gear" augmented-ui="tl-clip br-clip exe">Gear</a>
+      <a class="item" data-tab="social" augmented-ui="tl-clip br-clip exe">Social</a>
+      <a class="item" data-tab="journal" augmented-ui="tl-clip br-clip exe">Journal</a>
    </nav>
    <section class="sheet-body">
-      <div class="tab skills" data-group="primary" data-tab="skills"></div>
-      <div class="tab items" data-group="primary" data-tab="items"></div>
-      <div class="tab description" data-group="primary" data-tab="description">
-         {{editor content=data.description target="data.description" button=true owner=owner editable=editable}}
+      <div class="tab overview" data-group="primary" data-tab="overview">
+         <!-- todo - this tab quick links the most interesting bits of the rest of the sheet -->
+         <!-- skills you have ratings in, favorite gear, spells, edge, conditions -->
+      </div>
+      <div class="tab skills" data-group="primary" data-tab="skills">
+         <div class="active-skills">
+            <table>
+               <thead>
+                  <tr>
+                     <th>Active Skill</th>
+                     <th>Rank</th>
+                     <th>Attribute</th>
+                     <th>Pool</th>
+                     <th>Specialty</th>
+                     <th>Expertise</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  {{#each data.skills.active}}
+                  <tr>
+                     <td>{{name}}</td>
+                     <td>
+                        <input type="number" data-dtype="Number" name="data.skills.active.{{@key}}.rank" value="{{rank}}" placeholder="rank" title="{{name}} Rank" min="0" max="{{max}}" />
+                     </td>
+                     <td>{{abbreviate primaryAttribute}}</td>
+                     <td>{{pool}}</td>
+                     <td>specialty input</td>
+                     <td>expertise input</td>
+                  </tr>
+                  {{/each}}
+               </tbody>
+            </table>
+         </div>
+         <div class="knowledge-skills">
+            <span>Knowledge</span>
+         </div>
+
+
+      </div>
+      <div class="tab combat" data-group="primary" data-tab="combat"></div>
+      <div class="tab qualities" data-group="primary" data-tab="qualities"></div>
+      <div class="tab augments" data-group="primary" data-tab="augments"></div>
+      <div class="tab gear" data-group="primary" data-tab="gear"></div>
+      <div class="tab social" data-group="primary" data-tab="social"></div>
+      <div class="tab journal" data-group="primary" data-tab="journal">
+         {{#each data.journal}}
+
+         {{/each}}
       </div>
    </section>
 

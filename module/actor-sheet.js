@@ -1,4 +1,4 @@
-import Shadowrun from './shadowrun.js'
+import { CalculateCharacterData } from './shadowrun.js'
 /**
  * Extend the basic ActorSheet with some very simple modifications
  * @extends {ActorSheet}
@@ -10,8 +10,8 @@ export class ShadowrunActorSheet extends ActorSheet {
       return mergeObject(super.defaultOptions, {
          classes: ["shadowrun", "sheet", "actor"],
          template: "systems/shadowrun6e/templates/actor-sheet.html",
-         width: 900,
-         height: 600,
+         width: 1000,
+         height: 860,
          tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description" }]
       })
    }
@@ -21,18 +21,8 @@ export class ShadowrunActorSheet extends ActorSheet {
    /** @override */
    getData() {
       const data = super.getData()
-      // data.dtypes = ["String", "Number", "Boolean"]
-      // for (let attr of Object.values(data.data.attributes)) {
-      //    attr.isCheckbox = attr.dtype === "Boolean"
-      // }
-
-      // todo - the update data is a weird list of form data. 
-      // so we do the calulations here
       console.log(`[get data]`, data)
-
-      var calculated = Shadowrun(data)
-
-      
+      var calculated = CalculateCharacterData(data)
       return calculated
    }
 
