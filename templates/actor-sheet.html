@@ -155,53 +155,62 @@
    </nav>
    <section class="sheet-body">
       <div class="tab overview" data-group="primary" data-tab="overview">
+         <h4>overview</h4>
          <!-- todo - this tab quick links the most interesting bits of the rest of the sheet -->
          <!-- skills you have ratings in, favorite gear, spells, edge, conditions -->
       </div>
       <div class="tab skills" data-group="primary" data-tab="skills">
-         <div class="active-skills">
-            <table>
-               <thead>
-                  <tr>
-                     <th>Active Skill</th>
-                     <th>Rank</th>
-                     <th>Attribute</th>
-                     <th>Pool</th>
-                     <th>Specialization</th>
-                     <th>Expertise</th>
-                  </tr>
-               </thead>
-               <tbody>
-                  {{#each data.skills.active}}
-                  <tr>
-                     <td>{{name}}</td>
-                     <td>
-                        <input type="number" data-dtype="Number" name="data.skills.active.{{@key}}.rank" value="{{rank}}" placeholder="rank" title="{{name}} Rank" min="0" max="{{max}}" />
-                     </td>
-                     <td>{{abbreviate primaryAttribute}}</td>
-                     <td>[{{pool}}]</td>
-                     <td><input type="text" name="data.skills.active.{{@key}}.specialization" value="{{specialization}}" placeholder="specialization" /></td>
-                     <td><input type="text" name="data.skills.active.{{@key}}.expertise" value="{{expertise}}" placeholder="expertise" /></td>
-                  </tr>
-                  {{/each}}
-               </tbody>
-            </table>
+         <div class="skills-content">
+            <div class="active-skills">
+               <table>
+                  <thead>
+                     <tr>
+                        <th>Active Skill</th>
+                        <th>Rank</th>
+                        <th>Attribute</th>
+                        <th>Pool</th>
+                        <th>Specialization</th>
+                        <th>Expertise</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     {{#each data.skills.active}}
+                     <tr>
+                        <td>{{name}}</td>
+                        <td>
+                           <input type="number" data-dtype="Number" name="data.skills.active.{{@key}}.rank" value="{{rank}}" placeholder="rank" title="{{name}} Rank" min="0" max="{{max}}" />
+                        </td>
+                        <td>{{abbreviate primaryAttribute}}</td>
+                        <td>[{{pool}}]</td>
+                        <td><input type="text" name="data.skills.active.{{@key}}.specialization" value="{{specialization}}" placeholder="specialization" /></td>
+                        <td><input type="text" name="data.skills.active.{{@key}}.expertise" value="{{expertise}}" placeholder="expertise" /></td>
+                     </tr>
+                     {{/each}}
+                  </tbody>
+               </table>
+            </div>
+            <div class="knowledge-skills">
+               <h4>knowledges</h4>
+            </div>
          </div>
-         <div class="knowledge-skills">
-            <span>Knowledge</span>
-         </div>
-
-
       </div>
-      <div class="tab combat" data-group="primary" data-tab="combat"></div>
-      <div class="tab qualities" data-group="primary" data-tab="qualities"></div>
-      <div class="tab augments" data-group="primary" data-tab="augments"></div>
-      <div class="tab gear" data-group="primary" data-tab="gear"></div>
-      <div class="tab social" data-group="primary" data-tab="social"></div>
+      <div class="tab combat" data-group="primary" data-tab="combat">
+         <h4>combat</h4>
+      </div>
+      <div class="tab qualities" data-group="primary" data-tab="qualities">
+         <h4>qualities</h4>
+      </div>
+      <div class="tab augments" data-group="primary" data-tab="augments">
+         <h4>augments</h4>
+      </div>
+      <div class="tab gear" data-group="primary" data-tab="gear">
+         <h4>gear</h4>
+      </div>
+      <div class="tab social" data-group="primary" data-tab="social">
+         <h4>social</h4>
+      </div>
       <div class="tab journal" data-group="primary" data-tab="journal">
-         {{#each data.journal}}
-
-         {{/each}}
+         <h4>journal</h4>
       </div>
    </section>
 
