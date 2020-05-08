@@ -72,7 +72,7 @@ Attributes (current, max, temp adjustments)
 	awakened?
 	? include stuff like drain and other shortcuts ?
 	
-Skills (rank, attribute, [Pool], specialty, expertise)
+Skills (rank, attribute, [Pool], specialization, expertise)
 	There is a small enough list I think we can just show them all
 
 Combat
@@ -202,7 +202,7 @@ Attributes (current, max, temp adjustments)
 	awakened?
 	? include stuff like drain and other shortcuts ?
 	
-Skills (rank, attribute, [Pool], specialty, expertise)
+Skills (rank, attribute, [Pool], specialization, expertise)
 	There is a small enough list I think we can just show them all
 
 Combat

@@ -113,7 +113,7 @@
             "rank": 0,
             "pool": 0,
             "max": 9,
-            "speciality": "",
+            "specialization": "",
             "expertise": ""
           },
           "athletics": {
@@ -123,7 +123,7 @@
             "rank": 0,
             "pool": 0,
             "max": 9,
-            "speciality": "",
+            "specialization": "",
             "expertise": ""
           },
           "biotech": {
@@ -133,7 +133,7 @@
             "rank": 0,
             "pool": 0,
             "max": 9,
-            "speciality": "",
+            "specialization": "",
             "expertise": ""
           },
           "closecombat": {
@@ -143,7 +143,7 @@
             "rank": 0,
             "pool": 0,
             "max": 9,
-            "speciality": "",
+            "specialization": "",
             "expertise": ""
           },
           "con": {
@@ -153,7 +153,7 @@
             "rank": 0,
             "pool": 0,
             "max": 9,
-            "speciality": "",
+            "specialization": "",
             "expertise": ""
           },
           "conjuring": {
@@ -163,7 +163,7 @@
             "rank": 0,
             "pool": 0,
             "max": 9,
-            "speciality": "",
+            "specialization": "",
             "expertise": ""
           },
           "cracking": {
@@ -173,7 +173,7 @@
             "rank": 0,
             "pool": 0,
             "max": 9,
-            "speciality": "",
+            "specialization": "",
             "expertise": ""
           },
           "electronics": {
@@ -183,7 +183,7 @@
             "rank": 0,
             "pool": 0,
             "max": 9,
-            "speciality": "",
+            "specialization": "",
             "expertise": ""
           },
           "enchanting": {
@@ -193,7 +193,7 @@
             "rank": 0,
             "pool": 0,
             "max": 9,
-            "speciality": "",
+            "specialization": "",
             "expertise": ""
           },
           "engineering": {
@@ -203,7 +203,7 @@
             "rank": 0,
             "pool": 0,
             "max": 9,
-            "speciality": "",
+            "specialization": "",
             "expertise": ""
           },
           "exoticweapons": {
@@ -213,7 +213,7 @@
             "rank": 0,
             "pool": 0,
             "max": 9,
-            "speciality": "",
+            "specialization": "",
             "expertise": ""
           },
           "firearms": {
@@ -223,7 +223,7 @@
             "rank": 0,
             "pool": 0,
             "max": 9,
-            "speciality": "",
+            "specialization": "",
             "expertise": ""
           },
           "influence": {
@@ -233,7 +233,7 @@
             "rank": 0,
             "pool": 0,
             "max": 9,
-            "speciality": "",
+            "specialization": "",
             "expertise": ""
           },
           "outdoors": {
@@ -243,7 +243,7 @@
             "rank": 0,
             "pool": 0,
             "max": 9,
-            "speciality": "",
+            "specialization": "",
             "expertise": ""
           },
           "perception": {
@@ -253,7 +253,7 @@
             "rank": 0,
             "pool": 0,
             "max": 9,
-            "speciality": "",
+            "specialization": "",
             "expertise": ""
           },
           "piloting": {
@@ -263,7 +263,7 @@
             "rank": 0,
             "pool": 0,
             "max": 9,
-            "speciality": "",
+            "specialization": "",
             "expertise": ""
           },
           "sorcery": {
@@ -273,7 +273,7 @@
             "rank": 0,
             "pool": 0,
             "max": 9,
-            "speciality": "",
+            "specialization": "",
             "expertise": ""
           },
           "stealth": {
@@ -283,7 +283,7 @@
             "rank": 0,
             "pool": 0,
             "max": 9,
-            "speciality": "",
+            "specialization": "",
             "expertise": ""
           },
           "tasking": {
@@ -293,7 +293,7 @@
             "rank": 0,
             "pool": 0,
             "max": 9,
-            "speciality": "",
+            "specialization": "",
             "expertise": ""
           }
         },

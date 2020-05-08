@@ -119,6 +119,15 @@ let calculateCharacterData = function (character) {
    character.data.attributes.charisma.max = meta.attributes.charisma.max
    character.data.attributes.edge.max = meta.attributes.edge.max
 
+   // calculate default skill pool, including untrained penelties?
+   for (let [key, skill] of Object.entries(character.data.skills.active)) {
+      if (skill.untrained) {
+         skill.pool = (skill.rank === 0 ? -1 : skill.rank) + character.data.attributes[skill.primaryAttribute].current
+      } else {
+         skill.pool = skill.rank === 0 ? 0 : (skill.rank + character.data.attributes[skill.primaryAttribute].current)
+      }
+   }
+
    // condition tracks
 
 

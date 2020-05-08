@@ -167,7 +167,7 @@
                      <th>Rank</th>
                      <th>Attribute</th>
                      <th>Pool</th>
-                     <th>Specialty</th>
+                     <th>Specialization</th>
                      <th>Expertise</th>
                   </tr>
                </thead>
@@ -179,9 +179,9 @@
                         <input type="number" data-dtype="Number" name="data.skills.active.{{@key}}.rank" value="{{rank}}" placeholder="rank" title="{{name}} Rank" min="0" max="{{max}}" />
                      </td>
                      <td>{{abbreviate primaryAttribute}}</td>
-                     <td>{{pool}}</td>
-                     <td>specialty input</td>
-                     <td>expertise input</td>
+                     <td>[{{pool}}]</td>
+                     <td><input type="text" name="data.skills.active.{{@key}}.specialization" value="{{specialization}}" placeholder="specialization" /></td>
+                     <td><input type="text" name="data.skills.active.{{@key}}.expertise" value="{{expertise}}" placeholder="expertise" /></td>
                   </tr>
                   {{/each}}
                </tbody>
