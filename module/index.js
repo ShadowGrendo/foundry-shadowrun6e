@@ -3,7 +3,7 @@
 import { ShadowrunActor } from "./actor.js"
 import { ShadowrunItemSheet } from "./item-sheet.js"
 import { ShadowrunActorSheet } from "./actor-sheet.js"
-import { Abbreviations } from './shadowrun.js'
+import { Names } from './shadowrun.js'
 
 
 
@@ -44,12 +44,8 @@ Hooks.once("init", async function () {
       return a === b
    })
 
-   Handlebars.registerHelper("add", function (a, b) {
-      return Number(a) + Number(b)
-   })
-
    Handlebars.registerHelper("abbreviate", function (term) {
-      return Abbreviations[term] || term
+      return Names[term].abbreviation || term
    })
 
 

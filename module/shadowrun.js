@@ -71,19 +71,19 @@ let metatypes = {
    }
 }
 
-let abbreviations = {
-   "body": "B",
-   "agility": "A",
-   "reaction": "R",
-   "strength": "S",
-   "willpower": "W",
-   "logic": "L",
-   "intuition": "I",
-   "charisma": "C",
-   "edge": "EDG",
-   "essence": "ESS",
-   "magic": "M",
-   "resonance": "RES"
+let names = {
+   "body": { "abbreviation": "B", "display": "Body" },
+   "agility": { "abbreviation": "A", "display": "Agility" },
+   "reaction": { "abbreviation": "R", "display": "Reaction" },
+   "strength": { "abbreviation": "S", "display": "Strength" },
+   "willpower": { "abbreviation": "W", "display": "Willpower" },
+   "logic": { "abbreviation": "L", "display": "Logic" },
+   "intuition": { "abbreviation": "I", "display": "Intuition" },
+   "charisma": { "abbreviation": "C", "display": "Charisma" },
+   "edge": { "abbreviation": "EDG", "display": "Edge" },
+   "essence": { "abbreviation": "ESS", "display": "Essence" },
+   "magic": { "abbreviation": "M", "display": "Magic" },
+   "resonance": { "abbreviation": "RES", "display": "Resonance" },
 }
 
 let calculateCharacterData = function (character) {
@@ -135,4 +135,4 @@ let calculateCharacterData = function (character) {
 
 }
 
-export { calculateCharacterData as CalculateCharacterData, metatypes as Metatypes, abbreviations as Abbreviations }
+export { calculateCharacterData as CalculateCharacterData, metatypes as Metatypes, names as Names }
