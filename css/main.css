@@ -187,3 +187,7 @@
 .shadowrun.sheet.item {
   min-width: 460px;
   min-height: 400px; }
+
+#chat .dice-tooltip .dice-rolls .roll {
+  width: 1.78rem;
+  height: 1.78rem; }
