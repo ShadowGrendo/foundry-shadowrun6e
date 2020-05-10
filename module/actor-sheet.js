@@ -58,9 +58,9 @@ export class ShadowrunActorSheet extends ActorSheet {
    /** @override */
    setPosition(options = {}) {
       const position = super.setPosition(options)
-      const sheetBody = this.element.find(".sheet-body")
-      const bodyHeight = position.height - 192
-      sheetBody.css("height", bodyHeight)
+      // const sheetBody = this.element.find(".sheet-body")
+      // const bodyHeight = position.height - 192
+      // sheetBody.css("height", bodyHeight)
       return position
    }
 
@@ -121,6 +121,7 @@ export class ShadowrunActorSheet extends ActorSheet {
       //    obj[e[0]] = e[1]
       //    return obj
       // }, { _id: this.object._id, "data.attributes": attributes })
+
 
       // Update the Actor
       return this.object.update(formData)

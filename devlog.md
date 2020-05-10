@@ -344,5 +344,8 @@ maybe a die with a number input?
 
 compendiums can always be world specific right? the system ones are just pre-defined ones. 
 
-
 separate tab for augmentations?
+
+## 5.9.2020
+
+Ok, chat 

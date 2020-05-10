@@ -297,11 +297,11 @@
             "expertise": ""
           }
         },
-        "knowledge": [
-          {
+        "knowledge": {
+          "0": {
             "name": "native language"
           }
-        ]
+        }
       },
       "journal": [
         {

@@ -147,7 +147,33 @@
     .shadowrun form.character section .skills-content .active-skills {
       flex-basis: 60%; }
     .shadowrun form.character section .skills-content .knowledge-skills {
-      flex-basis: 40%; }
+      flex-basis: 40%;
+      margin: .5rem 0 .5rem .5rem; }
+      .shadowrun form.character section .skills-content .knowledge-skills > div {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-items: center;
+        background: rgba(0, 0, 0, 0.5);
+        padding: .25rem .25rem .25rem .25rem; }
+        .shadowrun form.character section .skills-content .knowledge-skills > div span,
+        .shadowrun form.character section .skills-content .knowledge-skills > div a {
+          color: #f0f0e0;
+          text-shadow: 1px 1px #000;
+          box-sizing: border-box;
+          user-select: none;
+          font-weight: bold; }
+        .shadowrun form.character section .skills-content .knowledge-skills > div a:hover {
+          text-shadow: 0 0 8px red; }
+      .shadowrun form.character section .skills-content .knowledge-skills ol {
+        list-style: none;
+        padding: 0; }
+      .shadowrun form.character section .skills-content .knowledge-skills li {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center; }
+        .shadowrun form.character section .skills-content .knowledge-skills li a {
+          margin-left: .5rem; }
     .shadowrun form.character section .skills-content table th:nth-of-type(1),
     .shadowrun form.character section .skills-content table td:nth-of-type(1) {
       text-align: left;
@@ -187,7 +213,3 @@
 .shadowrun.sheet.item {
   min-width: 460px;
   min-height: 400px; }
-
-#chat .dice-tooltip .dice-rolls .roll {
-  width: 1.78rem;
-  height: 1.78rem; }
