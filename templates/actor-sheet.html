@@ -193,13 +193,13 @@
             <div class="knowledge-skills">
                <div>
                   <span>Knowledge Skills</span>
-                  <a data-action="create"><i class="fas fa-plus"></i></a>
+                  <a data-control="knowledge-skills" data-action="create"><i class="fas fa-plus"></i></a>
                </div>
                <ol>
                   {{#each data.skills.knowledge}}
-                  <li>
+                  <li data-id="{{@key}}">
                      <input type="text" data-dtype="String" name="data.skills.knowledge.{{@key}}.name" value="{{name}}" placeholder="knowledge" />
-                     <a data-action="delete"><i class="fas fa-trash"></i></a>
+                     <a data-control="knowledge-skills" data-action="delete"><i class="fas fa-trash"></i></a>
                   </li>
                   {{/each}}
                </ol>

@@ -1,9 +1,20 @@
 import { CalculateCharacterData } from './shadowrun.js'
+
+
 /**
  * Extend the basic ActorSheet with some very simple modifications
  * @extends {ActorSheet}
  */
 export class ShadowrunActorSheet extends ActorSheet {
+
+
+   constructor(...args) {
+      super(...args)
+
+      // track a list of things marked as deleted for the formudate method
+      this.deleted = []
+   }
+
 
    /** @override */
    static get defaultOptions() {
@@ -51,6 +62,38 @@ export class ShadowrunActorSheet extends ActorSheet {
 
       // // Add or Remove Attribute
       // html.find(".attributes").on("click", ".attribute-control", this._onClickAttributeControl.bind(this))
+
+      // console.log('[listener html]', html.find('[data-control=knowledge-skills]'))
+
+      // register listener for knowledge skill controls
+      html.find('[data-control=knowledge-skills]').on('click', this.knowledgeSkillsControl.bind(this))
+   }
+
+   async knowledgeSkillsControl(event) {
+      event.preventDefault()
+
+      let a = event.currentTarget
+      let action = a.dataset.action
+      let knowledges = this.object.data.data.skills.knowledge
+      let form = this.form
+
+      if (action === 'create') {
+         // add a new knowledge skill
+         let next = Object.keys(knowledges).length
+         let newSkill = document.createElement('li')
+         newSkill.innerHTML = `<input type="text" data-dtype="String" name="data.skills.knowledge.${next}.name" value="" placeholder="knowledge" />
+         <a data-control="knowledge-skills" data-action="delete"><i class="fas fa-trash"></i></a>`
+         form.appendChild(newSkill)
+      } else if (action === 'delete') {
+         let li = a.parentElement
+         let id = li.dataset.id
+         delete this.object.data.data.skills.knowledge[id]
+         // push a delete message to be appended to the formdata update
+         this.deleted.push(`data.skills.knowledge.-=${id}`)
+         li.remove()
+      }
+
+      await this._onSubmit(event)
    }
 
    /* -------------------------------------------- */
@@ -58,9 +101,6 @@ export class ShadowrunActorSheet extends ActorSheet {
    /** @override */
    setPosition(options = {}) {
       const position = super.setPosition(options)
-      // const sheetBody = this.element.find(".sheet-body")
-      // const bodyHeight = position.height - 192
-      // sheetBody.css("height", bodyHeight)
       return position
    }
 
@@ -122,6 +162,17 @@ export class ShadowrunActorSheet extends ActorSheet {
       //    return obj
       // }, { _id: this.object._id, "data.attributes": attributes })
 
+      // let d = expandObject(formData)
+      // console.log('[expanded update data]', d)
+      //formData['data.skills.knowledge.-=2'] = null
+
+      console.log('[update object deleted', this.deleted)
+      console.log('[update object]', formData)
+
+      this.deleted.forEach(element => {
+         formData[element] = null
+      })
+      this.deleted = []
 
       // Update the Actor
       return this.object.update(formData)
