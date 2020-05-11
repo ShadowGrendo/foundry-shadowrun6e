@@ -158,7 +158,7 @@
          <h4>overview</h4>
          <!-- todo - this tab quick links the most interesting bits of the rest of the sheet -->
          <!-- skills you have ratings in, favorite gear, spells, edge, conditions -->
-         
+
       </div>
       <div class="tab skills" data-group="primary" data-tab="skills">
          <div class="skills-content">
@@ -166,7 +166,7 @@
                <table>
                   <thead>
                      <tr>
-                        <th>Active Skill</th>
+                        <th>Active Skills</th>
                         <th>Rank</th>
                         <th>Attribute</th>
                         <th>Pool</th>
@@ -191,12 +191,28 @@
                </table>
             </div>
             <div class="knowledge-skills">
-               <h4>knowledges</h4>
+               <div>
+                  <span>Knowledge Skills</span>
+                  <a data-control="knowledge-skills" data-action="create"><i class="fas fa-plus"></i></a>
+               </div>
+               <ol>
+                  {{#each data.skills.knowledge}}
+                  <li data-id="{{@key}}">
+                     <input type="text" data-dtype="String" name="data.skills.knowledge.{{@key}}.name" value="{{name}}" placeholder="knowledge" />
+                     <a data-control="knowledge-skills" data-action="delete"><i class="fas fa-trash"></i></a>
+                  </li>
+                  {{/each}}
+               </ol>
+
             </div>
          </div>
       </div>
       <div class="tab combat" data-group="primary" data-tab="combat">
          <h4>combat</h4>
+
+         <!-- condition monitors, pyhysical and stun -->
+
+
       </div>
       <div class="tab qualities" data-group="primary" data-tab="qualities">
          <h4>qualities</h4>
@@ -212,6 +228,12 @@
       </div>
       <div class="tab journal" data-group="primary" data-tab="journal">
          <h4>journal</h4>
+
+         <a class="journal-control" data-action="create"><i class="fas fa-plus"></i></a>
+         <ol>
+
+         </ol>
+
       </div>
    </section>
 

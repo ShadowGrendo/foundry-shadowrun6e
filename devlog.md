@@ -344,5 +344,26 @@ maybe a die with a number input?
 
 compendiums can always be world specific right? the system ones are just pre-defined ones. 
 
-
 separate tab for augmentations?
+
+## 5.9.2020
+
+got a layout for knowledge skills. We can worry about chat templates later. 
+Wish that we could 
+
+
+## 5.11.2020
+
+two things for today. 
+1. might try the new .56 version. 
+2. for real, I think I'll try doing a custom character sheet update. 
+
+So, we get some kind of data object, can we just perform updates to it?
+if we break it will it only update locally? is that what the weirdness is about?
+have to remember to test that kind of thing. The updates are what? messages?
+So, yes, that does have something to do with the wacky update scheme. 
+There's this thing where sometimes the update will be written as object['-=key'] = null
+is that the correct update message to post to the server? I feel like it might be. 
+
+Ok, that is the key. We can either mess with the form data through the input, or perhaps we can add some data to the sheet that the corrisponding formdata manipulator can use. 
+
