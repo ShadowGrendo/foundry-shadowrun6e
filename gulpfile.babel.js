@@ -80,19 +80,19 @@ function styles() {
 }
 
 function develop(done) {
-   devServer.init({
-      server: './dist',
-      single: true,
-      port: 8080,
-      files: ['dist/**'],
-      open: false,
-      notify: false,
-      // middleware for http2
-   })
+   // devServer.init({
+   //    server: './dist',
+   //    single: true,
+   //    port: 8080,
+   //    files: ['dist/**'],
+   //    open: false,
+   //    notify: false,
+   //    // middleware for http2
+   // })
 
    // watch each type of file seperately so we can more efficently run just that pipeline 
-   watch(['testing/index.html', 'testing/data.json', 'templates/**'], content)
-   watch('testing/style.css', styles)
+   // watch(['testing/index.html', 'testing/data.json', 'templates/**'], content)
+   // watch('testing/style.css', styles)
    watch('scss/**', scss)
 
    done()

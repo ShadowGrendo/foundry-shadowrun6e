@@ -25,7 +25,7 @@ let metatypes = {
          charisma: { min: 1, max: 6 },
          edge: { min: 1, max: 6 },
       },
-      qualities: ["Toxin Resistance", "Thermographic Vision"]
+      qualities: ["toxinresistance", "thermographicvision"]
    },
    elf: {
       attributes: {
@@ -39,7 +39,7 @@ let metatypes = {
          charisma: { min: 1, max: 8 },
          edge: { min: 1, max: 6 },
       },
-      qualities: ["Low-Light Vision"]
+      qualities: ["lowlightvision"]
    },
    ork: {
       attributes: {
@@ -53,7 +53,7 @@ let metatypes = {
          charisma: { min: 1, max: 5 },
          edge: { min: 1, max: 6 },
       },
-      qualities: ["Low-Light Vision", "Build Tough 1"]
+      qualities: ["lowlightvision", "builttough1"]
    },
    troll: {
       attributes: {
@@ -67,11 +67,12 @@ let metatypes = {
          charisma: { min: 1, max: 5 },
          edge: { min: 1, max: 6 },
       },
-      qualities: ["Dermal Deposits", "Thermographic Vision", "Built Tough 2"]
+      qualities: ["dermaldeposits", "thermographicvision", "builttough2"]
    }
 }
 
 let names = {
+   // attributes
    "body": { "abbreviation": "B", "display": "Body" },
    "agility": { "abbreviation": "A", "display": "Agility" },
    "reaction": { "abbreviation": "R", "display": "Reaction" },
@@ -84,6 +85,30 @@ let names = {
    "essence": { "abbreviation": "ESS", "display": "Essence" },
    "magic": { "abbreviation": "M", "display": "Magic" },
    "resonance": { "abbreviation": "RES", "display": "Resonance" },
+   // skills
+   "astral": { "abbreviation": "Astral", "display": "Astral" },
+   "athletics": { "abbreviation": "athletics", "display": "Athletics" },
+   "biotech": { "abbreviation": "biotech", "display": "Biotech" },
+   "closecombat": { "abbreviation": "CQC", "display": "Close Combat" },
+   "con": { "abbreviation": "con", "display": "Con" },
+   "conjuring": { "abbreviation": "conjuring", "display": "Conjuring" },
+   "cracking": { "abbreviation": "cracking", "display": "Cracking" },
+   "electronics": { "abbreviation": "electronics", "display": "Electronics" },
+   "enchanting": { "abbreviation": "enchanting", "display": "Enchanting" },
+   "engineering": { "abbreviation": "engineering", "display": "Engineering" },
+   "exoticweapons": { "abbreviation": "exotic-weapons", "display": "Exotic Weapons" },
+   "firearms": { "abbreviation": "firearms", "display": "Firearms" },
+   "influence": { "abbreviation": "influence", "display": "Influence" },
+   "outdoors": { "abbreviation": "outdoors", "display": "Outdoors" },
+   "perception": { "abbreviation": "perception", "display": "Perception" },
+   "piloting": { "abbreviation": "piloting", "display": "Piloting" },
+   "sorcery": { "abbreviation": "sorcery", "display": "Sorcery" },
+   "stealth": { "abbreviation": "stealth", "display": "Stealth" },
+   "tasking": { "abbreviation": "tasking", "display": "Tasking" },
+   // tests
+   "judgeintentions": { "abbreviation": "JI", "display": "Judge Intentions" },
+   "composure": { "abbreviation": "Composure", "display": "Composure" },
+   "composure": { "abbreviation": "Composure", "display": "Composure" },
 }
 
 let calculateCharacterData = function (character) {
@@ -119,14 +144,44 @@ let calculateCharacterData = function (character) {
    character.data.attributes.charisma.max = meta.attributes.charisma.max
    character.data.attributes.edge.max = meta.attributes.edge.max
 
-   // calculate default skill pool, including untrained penelties?
+   // start collecting data for tests table
+
+   let tests = {}
+
+   // calculate default dice pool for skills
    for (let [key, skill] of Object.entries(character.data.skills.active)) {
       if (skill.untrained) {
          skill.pool = (skill.rank === 0 ? -1 : skill.rank) + character.data.attributes[skill.primaryAttribute].current
       } else {
          skill.pool = skill.rank === 0 ? 0 : (skill.rank + character.data.attributes[skill.primaryAttribute].current)
       }
+      // if you have a positive dice pool before conditions, add to the overview
+      if (skill.pool > 0) {
+         tests[key] = { "formula": `${names[skill.primaryAttribute].display} (${character.data.attributes[skill.primaryAttribute].current}) + ${names[key].display} (${skill.rank}) + Conditions ()`, "pool": skill.pool }
+         // todo - also add in specialization (+2) and expertise (+3)
+      }
    }
+
+   character.data.overview.tests.judgeintentions.formula = `Willpower (${character.data.attributes.willpower.current}) + Intuition (${character.data.attributes.intuition.current}) + Conditions ()`
+   character.data.overview.tests.judgeintentions.pool = character.data.attributes.willpower.current + character.data.attributes.intuition.current
+
+   // todo - rest of the predefined tests. 
+   // we can start with simple stuff, 
+   // but there's a number of conditions for others things like, determining your drain pool. 
+   // must be awakened mage, then determine your tradition. 
+   // matrix stuff has some rediculous conditions.  
+
+
+
+   // merge pre-defined and skill tests, and then sort them
+   let ordered = {}
+   let unordered = { ...character.data.overview.tests, ...tests }
+   Object.keys(unordered).sort().forEach(key => {
+      ordered[key] = unordered[key]
+   })
+
+   character.data.overview.tests = ordered
+
 
    // condition tracks
 

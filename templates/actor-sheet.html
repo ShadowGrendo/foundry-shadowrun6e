@@ -155,10 +155,42 @@
    </nav>
    <section class="sheet-body">
       <div class="tab overview" data-group="primary" data-tab="overview">
-         <h4>overview</h4>
          <!-- todo - this tab quick links the most interesting bits of the rest of the sheet -->
          <!-- skills you have ratings in, favorite gear, spells, edge, conditions -->
+         <!-- todo - table of dice pools: skills you have a dice pool > 0 in, attribute rolls like memory and judge intentions, and other common rolls like defense (reaction + intuition),
+         soak damage (body)  
+         we should be able define the attributes in the formula and make it configurable. 
+         Ok, can probably put initiative in there too. 
+         
+         we can make the various pools rollable. 
+         left-click will just roll. shift+left-Click will roll with a dialog for options like apply condition penalties or explode 6s. That kind of thing. 
+      maybe include a wild die at some point. 
 
+         tooltip for dice pool will give you break down of the calculation
+      -->
+         <div class="overview-content">
+            <div class="tests">
+               <table>
+                  <thead>
+                     <tr>
+                        <th>Test</th>
+                        <th>Formula</th>
+                        <th>Dice Pool</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     {{#each data.overview.tests}}
+                     <tr>
+                        <td>{{display @key}}</td>
+                        <td>{{formula}}</td>
+                        <td>[{{pool}}]</td>
+                     </tr>
+                     {{/each}}
+                  </tbody>
+               </table>
+            </div>
+            <div class="other-overview"></div>
+         </div>
       </div>
       <div class="tab skills" data-group="primary" data-tab="skills">
          <div class="skills-content">
@@ -177,7 +209,7 @@
                   <tbody>
                      {{#each data.skills.active}}
                      <tr>
-                        <td>{{name}}</td>
+                        <td>{{display @key}}</td>
                         <td>
                            <input type="number" data-dtype="Number" name="data.skills.active.{{@key}}.rank" value="{{rank}}" placeholder="rank" title="{{name}} Rank" min="0" max="{{max}}" />
                         </td>
