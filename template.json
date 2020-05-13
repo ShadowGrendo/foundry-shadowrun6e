@@ -107,7 +107,6 @@
       "skills": {
         "active": {
           "astral": {
-            "name": "Astral",
             "untrained": false,
             "primaryAttribute": "intuition",
             "rank": 0,
@@ -117,7 +116,6 @@
             "expertise": ""
           },
           "athletics": {
-            "name": "Athletics",
             "untrained": true,
             "primaryAttribute": "agility",
             "rank": 0,
@@ -127,7 +125,6 @@
             "expertise": ""
           },
           "biotech": {
-            "name": "Biotech",
             "untrained": false,
             "primaryAttribute": "logic",
             "rank": 0,
@@ -137,7 +134,6 @@
             "expertise": ""
           },
           "closecombat": {
-            "name": "Close Combat",
             "untrained": true,
             "primaryAttribute": "agility",
             "rank": 0,
@@ -147,7 +143,6 @@
             "expertise": ""
           },
           "con": {
-            "name": "Con",
             "untrained": true,
             "primaryAttribute": "charisma",
             "rank": 0,
@@ -157,7 +152,6 @@
             "expertise": ""
           },
           "conjuring": {
-            "name": "Conjuring",
             "untrained": false,
             "primaryAttribute": "magic",
             "rank": 0,
@@ -167,7 +161,6 @@
             "expertise": ""
           },
           "cracking": {
-            "name": "Cracking",
             "untrained": false,
             "primaryAttribute": "logic",
             "rank": 0,
@@ -177,7 +170,6 @@
             "expertise": ""
           },
           "electronics": {
-            "name": "Electronics",
             "untrained": true,
             "primaryAttribute": "logic",
             "rank": 0,
@@ -187,7 +179,6 @@
             "expertise": ""
           },
           "enchanting": {
-            "name": "Enchanting",
             "untrained": false,
             "primaryAttribute": "magic",
             "rank": 0,
@@ -197,7 +188,6 @@
             "expertise": ""
           },
           "engineering": {
-            "name": "Engineering",
             "untrained": true,
             "primaryAttribute": "logic",
             "rank": 0,
@@ -207,7 +197,6 @@
             "expertise": ""
           },
           "exoticweapons": {
-            "name": "Exotic Weapons",
             "untrained": false,
             "primaryAttribute": "agility",
             "rank": 0,
@@ -217,7 +206,6 @@
             "expertise": ""
           },
           "firearms": {
-            "name": "Firearms",
             "untrained": true,
             "primaryAttribute": "agility",
             "rank": 0,
@@ -227,7 +215,6 @@
             "expertise": ""
           },
           "influence": {
-            "name": "Influence",
             "untrained": true,
             "primaryAttribute": "charisma",
             "rank": 0,
@@ -237,7 +224,6 @@
             "expertise": ""
           },
           "outdoors": {
-            "name": "Outdoors",
             "untrained": true,
             "primaryAttribute": "intuition",
             "rank": 0,
@@ -247,7 +233,6 @@
             "expertise": ""
           },
           "perception": {
-            "name": "Perception",
             "untrained": true,
             "primaryAttribute": "intuition",
             "rank": 0,
@@ -257,7 +242,6 @@
             "expertise": ""
           },
           "piloting": {
-            "name": "Piloting",
             "untrained": true,
             "primaryAttribute": "reaction",
             "rank": 0,
@@ -267,7 +251,6 @@
             "expertise": ""
           },
           "sorcery": {
-            "name": "Sorcery",
             "untrained": false,
             "primaryAttribute": "magic",
             "rank": 0,
@@ -277,7 +260,6 @@
             "expertise": ""
           },
           "stealth": {
-            "name": "Stealth",
             "untrained": true,
             "primaryAttribute": "agility",
             "rank": 0,
@@ -287,7 +269,6 @@
             "expertise": ""
           },
           "tasking": {
-            "name": "Tasking",
             "untrained": false,
             "primaryAttribute": "resonance",
             "rank": 0,
@@ -299,7 +280,15 @@
         },
         "knowledge": {
           "0": {
-            "name": "native language"
+            "name": "Language (Native)"
+          }
+        }
+      },
+      "overview": {
+        "tests": {
+          "judgeintentions": {
+            "formula": "Willpower + Intuition",
+            "pool": 0
           }
         }
       },

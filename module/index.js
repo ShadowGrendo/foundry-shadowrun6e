@@ -40,7 +40,7 @@ Hooks.once("init", async function () {
       console.log('[dice roll]', roll)
 
 
-      
+
 
 
    })
@@ -55,7 +55,14 @@ Hooks.once("init", async function () {
 
    // lookup the abbreviation of a well know term
    Handlebars.registerHelper("abbreviate", function (term) {
-      return Names[term].abbreviation || term
+      let entry = Names[term]
+      return entry ? entry.abbreviation : term
+   })
+
+   // lookup the display version of a well know term
+   Handlebars.registerHelper("display", function (term) {
+      let entry = Names[term]
+      return entry ? entry.display : term
    })
 
    // Register an inline markdown editor helper

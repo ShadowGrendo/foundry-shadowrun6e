@@ -367,3 +367,13 @@ is that the correct update message to post to the server? I feel like it might b
 
 Ok, that is the key. We can either mess with the form data through the input, or perhaps we can add some data to the sheet that the corrisponding formdata manipulator can use. 
 
+## 5.13.2020
+
+started adding a table of tests for the overview tab. 
+there's some todo - tags with notes,
+todo - I'm thinking that it would be cool to have some shortcuts to rolling in chat. 
+Like `/roll A+I` to roll agility + intuition. I think you can already do `@[path to attribute]`
+or `/roll agility+athletics`
+
+alternately, I could add some sorting ability to the tests table. Then you can order your tests by name or dice pool. 
+

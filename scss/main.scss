@@ -4,7 +4,9 @@
 .shadowrun {
    form.character {
       font-family: "Friz Quadrata", sans-serif;
-      font-size: 18px;
+      font-size: 16px;
+
+
 
       select {
          background-color: inherit;
@@ -165,10 +167,10 @@
          a {
             --aug-border: 1px;
             --aug-inset: 2px;
-            padding: .25rem;
-            text-align: center;
             --aug-border-bg: rgb(82, 81, 78);
             --aug-inset-bg: rgba(255, 255, 255, 0);
+            padding: .25rem;
+            text-align: center;
             margin-right: .25rem;
          }
 
@@ -178,34 +180,6 @@
       }
 
       section {
-
-         // @keyframes fade-in {
-         //    from {
-         //      opacity: 0;
-         //    }
-         //    to {
-         //      opacity: 1;
-         //    }
-         //  }
-
-         //  @keyframes fade-out {
-         //    from {
-         //      opacity: 1;
-         //    }
-         //    to {
-         //      opacity: 0;
-         //    }
-         //  }
-
-         // .tab[data-tab] {
-         //    animation: fade-out .25s ease-in-out;
-         // }
-
-         // .tab[data-tab].active {
-         //    animation: fade-in .25s ease-in-out;
-         // }
-
-
          .skills-content {
 
             display: flex;
@@ -307,6 +281,39 @@
 
 
          }
+
+         .overview-content {
+            font-size: .89rem;
+
+            display: flex;
+            flex-flow: row nowrap;
+
+            .tests {
+               flex-basis: 50%;
+
+               table {
+
+                  th:nth-of-type(1),
+                  td:nth-of-type(1) {
+                     text-align: left;
+                     padding-left: .25rem;
+                  }
+
+                  th:nth-of-type(2),
+                  td:nth-of-type(2) {
+                     text-align: left;
+                     // padding-left: .25rem;
+                  }
+
+                  th:nth-of-type(3),
+                  td:nth-of-type(3) {
+                     text-align: center;
+                     // padding-left: .25rem;
+                  }
+               }
+
+            }
+         }
       }
 
 
@@ -317,8 +324,9 @@
    .window-content {
       height: 100%;
       // padding: 5px;
-      overflow-y: hidden;
+      // overflow-y: hidden;
    }
+
 
    .tab.active {
       height: 100%;

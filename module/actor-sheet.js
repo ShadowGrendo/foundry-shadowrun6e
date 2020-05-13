@@ -22,8 +22,8 @@ export class ShadowrunActorSheet extends ActorSheet {
          classes: ["shadowrun", "sheet", "actor"],
          template: "systems/shadowrun6e/templates/actor-sheet.html",
          width: 1000,
-         height: 870,
-         tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "skills" }]
+         height: 600,
+         tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "overview" }]
       })
    }
 
