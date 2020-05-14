@@ -105,10 +105,29 @@ let names = {
    "sorcery": { "abbreviation": "sorcery", "display": "Sorcery" },
    "stealth": { "abbreviation": "stealth", "display": "Stealth" },
    "tasking": { "abbreviation": "tasking", "display": "Tasking" },
-   // tests
+   // attribute tests
    "judgeintentions": { "abbreviation": "JI", "display": "Judge Intentions" },
    "composure": { "abbreviation": "Composure", "display": "Composure" },
-   "composure": { "abbreviation": "Composure", "display": "Composure" },
+   "memory": { "abbreviation": "Memory", "display": "Memory" },
+   "lift": { "abbreviation": "Lift", "display": "Lift" },
+   //common tests
+   "healstun": { "abbreviation": "Heal Stun", "display": "Heal–Stun" },
+   "healdamage": { "abbreviation": "Heal Damage", "display": "Heal–Damage" },
+   "healoverflow": { "abbreviation": "Heal Overflow", "display": "Heal–Overflow" },
+   "defendphysical": { "abbreviation": "Defend Physical", "display": "Defend–Physical" },
+   "defendastral": { "abbreviation": "Defend Astral", "display": "Defend–Astral" },
+   "defenddirectmagic": { "abbreviation": "Defend Direct Magic", "display": "Defend–Direct Magic" },
+   "defendindirectmagic": { "abbreviation": "Defend Indirect Magic", "display": "Defend–Indirect Magic" },
+   "defenddetectionmagic": { "abbreviation": "Defend Detection Magic", "display": "Defend–Detection Magic" },
+   "defendothermagic": { "abbreviation": "Defend Other Magic", "display": "Defend–Other Magic" },
+   "resistdamage": { "abbreviation": "Resist Damage", "display": "Resist–Damage" },
+   "resistdrain": { "abbreviation": "Resist Drain", "display": "Resist–Drain" },
+   "initiative": { "abbreviation": "Initiative", "display": "Initiative​" },
+   "initiativeastral": { "abbreviation": "Initiative Astral", "display": "Initiative–Astral" },
+   "initiativematrixar": { "abbreviation": "Initiative Matrix", "display": "Initiative–Matrix AR" },
+   "initiativematrixvrcold": { "abbreviation": "Initiative Matrix VR Cold", "display": "Initiative–Matrix VR Cold" },
+   "initiativematrixvrhot": { "abbreviation": "Initiative Matrix VR Hot", "display": "Initiative–Matrix VR Hot" },
+
 }
 
 let calculateCharacterData = function (character) {
@@ -162,14 +181,112 @@ let calculateCharacterData = function (character) {
       }
    }
 
-   character.data.overview.tests.judgeintentions.formula = `Willpower (${character.data.attributes.willpower.current}) + Intuition (${character.data.attributes.intuition.current}) + Conditions ()`
-   character.data.overview.tests.judgeintentions.pool = character.data.attributes.willpower.current + character.data.attributes.intuition.current
+   // Judge Intentions (Willpower + Intuition + Conditions)
+   character.data.overview.tests.judgeintentions = {
+      "formula": `Willpower (${character.data.attributes.willpower.current}) + Intuition (${character.data.attributes.intuition.current}) + Conditions ()`,
+      "pool": character.data.attributes.willpower.current + character.data.attributes.intuition.current
+   }
+
+   // Composure (Willpower + Charisma + Conditions)
+   character.data.overview.tests.composure = {
+      "formula": `Willpower (${character.data.attributes.willpower.current}) + Charisma (${character.data.attributes.charisma.current}) + Conditions ()`,
+      "pool": character.data.attributes.willpower.current + character.data.attributes.charisma.current
+   }
+
+   // Memory (Logic + Intuition + Conditions)
+   character.data.overview.tests.memory = {
+      "formula": `Logic (${character.data.attributes.logic.current}) + Intuition (${character.data.attributes.intuition.current}) + Conditions ()`,
+      "pool": character.data.attributes.logic.current + character.data.attributes.intuition.current
+   }
+
+   // Lift (Body + Willpower + Conditions)
+   character.data.overview.tests.lift = {
+      "formula": `Body (${character.data.attributes.body.current}) + Willpower (${character.data.attributes.willpower.current}) + Conditions ()`,
+      "pool": character.data.attributes.body.current + character.data.attributes.willpower.current
+   }
+
+   // Heal - Stun (Body + Willpower), no conditions
+   character.data.overview.tests.healstun = {
+      "formula": `Body (${character.data.attributes.body.current}) + Willpower (${character.data.attributes.willpower.current})`,
+      "pool": character.data.attributes.body.current + character.data.attributes.willpower.current
+   }
+
+   // Heal - Damage (Body + Body), no conditions
+   character.data.overview.tests.healdamage = {
+      "formula": `Body (${character.data.attributes.body.current}) + Body (${character.data.attributes.body.current})`,
+      "pool": character.data.attributes.body.current + character.data.attributes.body.current
+   }
+
+   // Heal - Overflow (Body + Body + Conditions)
+   character.data.overview.tests.healoverflow = {
+      "formula": `Body (${character.data.attributes.body.current}) + Body (${character.data.attributes.body.current})`,
+      "pool": character.data.attributes.body.current + character.data.attributes.body.current
+   }
+
+   // Defend - Physical (Reaction + Intuition + Conditions)
+   character.data.overview.tests.defendphysical = {
+      "formula": `Reaction (${character.data.attributes.reaction.current}) + Intuition (${character.data.attributes.intuition.current}) + Conditions ()`,
+      "pool": character.data.attributes.reaction.current + character.data.attributes.intuition.current
+   }
+
+   // Defend - Direct Magic (Willpower + Intuition + Conditions)
+   character.data.overview.tests.defenddirectmagic = {
+      "formula": `Willpower (${character.data.attributes.willpower.current}) + Intuition (${character.data.attributes.intuition.current}) + Conditions ()`,
+      "pool": character.data.attributes.willpower.current + character.data.attributes.intuition.current
+   }
+
+   // Defend - Indirect Magic (Reaction + Willpower + Conditions)
+   character.data.overview.tests.defendindirectmagic = {
+      "formula": `Reaction (${character.data.attributes.reaction.current}) + Willpower (${character.data.attributes.willpower.current}) + Conditions ()`,
+      "pool": character.data.attributes.reaction.current + character.data.attributes.willpower.current
+   }
+
+   // Defend - Detection Magic (Body + Willpower + Conditions)
+   character.data.overview.tests.defenddetectionmagic = {
+      "formula": `Body (${character.data.attributes.body.current}) + Willpower (${character.data.attributes.willpower.current}) + Conditions ()`,
+      "pool": character.data.attributes.body.current + character.data.attributes.willpower.current
+   }
+
+   // Defend - Other Effects (Willpower + Logic + Conditions)
+   character.data.overview.tests.defendothermagic = {
+      "formula": `Willpower (${character.data.attributes.willpower.current}) + Logic (${character.data.attributes.logic.current}) + Conditions ()`,
+      "pool": character.data.attributes.willpower.current + character.data.attributes.logic.current
+   }
+
+   // Resist - Damage (Body), no conditions
+   character.data.overview.tests.resistdamage = {
+      "formula": `Body (${character.data.attributes.body.current})`,
+      "pool": character.data.attributes.body.current
+   }
+
+   // Initiative (Reaction + Intuition + 1D6)
+   character.data.overview.tests.initiative = {
+      "formula": `Reaction (${character.data.attributes.reaction.current}) + Intuition (${character.data.attributes.intuition.current}) + Initiative Dice (1D6)`,
+      "pool": character.data.attributes.reaction.current + character.data.attributes.intuition.current
+   }
+
+   // Initiative - Matrix - AR (Reaction + Intuition + 1D6)
+   character.data.overview.tests.initiativematrixar = {
+      "formula": `Reaction (${character.data.attributes.reaction.current}) + Intuition (${character.data.attributes.intuition.current}) + Initiative Dice (1D6)`,
+      "pool": character.data.attributes.reaction.current + character.data.attributes.intuition.current
+   }
+
+   // if Awakened
+   // Defend - Astral (Intuition + Logic + Conditions)
+   // Resist - Drain (Willpower + Logic | Charisma), no conditions
+   // Initiative - Astral (Logic + Intuition + 2D6)
+
+
+   // if Hacker?
+   // Initiative - Matrix - VR Cold Sim (Intuition + Data Processing + 2D6)
+   // Initiative - Matrix - VR Hot Sim (Intuition + Data Processing + 3D6)
+
 
    // todo - rest of the predefined tests. 
    // we can start with simple stuff, 
    // but there's a number of conditions for others things like, determining your drain pool. 
    // must be awakened mage, then determine your tradition. 
-   // matrix stuff has some rediculous conditions.  
+   // matrix stuff has a crazy number of different pools and variations.  
 
 
 

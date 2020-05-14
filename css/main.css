@@ -200,7 +200,7 @@
     display: flex;
     flex-flow: row nowrap; }
     .shadowrun form.character section .overview-content .tests {
-      flex-basis: 50%; }
+      flex-basis: 60%; }
       .shadowrun form.character section .overview-content .tests table th:nth-of-type(1),
       .shadowrun form.character section .overview-content .tests table td:nth-of-type(1) {
         text-align: left;

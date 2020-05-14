@@ -285,12 +285,7 @@
         }
       },
       "overview": {
-        "tests": {
-          "judgeintentions": {
-            "formula": "Willpower + Intuition",
-            "pool": 0
-          }
-        }
+        "tests": {}
       },
       "journal": [
         {
