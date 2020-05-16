@@ -148,7 +148,7 @@
       <a class="item" data-tab="skills" augmented-ui="tl-clip br-clip exe">Skills</a>
       <a class="item" data-tab="combat" augmented-ui="tl-clip br-clip exe">Combat</a>
       <a class="item" data-tab="qualities" augmented-ui="tl-clip br-clip exe">Qualities</a>
-      <a class="item" data-tab="augments" augmented-ui="tl-clip br-clip exe">Augments</a>
+      <a class="item" data-tab="augmentations" augmented-ui="tl-clip br-clip exe">Augments</a>
       <a class="item" data-tab="gear" augmented-ui="tl-clip br-clip exe">Gear</a>
       <a class="item" data-tab="social" augmented-ui="tl-clip br-clip exe">Social</a>
       <a class="item" data-tab="journal" augmented-ui="tl-clip br-clip exe">Journal</a>
@@ -167,6 +167,9 @@
       maybe include a wild die at some point. 
 
          tooltip for dice pool will give you break down of the calculation
+
+            Time for rollable links
+
       -->
          <div class="overview-content">
             <div class="tests">
@@ -183,7 +186,7 @@
                      <tr>
                         <td>{{display @key}}</td>
                         <td>{{formula}}</td>
-                        <td>[{{pool}}]</td>
+                        <td><a data-roll='{ "test": "{{@key}}", "pool": {{pool}} }'>[{{pool}}]</a></td>
                      </tr>
                      {{/each}}
                   </tbody>
@@ -249,8 +252,8 @@
       <div class="tab qualities" data-group="primary" data-tab="qualities">
          <h4>qualities</h4>
       </div>
-      <div class="tab augments" data-group="primary" data-tab="augments">
-         <h4>augments</h4>
+      <div class="tab augmentations" data-group="primary" data-tab="augmentations">
+         <h4>augmentations</h4>
       </div>
       <div class="tab gear" data-group="primary" data-tab="gear">
          <h4>gear</h4>
