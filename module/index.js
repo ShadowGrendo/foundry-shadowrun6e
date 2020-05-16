@@ -29,21 +29,22 @@ Hooks.once("init", async function () {
    //    config: true
    // })
 
+   Hooks.on("renderChatMessage", (message, data, html) => {
+      // if (!message.isRoll || message.roll.parts[0].faces !== 20) return
 
-   Hooks.on("renderChatMessage", (msg, html, data) => {
-      // todo - make a module eventually, but for now, we'll do chat fixups here. 
-      if (!msg.isRoll || !msg.isRollVisible || !msg.roll.parts.length) return;
+      // todo - check for glitches
+      // also 
+      // // the place to do stuff for dice rolls. 
+      // let d20 = message.roll.parts[0].total
+      // if (d20 === 20) html.find(".dice-total").addClass("success")
+      // else if (d20 === 1) html.find(".dice-total").addClass("failure")
 
-      // if this is a roll of d6cs>4 then lets highlight rolls of 5 and 6 and check for glitches and critical glitches
-
-      let roll = msg.roll.parts[0]
-      console.log('[dice roll]', roll)
-
-
-
-
+      // let roll = msg.roll.parts[0]
+      // console.log('[dice roll]', roll)
 
    })
+
+
 
 
 
@@ -55,14 +56,12 @@ Hooks.once("init", async function () {
 
    // lookup the abbreviation of a well know term
    Handlebars.registerHelper("abbreviate", function (term) {
-      let entry = Names[term]
-      return entry ? entry.abbreviation : term
+      return Names.abbreviate(term)
    })
 
    // lookup the display version of a well know term
    Handlebars.registerHelper("display", function (term) {
-      let entry = Names[term]
-      return entry ? entry.display : term
+      return Names.display(term)
    })
 
    // Register an inline markdown editor helper

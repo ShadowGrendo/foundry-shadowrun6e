@@ -72,6 +72,16 @@ let metatypes = {
 }
 
 let names = {
+
+   abbreviate: (term) => {
+      let entry = names[term]
+      return entry ? entry.abbreviation : term
+   },
+   display: (term) => {
+      let entry = names[term]
+      return entry ? entry.display : term
+   },
+
    // attributes
    "body": { "abbreviation": "B", "display": "Body" },
    "agility": { "abbreviation": "A", "display": "Agility" },
@@ -127,7 +137,6 @@ let names = {
    "initiativematrixar": { "abbreviation": "Initiative Matrix", "display": "Initiative–Matrix AR" },
    "initiativematrixvrcold": { "abbreviation": "Initiative Matrix VR Cold", "display": "Initiative–Matrix VR Cold" },
    "initiativematrixvrhot": { "abbreviation": "Initiative Matrix VR Hot", "display": "Initiative–Matrix VR Hot" },
-
 }
 
 let calculateCharacterData = function (character) {
@@ -164,7 +173,6 @@ let calculateCharacterData = function (character) {
    character.data.attributes.edge.max = meta.attributes.edge.max
 
    // start collecting data for tests table
-
    let tests = {}
 
    // calculate default dice pool for skills
@@ -176,8 +184,15 @@ let calculateCharacterData = function (character) {
       }
       // if you have a positive dice pool before conditions, add to the overview
       if (skill.pool > 0) {
-         tests[key] = { "formula": `${names[skill.primaryAttribute].display} (${character.data.attributes[skill.primaryAttribute].current}) + ${names[key].display} (${skill.rank}) + Conditions ()`, "pool": skill.pool }
-         // todo - also add in specialization (+2) and expertise (+3)
+         tests[key] = { "formula": `${names.display(key)} (${skill.rank}) + ${names.display(skill.primaryAttribute)} (${character.data.attributes[skill.primaryAttribute].current}) + Conditions ()`, "pool": skill.pool }
+
+         if (skill.specialization) {
+            tests[`${names.display(key)}–${skill.specialization}`] = { "formula": `${names.display(key)} (${skill.pool}) + 2 + Conditions ()`, "pool": skill.pool + 2 }
+         }
+
+         if (skill.expertise) {
+            tests[`${names.display(key)}–${skill.expertise}`] = { "formula": `${names.display(key)} (${skill.pool}) + 3 + Conditions ()`, "pool": skill.pool + 3 }
+         }
       }
    }
 
@@ -219,7 +234,7 @@ let calculateCharacterData = function (character) {
 
    // Heal - Overflow (Body + Body + Conditions)
    character.data.overview.tests.healoverflow = {
-      "formula": `Body (${character.data.attributes.body.current}) + Body (${character.data.attributes.body.current})`,
+      "formula": `Body (${character.data.attributes.body.current}) + Body (${character.data.attributes.body.current}) + Conditions ()`,
       "pool": character.data.attributes.body.current + character.data.attributes.body.current
    }
 
@@ -259,17 +274,17 @@ let calculateCharacterData = function (character) {
       "pool": character.data.attributes.body.current
    }
 
-   // Initiative (Reaction + Intuition + 1D6)
-   character.data.overview.tests.initiative = {
-      "formula": `Reaction (${character.data.attributes.reaction.current}) + Intuition (${character.data.attributes.intuition.current}) + Initiative Dice (1D6)`,
-      "pool": character.data.attributes.reaction.current + character.data.attributes.intuition.current
-   }
+   // // Initiative (Reaction + Intuition + 1D6)
+   // character.data.overview.tests.initiative = {
+   //    "formula": `Reaction (${character.data.attributes.reaction.current}) + Intuition (${character.data.attributes.intuition.current}) + Initiative Dice (1D6)`,
+   //    "pool": character.data.attributes.reaction.current + character.data.attributes.intuition.current
+   // }
 
-   // Initiative - Matrix - AR (Reaction + Intuition + 1D6)
-   character.data.overview.tests.initiativematrixar = {
-      "formula": `Reaction (${character.data.attributes.reaction.current}) + Intuition (${character.data.attributes.intuition.current}) + Initiative Dice (1D6)`,
-      "pool": character.data.attributes.reaction.current + character.data.attributes.intuition.current
-   }
+   // // Initiative - Matrix - AR (Reaction + Intuition + 1D6)
+   // character.data.overview.tests.initiativematrixar = {
+   //    "formula": `Reaction (${character.data.attributes.reaction.current}) + Intuition (${character.data.attributes.intuition.current}) + Initiative Dice (1D6)`,
+   //    "pool": character.data.attributes.reaction.current + character.data.attributes.intuition.current
+   // }
 
    // if Awakened
    // Defend - Astral (Intuition + Logic + Conditions)
@@ -293,7 +308,7 @@ let calculateCharacterData = function (character) {
    // merge pre-defined and skill tests, and then sort them
    let ordered = {}
    let unordered = { ...character.data.overview.tests, ...tests }
-   Object.keys(unordered).sort().forEach(key => {
+   Object.keys(unordered).sort((a, b) => { return a.localeCompare(b) }).forEach(key => {
       ordered[key] = unordered[key]
    })
 

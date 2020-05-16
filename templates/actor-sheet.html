@@ -167,6 +167,9 @@
       maybe include a wild die at some point. 
 
          tooltip for dice pool will give you break down of the calculation
+
+            Time for rollable links
+
       -->
          <div class="overview-content">
             <div class="tests">
@@ -183,7 +186,7 @@
                      <tr>
                         <td>{{display @key}}</td>
                         <td>{{formula}}</td>
-                        <td>[{{pool}}]</td>
+                        <td><a data-roll='{ "test": "{{@key}}", "pool": {{pool}} }'>[{{pool}}]</a></td>
                      </tr>
                      {{/each}}
                   </tbody>

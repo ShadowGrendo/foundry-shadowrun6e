@@ -1,4 +1,4 @@
-import { CalculateCharacterData } from './shadowrun.js'
+import { CalculateCharacterData, Names } from './shadowrun.js'
 
 
 /**
@@ -67,7 +67,13 @@ export class ShadowrunActorSheet extends ActorSheet {
 
       // register listener for knowledge skill controls
       html.find('[data-control=knowledge-skills]').on('click', this.knowledgeSkillsControl.bind(this))
+
+      html.find('[data-roll]').on('click', this.rollTest.bind(this))
+
+
    }
+
+
 
    async knowledgeSkillsControl(event) {
       event.preventDefault()
@@ -94,6 +100,85 @@ export class ShadowrunActorSheet extends ActorSheet {
       }
 
       await this._onSubmit(event)
+   }
+
+   async rollTest(event) {
+      event.preventDefault()
+      let a = event.currentTarget
+      let data = JSON.parse(a.dataset.roll)
+
+      // todo - if holding shift when the event triggers, first show a dialog with options for rolling options like edge, threshold, and conditions
+
+      if (event.shiftKey) {
+         let roll = new Roll(`${data.pool}d6cs>4`).roll()
+
+         return roll.toMessage({
+            speaker: {
+               actor: this.actor._id,
+               token: this.actor.token,
+               alias: this.actor.name
+            },
+            flavor: `Shift Key ${Names.display(data.test)}`
+         })
+
+
+         carolina
+         // Render modal dialog
+         //  template = template || "systems/dnd5e/templates/chat/roll-dialog.html";
+         //  let dialogData = {
+         //    formula: parts.join(" + "),
+         //    data: data,
+         //    rollMode: rollMode,
+         //    rollModes: CONFIG.rollModes,
+         //    config: CONFIG.DND5E
+         //  };
+         //  const html = await renderTemplate(template, dialogData);
+
+         // Create the Dialog window
+         //  let roll;
+         //  return new Promise(resolve => {
+         //    new Dialog({
+         //      title: title,
+         //      content: html,
+         //      buttons: {
+         //        advantage: {
+         //          label: game.i18n.localize("DND5E.Advantage"),
+         //          callback: html => roll = _roll(parts, 1, html[0].children[0])
+         //        },
+         //        normal: {
+         //          label: game.i18n.localize("DND5E.Normal"),
+         //          callback: html => roll = _roll(parts, 0, html[0].children[0])
+         //        },
+         //        disadvantage: {
+         //          label: game.i18n.localize("DND5E.Disadvantage"),
+         //          callback: html => roll = _roll(parts, -1, html[0].children[0])
+         //        }
+         //      },
+         //      default: "normal",
+         //      close: html => {
+         //        if (onClose) onClose(html, parts, data);
+         //        resolve(rolled ? roll : false)
+         //      }
+         //    }, dialogOptions).render(true);
+         //  })
+
+
+
+
+
+
+      } else {
+         let roll = new Roll(`${data.pool}d6cs>4`).roll()
+         return roll.toMessage({
+            speaker: {
+               actor: this.actor._id,
+               token: this.actor.token,
+               alias: this.actor.name
+            },
+            flavor: `${Names.display(data.test)}`
+         })
+      }
+
    }
 
    /* -------------------------------------------- */

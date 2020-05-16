@@ -378,6 +378,6 @@ or `/roll agility+athletics`
 alternately, I could add some sorting ability to the tests table. Then you can order your tests by name or dice pool. 
 
 The tests table is pretty busy. Might need to thin it out a bit. 
-
+can probably move the initiative stuff other places. 
 
 
