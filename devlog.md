@@ -381,3 +381,21 @@ The tests table is pretty busy. Might need to thin it out a bit.
 can probably move the initiative stuff other places. 
 
 
+## 5.15.2020
+
+cool, cool, got rollable tests, and the shift key we can use to trigger the options dialog when rolling
+next we need initiatives in combat and the overview. under combat we can provide the inputs for bonus dice. and bonus conditions
+
+Overview |
+---------|-----------
+Tests    | Initiative
+         | Conditions
+         | Attacks [Attack [pool(rollable)] damage, AR, Pool, Options]
+         | Other stuff, spells...
+
+
+## 5.17.2020
+
+Got conditions done, except for applying wound penalties. Maybe calc wound penalties into a statuses section.
+
+Also, cool idea for a module is one that will automatically number generic tokens as you drag them into a scene. So if you have an Orc Ganger character sheet and you drag it twice into a scene, it will name the token `Orc Ganger (1)` and `Orc Ganger (2)` I guess with the whole combat tracking system you don't really need that. 

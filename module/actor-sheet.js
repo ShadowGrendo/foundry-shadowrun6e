@@ -1,20 +1,16 @@
 import { CalculateCharacterData, Names } from './shadowrun.js'
 
-
 /**
  * Extend the basic ActorSheet with some very simple modifications
  * @extends {ActorSheet}
  */
 export class ShadowrunActorSheet extends ActorSheet {
-
-
    constructor(...args) {
       super(...args)
 
-      // track a list of things marked as deleted for the formudate method
+      // track a list of things marked as deleted for the formudata method
       this.deleted = []
    }
-
 
    /** @override */
    static get defaultOptions() {
@@ -27,8 +23,6 @@ export class ShadowrunActorSheet extends ActorSheet {
       })
    }
 
-   /* -------------------------------------------- */
-
    /** @override */
    getData() {
       const data = super.getData()
@@ -36,8 +30,6 @@ export class ShadowrunActorSheet extends ActorSheet {
       var calculated = CalculateCharacterData(data)
       return calculated
    }
-
-   /* -------------------------------------------- */
 
    /** @override */
    activateListeners(html) {
@@ -69,11 +61,7 @@ export class ShadowrunActorSheet extends ActorSheet {
       html.find('[data-control=knowledge-skills]').on('click', this.knowledgeSkillsControl.bind(this))
 
       html.find('[data-roll]').on('click', this.rollTest.bind(this))
-
-
    }
-
-
 
    async knowledgeSkillsControl(event) {
       event.preventDefault()
@@ -106,90 +94,67 @@ export class ShadowrunActorSheet extends ActorSheet {
       event.preventDefault()
       let a = event.currentTarget
       let data = JSON.parse(a.dataset.roll)
+      let roll = new Roll(`${data.pool}d6cs>4`).roll()
 
-      // todo - if holding shift when the event triggers, first show a dialog with options for rolling options like edge, threshold, and conditions
+      console.log('[roll-test]', this)
 
-      if (event.shiftKey) {
-         let roll = new Roll(`${data.pool}d6cs>4`).roll()
-
-         return roll.toMessage({
-            speaker: {
-               actor: this.actor._id,
-               token: this.actor.token,
-               alias: this.actor.name
-            },
-            flavor: `Shift Key ${Names.display(data.test)}`
-         })
-
-
-         carolina
-         // Render modal dialog
-         //  template = template || "systems/dnd5e/templates/chat/roll-dialog.html";
-         //  let dialogData = {
-         //    formula: parts.join(" + "),
-         //    data: data,
-         //    rollMode: rollMode,
-         //    rollModes: CONFIG.rollModes,
-         //    config: CONFIG.DND5E
-         //  };
-         //  const html = await renderTemplate(template, dialogData);
-
-         // Create the Dialog window
-         //  let roll;
-         //  return new Promise(resolve => {
-         //    new Dialog({
-         //      title: title,
-         //      content: html,
-         //      buttons: {
-         //        advantage: {
-         //          label: game.i18n.localize("DND5E.Advantage"),
-         //          callback: html => roll = _roll(parts, 1, html[0].children[0])
-         //        },
-         //        normal: {
-         //          label: game.i18n.localize("DND5E.Normal"),
-         //          callback: html => roll = _roll(parts, 0, html[0].children[0])
-         //        },
-         //        disadvantage: {
-         //          label: game.i18n.localize("DND5E.Disadvantage"),
-         //          callback: html => roll = _roll(parts, -1, html[0].children[0])
-         //        }
-         //      },
-         //      default: "normal",
-         //      close: html => {
-         //        if (onClose) onClose(html, parts, data);
-         //        resolve(rolled ? roll : false)
-         //      }
-         //    }, dialogOptions).render(true);
-         //  })
-
-
-
-
-
-
-      } else {
-         let roll = new Roll(`${data.pool}d6cs>4`).roll()
-         return roll.toMessage({
-            speaker: {
-               actor: this.actor._id,
-               token: this.actor.token,
-               alias: this.actor.name
-            },
-            flavor: `${Names.display(data.test)}`
-         })
+      let options = {
+         speaker: { ...ChatMessage.getSpeaker(), ...{ alias: `${this.actor.name}${this.token ? ` (${this.token.name})` : ''}` } },
+         flavor: `${event.shiftKey ? 'Shift Key' : ''} ${Names.display(data.test)}`
       }
+     
+      return roll.toMessage(options)
+
+      // todo - if holding shift when the event triggers, first show a dialog with options for rolling options like edge, threshold, and condition
+
+
+      // Render modal dialog
+      //  template = template || "systems/dnd5e/templates/chat/roll-dialog.html";
+      //  let dialogData = {
+      //    formula: parts.join(" + "),
+      //    data: data,
+      //    rollMode: rollMode,
+      //    rollModes: CONFIG.rollModes,
+      //    config: CONFIG.DND5E
+      //  };
+      //  const html = await renderTemplate(template, dialogData);
+
+      // Create the Dialog window
+      //  let roll;
+      //  return new Promise(resolve => {
+      //    new Dialog({
+      //      title: title,
+      //      content: html,
+      //      buttons: {
+      //        advantage: {
+      //          label: game.i18n.localize("DND5E.Advantage"),
+      //          callback: html => roll = _roll(parts, 1, html[0].children[0])
+      //        },
+      //        normal: {
+      //          label: game.i18n.localize("DND5E.Normal"),
+      //          callback: html => roll = _roll(parts, 0, html[0].children[0])
+      //        },
+      //        disadvantage: {
+      //          label: game.i18n.localize("DND5E.Disadvantage"),
+      //          callback: html => roll = _roll(parts, -1, html[0].children[0])
+      //        }
+      //      },
+      //      default: "normal",
+      //      close: html => {
+      //        if (onClose) onClose(html, parts, data);
+      //        resolve(rolled ? roll : false)
+      //      }
+      //    }, dialogOptions).render(true);
+      //  })
+
 
    }
-
-   /* -------------------------------------------- */
 
    /** @override */
    setPosition(options = {}) {
       const position = super.setPosition(options)
       return position
    }
-
-   /* -------------------------------------------- */
 
    /**
     * Listen for click events on an attribute control to modify the composition of attributes in the sheet
@@ -207,7 +172,7 @@ export class ShadowrunActorSheet extends ActorSheet {
       // if (action === "create") {
       //    const nk = Object.keys(attrs).length + 1
       //    let newKey = document.createElement("div")
-      //    newKey.innerHTML = `<input type="text" name="data.attributes.attr${nk}.key" value="attr${nk}"/>`
+      //    newKey.innerHTML = `< input type = "text" name = "data.attributes.attr${nk}.key" value = "attr${nk}" /> `
       //    newKey = newKey.children[0]
       //    form.appendChild(newKey)
       //    await this._onSubmit(event)
@@ -220,8 +185,6 @@ export class ShadowrunActorSheet extends ActorSheet {
       //    await this._onSubmit(event)
       // }
    }
-
-   /* -------------------------------------------- */
 
    /** @override */
    _updateObject(event, formData) {
@@ -238,7 +201,7 @@ export class ShadowrunActorSheet extends ActorSheet {
 
       // // Remove attributes which are no longer used
       // for (let k of Object.keys(this.object.data.data.attributes)) {
-      //    if (!attributes.hasOwnProperty(k)) attributes[`-=${k}`] = null
+      //    if (!attributes.hasOwnProperty(k)) attributes[`-=${ k } `] = null
       // }
 
       // // Re-combine formData
@@ -251,7 +214,7 @@ export class ShadowrunActorSheet extends ActorSheet {
       // console.log('[expanded update data]', d)
       //formData['data.skills.knowledge.-=2'] = null
 
-      console.log('[update object deleted', this.deleted)
+      // console.log('[update object deleted]', this.deleted)
       console.log('[update object]', formData)
 
       this.deleted.forEach(element => {
