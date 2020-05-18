@@ -13,6 +13,12 @@ Hooks.once("init", async function () {
    // Define custom Entity classes
    CONFIG.Actor.entityClass = ShadowrunActor
 
+   Combat.prototype._getInitiativeFormula = combatant => {
+      let data = combatant.actor.data.data
+      console.log('[initiative]', data)
+      return `${data.attributes.reaction.value + data.attributes.intuition.value} + ${data.initiative.physical.dice}d6`
+   }
+
    // Register sheet application classes
    Actors.unregisterSheet("core", ActorSheet)
    Actors.registerSheet("shadowrun", ShadowrunActorSheet, { makeDefault: true })
@@ -30,7 +36,7 @@ Hooks.once("init", async function () {
    // })
 
    Hooks.on("renderChatMessage", (message, data, html) => {
-      // if (!message.isRoll || message.roll.parts[0].faces !== 20) return
+      if (!message.isRoll || message.roll.parts[0].faces !== 6) return
 
       // todo - check for glitches
       // also 
@@ -39,8 +45,8 @@ Hooks.once("init", async function () {
       // if (d20 === 20) html.find(".dice-total").addClass("success")
       // else if (d20 === 1) html.find(".dice-total").addClass("failure")
 
-      // let roll = msg.roll.parts[0]
-      // console.log('[dice roll]', roll)
+      let roll = message.roll.parts[0]
+      //console.log('[dice roll]', roll)
 
    })
 

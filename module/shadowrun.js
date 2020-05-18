@@ -141,23 +141,24 @@ let names = {
 
 let calculateCharacterData = function (character) {
    console.log('[shadowrun]', character)
+
    // determine current values for attributes
-   character.data.attributes.body.current = character.data.attributes.body.base + character.data.attributes.body.adj
-   character.data.attributes.agility.current = character.data.attributes.agility.base + character.data.attributes.agility.adj
-   character.data.attributes.reaction.current = character.data.attributes.reaction.base + character.data.attributes.reaction.adj
-   character.data.attributes.strength.current = character.data.attributes.strength.base + character.data.attributes.strength.adj
-   character.data.attributes.willpower.current = character.data.attributes.willpower.base + character.data.attributes.willpower.adj
-   character.data.attributes.logic.current = character.data.attributes.logic.base + character.data.attributes.logic.adj
-   character.data.attributes.intuition.current = character.data.attributes.intuition.base + character.data.attributes.intuition.adj
-   character.data.attributes.charisma.current = character.data.attributes.charisma.base + character.data.attributes.charisma.adj
-   character.data.attributes.edge.current = character.data.attributes.edge.base + character.data.attributes.edge.adj
-   character.data.attributes.essence.current = character.data.attributes.essence.base + character.data.attributes.essence.adj
+   character.data.attributes.body.value = character.data.attributes.body.base + character.data.attributes.body.adj
+   character.data.attributes.agility.value = character.data.attributes.agility.base + character.data.attributes.agility.adj
+   character.data.attributes.reaction.value = character.data.attributes.reaction.base + character.data.attributes.reaction.adj
+   character.data.attributes.strength.value = character.data.attributes.strength.base + character.data.attributes.strength.adj
+   character.data.attributes.willpower.value = character.data.attributes.willpower.base + character.data.attributes.willpower.adj
+   character.data.attributes.logic.value = character.data.attributes.logic.base + character.data.attributes.logic.adj
+   character.data.attributes.intuition.value = character.data.attributes.intuition.base + character.data.attributes.intuition.adj
+   character.data.attributes.charisma.value = character.data.attributes.charisma.base + character.data.attributes.charisma.adj
+   character.data.attributes.edge.value = character.data.attributes.edge.base + character.data.attributes.edge.adj
+   character.data.attributes.essence.value = character.data.attributes.essence.base + character.data.attributes.essence.adj
 
    // magic and resonance reduced by 1 for every full point of essence loss
-   let essenceLoss = 6 - Math.ceil(character.data.attributes.essence.current)
+   let essenceLoss = 6 - Math.ceil(character.data.attributes.essence.value)
 
-   character.data.attributes.magic.current = character.data.attributes.magic.base + character.data.attributes.magic.adj - essenceLoss
-   character.data.attributes.resonance.current = character.data.attributes.resonance.base + character.data.attributes.resonance.adj - essenceLoss
+   character.data.attributes.magic.value = character.data.attributes.magic.base + character.data.attributes.magic.adj - essenceLoss
+   character.data.attributes.resonance.value = character.data.attributes.resonance.base + character.data.attributes.resonance.adj - essenceLoss
 
    // set maximums based on metatype
    // it's not a huge calc, but wish I didn't have to do it every time. 
@@ -172,138 +173,132 @@ let calculateCharacterData = function (character) {
    character.data.attributes.charisma.max = meta.attributes.charisma.max
    character.data.attributes.edge.max = meta.attributes.edge.max
 
+
+   // condition and status, do these early so they can be used in other calculations
+   character.data.condition.damage.max = 8 + Math.ceil(character.data.attributes.body.value / 2) + character.data.condition.damage.adj
+   character.data.status.damagePenalty = Math.floor(character.data.condition.damage.value / 3) * -1
+   character.data.condition.stun.max = 8 + Math.ceil(character.data.attributes.willpower.value / 2) + character.data.condition.stun.adj
+   character.data.status.stunPenalty = Math.floor(character.data.condition.stun.value / 3) * -1
+   character.data.condition.overflow.max = character.data.attributes.body.value * 2 + character.data.condition.overflow.adj
+
+
    // start collecting data for tests table
    let tests = {}
 
    // calculate default dice pool for skills
    for (let [key, skill] of Object.entries(character.data.skills.active)) {
       if (skill.untrained) {
-         skill.pool = (skill.rank === 0 ? -1 : skill.rank) + character.data.attributes[skill.primaryAttribute].current
+         skill.pool = (skill.rank === 0 ? -1 : skill.rank) + character.data.attributes[skill.primaryAttribute].value
       } else {
-         skill.pool = skill.rank === 0 ? 0 : (skill.rank + character.data.attributes[skill.primaryAttribute].current)
+         skill.pool = skill.rank === 0 ? 0 : (skill.rank + character.data.attributes[skill.primaryAttribute].value)
       }
-      // if you have a positive dice pool before conditions, add to the overview
+      // if you have a positive dice pool before condition, add to the overview
       if (skill.pool > 0) {
-         tests[key] = { "formula": `${names.display(key)} (${skill.rank}) + ${names.display(skill.primaryAttribute)} (${character.data.attributes[skill.primaryAttribute].current}) + Conditions ()`, "pool": skill.pool }
+         tests[key] = { "formula": `${names.display(key)} (${skill.rank}) + ${names.display(skill.primaryAttribute)} (${character.data.attributes[skill.primaryAttribute].value}) - Stun (${character.data.status.stunPenalty}) - Damage (${character.data.status.damagePenalty})`, "pool": skill.pool }
 
          if (skill.specialization) {
-            tests[`${names.display(key)}–${skill.specialization}`] = { "formula": `${names.display(key)} (${skill.pool}) + 2 + Conditions ()`, "pool": skill.pool + 2 }
+            tests[`${names.display(key)}–${skill.specialization}`] = { "formula": `${names.display(key)} (${skill.pool}) + 2 - Stun (${character.data.status.stunPenalty}) - Damage (${character.data.status.damagePenalty})`, "pool": skill.pool + 2 }
          }
 
          if (skill.expertise) {
-            tests[`${names.display(key)}–${skill.expertise}`] = { "formula": `${names.display(key)} (${skill.pool}) + 3 + Conditions ()`, "pool": skill.pool + 3 }
+            tests[`${names.display(key)}–${skill.expertise}`] = { "formula": `${names.display(key)} (${skill.pool}) + 3 - Stun (${character.data.status.stunPenalty}) - Damage (${character.data.status.damagePenalty})`, "pool": skill.pool + 3 }
          }
       }
    }
 
    // Judge Intentions (Willpower + Intuition + Conditions)
    character.data.overview.tests.judgeintentions = {
-      "formula": `Willpower (${character.data.attributes.willpower.current}) + Intuition (${character.data.attributes.intuition.current}) + Conditions ()`,
-      "pool": character.data.attributes.willpower.current + character.data.attributes.intuition.current
+      "formula": `Willpower (${character.data.attributes.willpower.value}) + Intuition (${character.data.attributes.intuition.value}) - Stun (${character.data.status.stunPenalty}) - Damage (${character.data.status.damagePenalty})`,
+      "pool": character.data.attributes.willpower.value + character.data.attributes.intuition.value
    }
 
    // Composure (Willpower + Charisma + Conditions)
    character.data.overview.tests.composure = {
-      "formula": `Willpower (${character.data.attributes.willpower.current}) + Charisma (${character.data.attributes.charisma.current}) + Conditions ()`,
-      "pool": character.data.attributes.willpower.current + character.data.attributes.charisma.current
+      "formula": `Willpower (${character.data.attributes.willpower.value}) + Charisma (${character.data.attributes.charisma.value}) + Conditions ()`,
+      "pool": character.data.attributes.willpower.value + character.data.attributes.charisma.value
    }
 
    // Memory (Logic + Intuition + Conditions)
    character.data.overview.tests.memory = {
-      "formula": `Logic (${character.data.attributes.logic.current}) + Intuition (${character.data.attributes.intuition.current}) + Conditions ()`,
-      "pool": character.data.attributes.logic.current + character.data.attributes.intuition.current
+      "formula": `Logic (${character.data.attributes.logic.value}) + Intuition (${character.data.attributes.intuition.value}) + Conditions ()`,
+      "pool": character.data.attributes.logic.value + character.data.attributes.intuition.value
    }
 
    // Lift (Body + Willpower + Conditions)
    character.data.overview.tests.lift = {
-      "formula": `Body (${character.data.attributes.body.current}) + Willpower (${character.data.attributes.willpower.current}) + Conditions ()`,
-      "pool": character.data.attributes.body.current + character.data.attributes.willpower.current
+      "formula": `Body (${character.data.attributes.body.value}) + Willpower (${character.data.attributes.willpower.value}) + Conditions ()`,
+      "pool": character.data.attributes.body.value + character.data.attributes.willpower.value
    }
 
-   // Heal - Stun (Body + Willpower), no conditions
+   // Heal - Stun (Body + Willpower), no condition
    character.data.overview.tests.healstun = {
-      "formula": `Body (${character.data.attributes.body.current}) + Willpower (${character.data.attributes.willpower.current})`,
-      "pool": character.data.attributes.body.current + character.data.attributes.willpower.current
+      "formula": `Body (${character.data.attributes.body.value}) + Willpower (${character.data.attributes.willpower.value})`,
+      "pool": character.data.attributes.body.value + character.data.attributes.willpower.value
    }
 
-   // Heal - Damage (Body + Body), no conditions
+   // Heal - Damage (Body + Body), no condition
    character.data.overview.tests.healdamage = {
-      "formula": `Body (${character.data.attributes.body.current}) + Body (${character.data.attributes.body.current})`,
-      "pool": character.data.attributes.body.current + character.data.attributes.body.current
+      "formula": `Body (${character.data.attributes.body.value}) + Body (${character.data.attributes.body.value})`,
+      "pool": character.data.attributes.body.value + character.data.attributes.body.value
    }
 
    // Heal - Overflow (Body + Body + Conditions)
    character.data.overview.tests.healoverflow = {
-      "formula": `Body (${character.data.attributes.body.current}) + Body (${character.data.attributes.body.current}) + Conditions ()`,
-      "pool": character.data.attributes.body.current + character.data.attributes.body.current
+      "formula": `Body (${character.data.attributes.body.value}) + Body (${character.data.attributes.body.value}) + Conditions ()`,
+      "pool": character.data.attributes.body.value + character.data.attributes.body.value
    }
 
    // Defend - Physical (Reaction + Intuition + Conditions)
    character.data.overview.tests.defendphysical = {
-      "formula": `Reaction (${character.data.attributes.reaction.current}) + Intuition (${character.data.attributes.intuition.current}) + Conditions ()`,
-      "pool": character.data.attributes.reaction.current + character.data.attributes.intuition.current
+      "formula": `Reaction (${character.data.attributes.reaction.value}) + Intuition (${character.data.attributes.intuition.value}) + Conditions ()`,
+      "pool": character.data.attributes.reaction.value + character.data.attributes.intuition.value
    }
 
    // Defend - Direct Magic (Willpower + Intuition + Conditions)
    character.data.overview.tests.defenddirectmagic = {
-      "formula": `Willpower (${character.data.attributes.willpower.current}) + Intuition (${character.data.attributes.intuition.current}) + Conditions ()`,
-      "pool": character.data.attributes.willpower.current + character.data.attributes.intuition.current
+      "formula": `Willpower (${character.data.attributes.willpower.value}) + Intuition (${character.data.attributes.intuition.value}) + Conditions ()`,
+      "pool": character.data.attributes.willpower.value + character.data.attributes.intuition.value
    }
 
    // Defend - Indirect Magic (Reaction + Willpower + Conditions)
    character.data.overview.tests.defendindirectmagic = {
-      "formula": `Reaction (${character.data.attributes.reaction.current}) + Willpower (${character.data.attributes.willpower.current}) + Conditions ()`,
-      "pool": character.data.attributes.reaction.current + character.data.attributes.willpower.current
+      "formula": `Reaction (${character.data.attributes.reaction.value}) + Willpower (${character.data.attributes.willpower.value}) + Conditions ()`,
+      "pool": character.data.attributes.reaction.value + character.data.attributes.willpower.value
    }
 
    // Defend - Detection Magic (Body + Willpower + Conditions)
    character.data.overview.tests.defenddetectionmagic = {
-      "formula": `Body (${character.data.attributes.body.current}) + Willpower (${character.data.attributes.willpower.current}) + Conditions ()`,
-      "pool": character.data.attributes.body.current + character.data.attributes.willpower.current
+      "formula": `Body (${character.data.attributes.body.value}) + Willpower (${character.data.attributes.willpower.value}) + Conditions ()`,
+      "pool": character.data.attributes.body.value + character.data.attributes.willpower.value
    }
 
    // Defend - Other Effects (Willpower + Logic + Conditions)
    character.data.overview.tests.defendothermagic = {
-      "formula": `Willpower (${character.data.attributes.willpower.current}) + Logic (${character.data.attributes.logic.current}) + Conditions ()`,
-      "pool": character.data.attributes.willpower.current + character.data.attributes.logic.current
+      "formula": `Willpower (${character.data.attributes.willpower.value}) + Logic (${character.data.attributes.logic.value}) + Conditions ()`,
+      "pool": character.data.attributes.willpower.value + character.data.attributes.logic.value
    }
 
-   // Resist - Damage (Body), no conditions
+   // Resist - Damage (Body), no condition
    character.data.overview.tests.resistdamage = {
-      "formula": `Body (${character.data.attributes.body.current})`,
-      "pool": character.data.attributes.body.current
+      "formula": `Body (${character.data.attributes.body.value})`,
+      "pool": character.data.attributes.body.value
    }
-
-   // // Initiative (Reaction + Intuition + 1D6)
-   // character.data.overview.tests.initiative = {
-   //    "formula": `Reaction (${character.data.attributes.reaction.current}) + Intuition (${character.data.attributes.intuition.current}) + Initiative Dice (1D6)`,
-   //    "pool": character.data.attributes.reaction.current + character.data.attributes.intuition.current
-   // }
-
-   // // Initiative - Matrix - AR (Reaction + Intuition + 1D6)
-   // character.data.overview.tests.initiativematrixar = {
-   //    "formula": `Reaction (${character.data.attributes.reaction.current}) + Intuition (${character.data.attributes.intuition.current}) + Initiative Dice (1D6)`,
-   //    "pool": character.data.attributes.reaction.current + character.data.attributes.intuition.current
-   // }
 
    // if Awakened
-   // Defend - Astral (Intuition + Logic + Conditions)
-   // Resist - Drain (Willpower + Logic | Charisma), no conditions
-   // Initiative - Astral (Logic + Intuition + 2D6)
+   if (character.data.nature === 'awakened') {
+      // Defend - Astral (Intuition + Logic + Conditions)
+      character.data.overview.tests.defendastral = {
+         "formula": `Intuition (${character.data.attributes.intuition.value}) + Logic (${character.data.attributes.logic.value}) + Conditions ()`,
+         "pool": character.data.attributes.intuition.value + character.data.attributes.logic.value
+      }
 
+      // Resist - Drain (Willpower + Logic | Charisma), no condition
+      character.data.overview.tests.resistdrain = {
+         "formula": `Willpower (${character.data.attributes.willpower.value}) + ${names.display(character.data.magic.traditionAttribute)} (${character.data.attributes[character.data.magic.traditionAttribute].value})`,
+         "pool": character.data.attributes.willpower.value + character.data.attributes[character.data.magic.traditionAttribute].value
+      }
 
-   // if Hacker?
-   // Initiative - Matrix - VR Cold Sim (Intuition + Data Processing + 2D6)
-   // Initiative - Matrix - VR Hot Sim (Intuition + Data Processing + 3D6)
-
-
-   // todo - rest of the predefined tests. 
-   // we can start with simple stuff, 
-   // but there's a number of conditions for others things like, determining your drain pool. 
-   // must be awakened mage, then determine your tradition. 
-   // matrix stuff has a crazy number of different pools and variations.  
-
-
+   }
 
    // merge pre-defined and skill tests, and then sort them
    let ordered = {}
@@ -314,8 +309,12 @@ let calculateCharacterData = function (character) {
 
    character.data.overview.tests = ordered
 
-
-   // condition tracks
+   // initiative
+   // character.data.initiative.physical.value = character.data.attributes.reaction.value + character.data.attributes.intuition.value
+   // character.data.initiative.astral.value = character.data.attributes.intuition.value + character.data.attributes.logic.value
+   // character.data.initiative.matrixar.value = character.data.attributes.reaction.value + character.data.attributes.intuition.value
+   // character.data.initiative.matrixvrcold.value = character.data.attributes.intuition.value + 0
+   // character.data.initiative.matrixvrhot.value = character.data.attributes.intuition.value + 0
 
 
    return character
