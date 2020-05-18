@@ -70,6 +70,10 @@ Hooks.once("init", async function () {
       return Names.display(term)
    })
 
+   Handlebars.registerHelper('add', function (a, b) {
+      return a + b
+   })
+
    // Register an inline markdown editor helper
    Handlebars.registerHelper('md-editor', function (options) {
 
