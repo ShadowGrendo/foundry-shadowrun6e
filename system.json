@@ -2,7 +2,7 @@
   "name": "shadowrun6e",
   "title": "Shadowrun 6th World",
   "description": "Shadowrun 6th World game (with some homebrew)",
-  "version": "0.0.22",
+  "version": "0.0.23",
   "templateVersion": 3,
   "minimumCoreVersion": "0.5.5",
   "compatibleCoreVersion": "0.5.7",
@@ -25,9 +25,7 @@
     }
   ],
   "packs": [],
-  "initiative": "@attributes.reaction.value + @attributes.intuition.value + (@initiative.physical.dice)d6",
-  "primaryTokenAttribute": "condition.damage",
-  "secondaryTokenAttribute": "condition.stun",
+  
   "gridDistance": 1,
   "gridUnits": "m",
   "socket": true,

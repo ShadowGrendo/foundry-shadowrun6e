@@ -194,40 +194,40 @@ let calculateCharacterData = function (character) {
       }
       // if you have a positive dice pool before condition, add to the overview
       if (skill.pool > 0) {
-         tests[key] = { "formula": `${names.display(key)} (${skill.rank}) + ${names.display(skill.primaryAttribute)} (${character.data.attributes[skill.primaryAttribute].value}) - Stun (${character.data.status.stunPenalty}) - Damage (${character.data.status.damagePenalty})`, "pool": skill.pool }
+         tests[key] = { "formula": `${names.display(key)} (${skill.rank}) + ${names.display(skill.primaryAttribute)} (${character.data.attributes[skill.primaryAttribute].value}) + Stun (${character.data.status.stunPenalty}) + Damage (${character.data.status.damagePenalty})`, "pool": skill.pool + character.data.status.stunPenalty + character.data.status.damagePenalty }
 
          if (skill.specialization) {
-            tests[`${names.display(key)}–${skill.specialization}`] = { "formula": `${names.display(key)} (${skill.pool}) + 2 - Stun (${character.data.status.stunPenalty}) - Damage (${character.data.status.damagePenalty})`, "pool": skill.pool + 2 }
+            tests[`${names.display(key)}–${skill.specialization}`] = { "formula": `${names.display(key)} (${skill.pool}) + 2 + Stun (${character.data.status.stunPenalty}) + Damage (${character.data.status.damagePenalty})`, "pool": skill.pool + 2 + character.data.status.stunPenalty + character.data.status.damagePenalty }
          }
 
          if (skill.expertise) {
-            tests[`${names.display(key)}–${skill.expertise}`] = { "formula": `${names.display(key)} (${skill.pool}) + 3 - Stun (${character.data.status.stunPenalty}) - Damage (${character.data.status.damagePenalty})`, "pool": skill.pool + 3 }
+            tests[`${names.display(key)}–${skill.expertise}`] = { "formula": `${names.display(key)} (${skill.pool}) + 3 + Stun (${character.data.status.stunPenalty}) + Damage (${character.data.status.damagePenalty})`, "pool": skill.pool + 3 + character.data.status.stunPenalty + character.data.status.damagePenalty }
          }
       }
    }
 
    // Judge Intentions (Willpower + Intuition + Conditions)
    character.data.overview.tests.judgeintentions = {
-      "formula": `Willpower (${character.data.attributes.willpower.value}) + Intuition (${character.data.attributes.intuition.value}) - Stun (${character.data.status.stunPenalty}) - Damage (${character.data.status.damagePenalty})`,
-      "pool": character.data.attributes.willpower.value + character.data.attributes.intuition.value
+      "formula": `Willpower (${character.data.attributes.willpower.value}) + Intuition (${character.data.attributes.intuition.value}) + Stun (${character.data.status.stunPenalty}) + Damage (${character.data.status.damagePenalty})`,
+      "pool": character.data.attributes.willpower.value + character.data.attributes.intuition.value + character.data.status.stunPenalty + character.data.status.damagePenalty
    }
 
    // Composure (Willpower + Charisma + Conditions)
    character.data.overview.tests.composure = {
-      "formula": `Willpower (${character.data.attributes.willpower.value}) + Charisma (${character.data.attributes.charisma.value}) + Conditions ()`,
-      "pool": character.data.attributes.willpower.value + character.data.attributes.charisma.value
+      "formula": `Willpower (${character.data.attributes.willpower.value}) + Charisma (${character.data.attributes.charisma.value}) + Stun (${character.data.status.stunPenalty}) + Damage (${character.data.status.damagePenalty})`,
+      "pool": character.data.attributes.willpower.value + character.data.attributes.charisma.value + character.data.status.stunPenalty + character.data.status.damagePenalty
    }
 
    // Memory (Logic + Intuition + Conditions)
    character.data.overview.tests.memory = {
-      "formula": `Logic (${character.data.attributes.logic.value}) + Intuition (${character.data.attributes.intuition.value}) + Conditions ()`,
-      "pool": character.data.attributes.logic.value + character.data.attributes.intuition.value
+      "formula": `Logic (${character.data.attributes.logic.value}) + Intuition (${character.data.attributes.intuition.value}) + Stun (${character.data.status.stunPenalty}) + Damage (${character.data.status.damagePenalty})`,
+      "pool": character.data.attributes.logic.value + character.data.attributes.intuition.value + character.data.status.stunPenalty + character.data.status.damagePenalty
    }
 
    // Lift (Body + Willpower + Conditions)
    character.data.overview.tests.lift = {
-      "formula": `Body (${character.data.attributes.body.value}) + Willpower (${character.data.attributes.willpower.value}) + Conditions ()`,
-      "pool": character.data.attributes.body.value + character.data.attributes.willpower.value
+      "formula": `Body (${character.data.attributes.body.value}) + Willpower (${character.data.attributes.willpower.value}) + Stun (${character.data.status.stunPenalty}) + Damage (${character.data.status.damagePenalty})`,
+      "pool": character.data.attributes.body.value + character.data.attributes.willpower.value + character.data.status.stunPenalty + character.data.status.damagePenalty
    }
 
    // Heal - Stun (Body + Willpower), no condition
@@ -244,38 +244,38 @@ let calculateCharacterData = function (character) {
 
    // Heal - Overflow (Body + Body + Conditions)
    character.data.overview.tests.healoverflow = {
-      "formula": `Body (${character.data.attributes.body.value}) + Body (${character.data.attributes.body.value}) + Conditions ()`,
-      "pool": character.data.attributes.body.value + character.data.attributes.body.value
+      "formula": `Body (${character.data.attributes.body.value}) + Body (${character.data.attributes.body.value}) + Stun (${character.data.status.stunPenalty}) + Damage (${character.data.status.damagePenalty})`,
+      "pool": character.data.attributes.body.value + character.data.attributes.body.value + character.data.status.stunPenalty + character.data.status.damagePenalty
    }
 
    // Defend - Physical (Reaction + Intuition + Conditions)
    character.data.overview.tests.defendphysical = {
-      "formula": `Reaction (${character.data.attributes.reaction.value}) + Intuition (${character.data.attributes.intuition.value}) + Conditions ()`,
-      "pool": character.data.attributes.reaction.value + character.data.attributes.intuition.value
+      "formula": `Reaction (${character.data.attributes.reaction.value}) + Intuition (${character.data.attributes.intuition.value}) + Stun (${character.data.status.stunPenalty}) + Damage (${character.data.status.damagePenalty})`,
+      "pool": character.data.attributes.reaction.value + character.data.attributes.intuition.value + character.data.status.stunPenalty + character.data.status.damagePenalty
    }
 
    // Defend - Direct Magic (Willpower + Intuition + Conditions)
    character.data.overview.tests.defenddirectmagic = {
-      "formula": `Willpower (${character.data.attributes.willpower.value}) + Intuition (${character.data.attributes.intuition.value}) + Conditions ()`,
-      "pool": character.data.attributes.willpower.value + character.data.attributes.intuition.value
+      "formula": `Willpower (${character.data.attributes.willpower.value}) + Intuition (${character.data.attributes.intuition.value}) + Stun (${character.data.status.stunPenalty}) + Damage (${character.data.status.damagePenalty})`,
+      "pool": character.data.attributes.willpower.value + character.data.attributes.intuition.value + character.data.status.stunPenalty + character.data.status.damagePenalty
    }
 
    // Defend - Indirect Magic (Reaction + Willpower + Conditions)
    character.data.overview.tests.defendindirectmagic = {
-      "formula": `Reaction (${character.data.attributes.reaction.value}) + Willpower (${character.data.attributes.willpower.value}) + Conditions ()`,
-      "pool": character.data.attributes.reaction.value + character.data.attributes.willpower.value
+      "formula": `Reaction (${character.data.attributes.reaction.value}) + Willpower (${character.data.attributes.willpower.value}) + Stun (${character.data.status.stunPenalty}) + Damage (${character.data.status.damagePenalty})`,
+      "pool": character.data.attributes.reaction.value + character.data.attributes.willpower.value + character.data.status.stunPenalty + character.data.status.damagePenalty
    }
 
    // Defend - Detection Magic (Body + Willpower + Conditions)
    character.data.overview.tests.defenddetectionmagic = {
-      "formula": `Body (${character.data.attributes.body.value}) + Willpower (${character.data.attributes.willpower.value}) + Conditions ()`,
-      "pool": character.data.attributes.body.value + character.data.attributes.willpower.value
+      "formula": `Body (${character.data.attributes.body.value}) + Willpower (${character.data.attributes.willpower.value}) + Stun (${character.data.status.stunPenalty}) + Damage (${character.data.status.damagePenalty})`,
+      "pool": character.data.attributes.body.value + character.data.attributes.willpower.value + character.data.status.stunPenalty + character.data.status.damagePenalty
    }
 
    // Defend - Other Effects (Willpower + Logic + Conditions)
    character.data.overview.tests.defendothermagic = {
-      "formula": `Willpower (${character.data.attributes.willpower.value}) + Logic (${character.data.attributes.logic.value}) + Conditions ()`,
-      "pool": character.data.attributes.willpower.value + character.data.attributes.logic.value
+      "formula": `Willpower (${character.data.attributes.willpower.value}) + Logic (${character.data.attributes.logic.value}) + Stun (${character.data.status.stunPenalty}) + Damage (${character.data.status.damagePenalty})`,
+      "pool": character.data.attributes.willpower.value + character.data.attributes.logic.value + character.data.status.stunPenalty + character.data.status.damagePenalty
    }
 
    // Resist - Damage (Body), no condition
@@ -288,8 +288,8 @@ let calculateCharacterData = function (character) {
    if (character.data.nature === 'awakened') {
       // Defend - Astral (Intuition + Logic + Conditions)
       character.data.overview.tests.defendastral = {
-         "formula": `Intuition (${character.data.attributes.intuition.value}) + Logic (${character.data.attributes.logic.value}) + Conditions ()`,
-         "pool": character.data.attributes.intuition.value + character.data.attributes.logic.value
+         "formula": `Intuition (${character.data.attributes.intuition.value}) + Logic (${character.data.attributes.logic.value}) + Stun (${character.data.status.stunPenalty}) + Damage (${character.data.status.damagePenalty})`,
+         "pool": character.data.attributes.intuition.value + character.data.attributes.logic.value + character.data.status.stunPenalty + character.data.status.damagePenalty
       }
 
       // Resist - Drain (Willpower + Logic | Charisma), no condition
