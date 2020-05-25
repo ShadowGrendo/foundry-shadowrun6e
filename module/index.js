@@ -15,7 +15,7 @@ Hooks.once("init", async function () {
 
    Combat.prototype._getInitiativeFormula = combatant => {
       let data = combatant.actor.data.data
-      console.log('[initiative]', data)
+      // console.log('[initiative]', data)
       return `${data.attributes.reaction.value + data.attributes.intuition.value} + ${data.initiative.physical.dice}d6`
    }
 
@@ -36,6 +36,8 @@ Hooks.once("init", async function () {
    // })
 
    Hooks.on("renderChatMessage", (message, data, html) => {
+
+
       if (!message.isRoll || message.roll.parts[0].faces !== 6) return
 
       // todo - check for glitches
@@ -73,6 +75,8 @@ Hooks.once("init", async function () {
    Handlebars.registerHelper('add', function (a, b) {
       return a + b
    })
+
+
 
    // Register an inline markdown editor helper
    Handlebars.registerHelper('md-editor', function (options) {

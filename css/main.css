@@ -200,7 +200,13 @@
     display: flex;
     flex-flow: row nowrap; }
     .shadowrun form.character section .overview-content .tests {
-      flex-basis: 60%; }
+      flex-basis: 50%; }
+      .shadowrun form.character section .overview-content .tests table tbody tr {
+        transition: all .2s ease-in-out; }
+      .shadowrun form.character section .overview-content .tests table tbody tr:hover {
+        color: white;
+        background: rgba(0, 0, 0, 0.5);
+        text-shadow: 1px 1px #000; }
       .shadowrun form.character section .overview-content .tests table th:nth-of-type(1),
       .shadowrun form.character section .overview-content .tests table td:nth-of-type(1) {
         text-align: left;
@@ -228,3 +234,40 @@
 .shadowrun.sheet.item {
   min-width: 460px;
   min-height: 400px; }
+
+form.test-options {
+  font-family: "Friz Quadrata", sans-serif;
+  font-size: 16px; }
+  form.test-options select {
+    background-color: inherit;
+    font-family: inherit;
+    font-size: inherit; }
+  form.test-options option {
+    background-color: inherit;
+    font-family: inherit;
+    font-size: inherit; }
+  form.test-options input {
+    background-color: inherit;
+    font-family: inherit;
+    font-size: inherit; }
+  form.test-options input[type=number] {
+    -moz-appearance: textfield;
+    width: 2rem;
+    text-align: center; }
+  form.test-options input[type=number]::-webkit-inner-spin-button,
+  form.test-options input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0; }
+  form.test-options input::placeholder {
+    background-color: inherit;
+    font-style: italic;
+    opacity: .5; }
+  form.test-options .field {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    flex-grow: 1;
+    margin-right: .5rem; }
+  form.test-options label {
+    margin-right: .25rem;
+    flex-basis: 50%; }

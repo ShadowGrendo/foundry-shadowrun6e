@@ -185,10 +185,10 @@
                   </thead>
                   <tbody>
                      {{#each data.overview.tests}}
-                     <tr>
+                     <tr data-test='{{@key}}'>
                         <td>{{display @key}}</td>
-                        <td>{{formula}}</td>
-                        <td><a data-roll='{ "test": "{{@key}}", "pool": {{pool}} }'>[{{pool}}]</a></td>
+                        <td>{{{formula}}}</td>
+                        <td>[{{pool}}]</td>
                      </tr>
                      {{/each}}
                   </tbody>
@@ -245,11 +245,11 @@
          </div>
       </div>
       <div class="tab combat" data-group="primary" data-tab="combat">
-         <p>Stun: <input type="number" data-dtype="Number" name="data.condition.stun.value" value="{{data.condition.stun.value}}" title="Current Stun" />/{{data.condition.stun.max}} ({{data.status.stunPenalty}})</p>
+         <p>Stun: <input type="number" data-dtype="Number" name="data.condition.stun.value" value="{{data.condition.stun.value}}" title="Current Stun" min="0" max="{{data.condition.stun.max}}" />/{{data.condition.stun.max}} ({{data.status.stunPenalty}})</p>
          <label>adj: </label><input type="number" data-dtype="Number" name="data.condition.stun.adj" value="{{data.condition.stun.adj}}" placeholder="adj" title="Additional Stun Boxes" />
          <input type="hidden" data-dtype="Number" name="data.condition.stun.max" value="{{data.condition.stun.max}}" />
 
-         <p>Damage: <input type="number" data-dtype="Number" name="data.condition.damage.value" value="{{data.condition.damage.value}}" title="Current Damage" />/{{data.condition.damage.max}} ({{data.status.damagePenalty}})</p>
+         <p>Damage: <input type="number" data-dtype="Number" name="data.condition.damage.value" value="{{data.condition.damage.value}}" title="Current Damage" min="0" max="{{data.condition.damage.max}}" />/{{data.condition.damage.max}} ({{data.status.damagePenalty}})</p>
          <label>adj: </label><input type="number" data-dtype="Number" name="data.condition.damage.adj" value="{{data.condition.damage.adj}}" placeholder="adj" title="Additional Damage Boxes" />
          <input type="hidden" data-dtype="Number" name="data.condition.damage.max" value="{{data.condition.damage.max}}" />
 

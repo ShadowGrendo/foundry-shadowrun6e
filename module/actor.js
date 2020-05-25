@@ -7,7 +7,7 @@ export class ShadowrunActor extends Actor {
    /** @override */
    async update(data, options = {}) {
       var ret = super.update(data, options)
-      console.log('[update]', ret)
+      // console.log('[update]', ret)
       return ret
    }
 
