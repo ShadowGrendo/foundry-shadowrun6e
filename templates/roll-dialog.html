@@ -1,0 +1,29 @@
+<form class="test-options">
+
+   <!-- 
+    todo - 
+    - dice modifier
+    - apply statuses, or not
+    - optional threshold
+    - edge actions
+    - wild die, at some point
+    may be better as a grid
+-->
+   <div class="field">
+      <label>Adjust Dice Pool:</label>
+      <input type="number" data-dtype="Number" name="adjustPool" value="{{adjustPool}}" placeholder="adj" />
+   </div>
+   <div class="field">
+      <label>Apply Status Penalties:</label>
+      <input type="checkbox" data-dtype="Boolean" name="applyStatus" {{#if applyStatus}} checked="checked" {{/if}} />
+   </div>
+   <div class="field">
+      <label>Explode 6s:</label>
+      <input type="checkbox" data-dtype="Boolean" name="explode" {{#if explode}} checked="checked" {{/if}} />
+   </div>
+   <div class="field">
+      <label>(Optional) Set Threshold:</label>
+      <input type="number" data-dtype="Number" name="threshold" value="{{threshold}}" placeholder="#" />
+   </div>
+
+</form>

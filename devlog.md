@@ -399,3 +399,30 @@ Tests    | Initiative
 Got conditions done, except for applying wound penalties. Maybe calc wound penalties into a statuses section.
 
 Also, cool idea for a module is one that will automatically number generic tokens as you drag them into a scene. So if you have an Orc Ganger character sheet and you drag it twice into a scene, it will name the token `Orc Ganger (1)` and `Orc Ganger (2)` I guess with the whole combat tracking system you don't really need that. 
+
+also, it would be cool if the tabs were fixed so when they get scrolled to the top they float there.
+
+## 5.19.2020
+
+Should make an edge tracker
+
+got the dialog loading! Now we can use it to do options like:
+Additional Modifiers. add or subtract extra dice.
+Optional Threshold. it will calculate margin of success if included.
+Edge Actions you can take before you roll. 
+Apply Statuses, or not
+
+To be able to optionally do dice penalties we'll have to change things around a bit. So the calc comes as we do the roll. 
+Change up the nature of stuff. The tests table can still include the calcs
+
+
+be cool if we could do extended tests some day. Track the same test through several chat messages. 
+
+## 5.25.2020
+
+We'll just store the calculated data on our own for rolling tests. 
+
+When we customize the chat html for tests we can enhance the alias line with some <em> perhaps. 
+
+We could include various data about as test in the chat message options. i think. 
+

@@ -10,6 +10,8 @@ export class ShadowrunActorSheet extends ActorSheet {
 
       // track a list of things marked as deleted for the formudata method
       this.deleted = []
+      // keep a hold of the calculated character data so we can resolve tests, hope chrome optimizes objects in memory
+      this.calculated = {}
    }
 
    /** @override */
@@ -26,14 +28,16 @@ export class ShadowrunActorSheet extends ActorSheet {
    /** @override */
    getData() {
       const data = super.getData()
-      console.log(`[get data]`, data)
+      // console.log(`[get data]`, data)
       var calculated = CalculateCharacterData(data)
+      this.calculated = calculated
       return calculated
    }
 
    /** @override */
    activateListeners(html) {
       super.activateListeners(html)
+
 
       // Everything below here is only needed if the sheet is editable
       if (!this.options.editable) return
@@ -60,7 +64,10 @@ export class ShadowrunActorSheet extends ActorSheet {
       // register listener for knowledge skill controls
       html.find('[data-control=knowledge-skills]').on('click', this.knowledgeSkillsControl.bind(this))
 
-      html.find('[data-roll]').on('click', this.rollTest.bind(this))
+      // register listener for rolls
+      html.find('[data-test]').on('click', this.rollTest.bind(this))
+
+
    }
 
    async knowledgeSkillsControl(event) {
@@ -92,61 +99,66 @@ export class ShadowrunActorSheet extends ActorSheet {
 
    async rollTest(event) {
       event.preventDefault()
-      let a = event.currentTarget
-      let data = JSON.parse(a.dataset.roll)
-      let roll = new Roll(`${data.pool}d6cs>4`).roll()
+      let element = event.currentTarget
+      let testKey = element.dataset.test
+      let test = this.calculated.data.overview.tests[testKey]
 
-      console.log('[roll-test]', this)
+      if (event.shiftKey) {
+         // todo - if holding shift when the event triggers, first show a dialog with options for rolling options like edge, threshold, and condition
+
+         let dialogData = {
+            adjustPool: 0,
+            applyStatus: test.applyStatus,
+            explode: false,
+            threshold: undefined
+         }
+         let html = await renderTemplate("systems/shadowrun6e/templates/roll-dialog.html", dialogData)
+
+         return new Promise(resolve => {
+            let d = new Dialog({
+               title: `'${Names.display(testKey)}' Test Options`,
+               content: html,
+               buttons: {
+                  roll: {
+                     icon: '<i class="fas fa-dice"></i>',
+                     label: "Roll",
+                     callback: (html) => {
+                        let rawFormData = new FormData(document.querySelector('form.test-options'))
+                        let data = Object.fromEntries(rawFormData.entries())
+                        let roll = new Roll(`${test.pool(data.applyStatus) + parseInt(data.adjustPool)}d6${data.explode ? 'x' : ''}cs>4${data.threshold ? `ms>${parseInt(data.threshold)}` : ''}`).roll()
+
+                        let options = {
+                           speaker: { ...ChatMessage.getSpeaker(), ...{ alias: `${game.user.name}${this.actor ? ` for '${this.actor.name}'` : ''}${this.token ? ` as '${this.token.name}'` : ''}` } },
+                           flavor: `${Names.display(testKey)}`
+                        }
+                        return roll.toMessage(options)
+                     }
+                  },
+                  cancel: {
+                     icon: '<i class="fas fa-ban"></i>',
+                     label: "Cancel",
+                     callback: () => {
+                        resolve(false)
+                     }
+                  }
+               },
+               default: "roll",
+               close: () => {
+                  // if rolled resolve true, otherwise false
+                  resolve(true)
+               }
+            }).render(true)
+         })
+      }
+
+      let roll = new Roll(`${test.pool()}d6cs>4`).roll()
 
       let options = {
-         speaker: { ...ChatMessage.getSpeaker(), ...{ alias: `${this.actor.name}${this.token ? ` (${this.token.name})` : ''}` } },
-         flavor: `${event.shiftKey ? 'Shift Key' : ''} ${Names.display(data.test)}`
+         speaker: { ...ChatMessage.getSpeaker(), ...{ alias: `${game.user.name}${this.actor ? ` for '${this.actor.name}'` : ''}${this.token ? ` as '${this.token.name}'` : ''}` } },
+         flavor: `${event.shiftKey ? 'Shift Key' : ''} ${Names.display(testKey)}`
       }
-     
+
       return roll.toMessage(options)
-
-      // todo - if holding shift when the event triggers, first show a dialog with options for rolling options like edge, threshold, and condition
-
-
-      // Render modal dialog
-      //  template = template || "systems/dnd5e/templates/chat/roll-dialog.html";
-      //  let dialogData = {
-      //    formula: parts.join(" + "),
-      //    data: data,
-      //    rollMode: rollMode,
-      //    rollModes: CONFIG.rollModes,
-      //    config: CONFIG.DND5E
-      //  };
-      //  const html = await renderTemplate(template, dialogData);
-
-      // Create the Dialog window
-      //  let roll;
-      //  return new Promise(resolve => {
-      //    new Dialog({
-      //      title: title,
-      //      content: html,
-      //      buttons: {
-      //        advantage: {
-      //          label: game.i18n.localize("DND5E.Advantage"),
-      //          callback: html => roll = _roll(parts, 1, html[0].children[0])
-      //        },
-      //        normal: {
-      //          label: game.i18n.localize("DND5E.Normal"),
-      //          callback: html => roll = _roll(parts, 0, html[0].children[0])
-      //        },
-      //        disadvantage: {
-      //          label: game.i18n.localize("DND5E.Disadvantage"),
-      //          callback: html => roll = _roll(parts, -1, html[0].children[0])
-      //        }
-      //      },
-      //      default: "normal",
-      //      close: html => {
-      //        if (onClose) onClose(html, parts, data);
-      //        resolve(rolled ? roll : false)
-      //      }
-      //    }, dialogOptions).render(true);
-      //  })
-
 
    }
 
@@ -215,8 +227,9 @@ export class ShadowrunActorSheet extends ActorSheet {
       //formData['data.skills.knowledge.-=2'] = null
 
       // console.log('[update object deleted]', this.deleted)
-      console.log('[update object]', formData)
+      // console.log('[update object]', formData)
 
+      // make sure anything marked for deletion gets nulled out and the clear the deleted list for next update cycle
       this.deleted.forEach(element => {
          formData[element] = null
       })

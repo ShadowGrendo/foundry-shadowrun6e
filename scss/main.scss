@@ -287,9 +287,20 @@
             flex-flow: row nowrap;
 
             .tests {
-               flex-basis: 60%;
+               flex-basis: 50%;
 
                table {
+
+                  tbody tr {
+                     transition: all .2s ease-in-out;
+
+                  }
+
+                  tbody tr:hover {
+                     color: white;
+                     background: rgba(0, 0, 0, 0.5);
+                     text-shadow: 1px 1px #000;
+                  }
 
                   th:nth-of-type(1),
                   td:nth-of-type(1) {
@@ -492,4 +503,69 @@
 .shadowrun.sheet.item {
    min-width: 460px;
    min-height: 400px;
+}
+
+
+form.test-options {
+   // todo - refactor these common styles
+   font-family: "Friz Quadrata", sans-serif;
+   font-size: 16px;
+
+
+
+   select {
+      background-color: inherit;
+      font-family: inherit;
+      font-size: inherit;
+   }
+
+   option {
+      background-color: inherit;
+      font-family: inherit;
+      font-size: inherit;
+   }
+
+   input {
+      background-color: inherit;
+      font-family: inherit;
+      font-size: inherit;
+   }
+
+   input[type=number] {
+      -moz-appearance: textfield;
+      width: 2rem;
+      text-align: center;
+   }
+
+   input[type=number]::-webkit-inner-spin-button,
+   input[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+   }
+
+   input::placeholder {
+      background-color: inherit;
+      font-style: italic;
+      opacity: .5;
+   }
+
+
+   .field {
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: center;
+      flex-grow: 1;
+      margin-right: .5rem;
+   }
+
+
+   label {
+      margin-right: .25rem;
+      flex-basis: 50%;
+   }
+
+
+
+
+
 }
