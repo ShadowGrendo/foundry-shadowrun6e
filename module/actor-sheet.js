@@ -107,6 +107,7 @@ export class ShadowrunActorSheet extends ActorSheet {
          // todo - if holding shift when the event triggers, first show a dialog with options for rolling options like edge, threshold, and condition
 
          let dialogData = {
+            pool: test.pool(),
             adjustPool: 0,
             applyStatus: test.applyStatus,
             explode: false,
@@ -125,7 +126,7 @@ export class ShadowrunActorSheet extends ActorSheet {
                      callback: (html) => {
                         let rawFormData = new FormData(document.querySelector('form.test-options'))
                         let data = Object.fromEntries(rawFormData.entries())
-                        let roll = new Roll(`${test.pool(data.applyStatus) + parseInt(data.adjustPool)}d6${data.explode ? 'x' : ''}cs>4${data.threshold ? `ms>${parseInt(data.threshold)}` : ''}`).roll()
+                        let roll = new Roll(`${test.pool(data.applyStatus) + parseInt(data.adjustPool)}d6${data.explode ? 'x' : ''}cs>4${data.threshold ? `ms>=${parseInt(data.threshold)}` : ''}`).roll()
 
                         let options = {
                            speaker: { ...ChatMessage.getSpeaker(), ...{ alias: `${game.user.name}${this.actor ? ` for '${this.actor.name}'` : ''}${this.token ? ` as '${this.token.name}'` : ''}` } },

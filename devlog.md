@@ -426,3 +426,16 @@ When we customize the chat html for tests we can enhance the alias line with som
 
 We could include various data about as test in the chat message options. i think. 
 
+## 5.26.2020
+
+in chatmessages check for glitches when you roll d6 and cs>4
+
+glitches are based on more then half the dice you rolled. So I believe that means exploded dice also count
+
+note for tommorow...change the test options to include your current dice pool so its clear that the input is fora additional dice
+
+## 5.27.2020
+
+what next? get the journal working I think. and then see if we can do the markdown module. 
+also, qualities and magic and augments and gear. :)
+
