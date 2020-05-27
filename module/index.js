@@ -30,8 +30,6 @@ Hooks.once("init", async function () {
       // check for glitches when rolling #d6cs>4
       if (!msg.isRoll || !msg.isContentVisible || msg.roll.dice[0].faces !== 6 || !msg.roll.formula.match(/cs>4/i)) return
 
-      console.log('[rolls]', msg.roll)
-
       let results = msg.roll.dice[0].rolls.reduce((accumulator, current) => {
          if (current.roll === 1) {
             accumulator.ones++
@@ -61,6 +59,7 @@ Hooks.once("init", async function () {
          }
       }
 
+      // add hits/net hits text and indicate glitches
       if (results.ones > results.dice / 2 && results.hits === 0) {
          html.find('.dice-total').addClass('glitch')
          html.find('.dice-total')[0].innerText = 'CRITICAL GLITCH!'
