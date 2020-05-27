@@ -107,6 +107,7 @@ export class ShadowrunActorSheet extends ActorSheet {
          // todo - if holding shift when the event triggers, first show a dialog with options for rolling options like edge, threshold, and condition
 
          let dialogData = {
+            pool: test.pool(),
             adjustPool: 0,
             applyStatus: test.applyStatus,
             explode: false,

@@ -45,9 +45,9 @@ Hooks.once("init", async function () {
          html.find('.dice-total')[0].innerText = 'CRITICAL GLITCH!'
       } else if (results.ones > results.dice / 2) {
          html.find('.dice-total').addClass('glitch')
-         html.find('.dice-total').append("<span> hits + glitch</span>")
+         html.find('.dice-total').append(`<span> ${msg.roll.result === '1' ? 'hit' : 'hits'} + glitch</span>`)
       } else {
-         html.find('.dice-total').append("<span> hits</span>")
+         html.find('.dice-total').append(`<span> ${msg.roll.result === '1' ? 'hit' : 'hits'}</span>`)
       }
 
    })
