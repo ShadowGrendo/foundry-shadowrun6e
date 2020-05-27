@@ -426,3 +426,8 @@ When we customize the chat html for tests we can enhance the alias line with som
 
 We could include various data about as test in the chat message options. i think. 
 
+## 5.26.2020
+
+in chatmessages check for glitches when you roll d6 and cs>4
+
+glitches are based on more then half the dice you rolled. So I believe that means exploded dice also count

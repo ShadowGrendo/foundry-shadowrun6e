@@ -16,57 +16,12 @@ import browserSync from 'browser-sync'
 
 let devServer = browserSync.create()
 
-import handlebarsSetup from './testing/handlebars-setup.js'
-
-handlebarsSetup()
 
 function clean(done) {
    // clean up the dist directory before we start building
    del('dist/**', done)
 }
 
-function handlebars() {
-   let prefix = 'systems/shadowrun6e/templates'
-   return src('templates/**/*.html')
-      .pipe(through.obj(function (file, encoding, done) {
-         try {
-
-            let partialName = `${prefix}/${file.relative.replace(/\\/g, '/')}`
-            console.log(partialName)
-            let partial = file.contents.toString()
-
-            Handlebars.registerPartial(partialName, partial)
-
-            done(null, file)
-         }
-         catch (error) {
-            done(error, null)
-         }
-      }))
-      // we just register the partials, we don't need to copy the files
-      // .pipe(dest('dist'))
-}
-
-function html() {
-   return src('testing/index.html')
-      .pipe(through.obj(function (file, encoding, done) {
-         try {
-            let source = file.contents.toString()
-            let json = fs.readFileSync('testing/data.json')
-            let data = JSON.parse(json)
-            let template = Handlebars.compile(source)
-            let templated = template(data)
-            file.contents = Buffer.from(templated)
-            done(null, file)
-         }
-         catch (error) {
-            done(error, null)
-         }
-      }))
-      .pipe(dest('dist'))
-}
-
-let content = series(handlebars, html)
 
 function scss() {
    return src('scss/main.scss')
@@ -74,10 +29,6 @@ function scss() {
       .pipe(dest('css/'))
 }
 
-function styles() {
-   return src('testing/style.css')
-      .pipe(dest('dist'))
-}
 
 function develop(done) {
    // devServer.init({

@@ -125,7 +125,7 @@ export class ShadowrunActorSheet extends ActorSheet {
                      callback: (html) => {
                         let rawFormData = new FormData(document.querySelector('form.test-options'))
                         let data = Object.fromEntries(rawFormData.entries())
-                        let roll = new Roll(`${test.pool(data.applyStatus) + parseInt(data.adjustPool)}d6${data.explode ? 'x' : ''}cs>4${data.threshold ? `ms>${parseInt(data.threshold)}` : ''}`).roll()
+                        let roll = new Roll(`${test.pool(data.applyStatus) + parseInt(data.adjustPool)}d6${data.explode ? 'x' : ''}cs>4${data.threshold ? `ms>=${parseInt(data.threshold)}` : ''}`).roll()
 
                         let options = {
                            speaker: { ...ChatMessage.getSpeaker(), ...{ alias: `${game.user.name}${this.actor ? ` for '${this.actor.name}'` : ''}${this.token ? ` as '${this.token.name}'` : ''}` } },

@@ -25,36 +25,30 @@ Hooks.once("init", async function () {
    Items.unregisterSheet("core", ItemSheet)
    Items.registerSheet("shadowrun", ShadowrunItemSheet, { makeDefault: true })
 
-   // // Register system settings
-   // game.settings.register("shadowrun", "macroShorthand", {
-   //    name: "Shortened Macro Syntax",
-   //    hint: "Enable a shortened macro syntax which allows referencing attributes directly, for example @str instead of @attributes.str.value. Disable this setting if you need the ability to reference the full attribute model, for example @attributes.str.label.",
-   //    scope: "world",
-   //    type: Boolean,
-   //    default: true,
-   //    config: true
-   // })
 
-   Hooks.on("renderChatMessage", (message, data, html) => {
+   Hooks.on("renderChatMessage", (msg, html, data) => {
+      // check for glitches when rolling #d6cs>4
+      if (!msg.isRoll || !msg.isContentVisible || msg.roll.parts[0].faces !== 6 || !msg.roll.formula.match(/cs>4/i)) return
 
+      let results = msg.roll.parts[0].rolls.reduce((accumulator, current) => {
+         if (current.roll === 1) {
+            accumulator.ones++
+         } else if (current.success) {
+            accumulator.successes++
+         }
+         accumulator.dice++
+         return accumulator
+      }, { ones: 0, successes: 0, dice: 0 })
 
-      if (!message.isRoll || message.roll.parts[0].faces !== 6) return
-
-      // todo - check for glitches
-      // also 
-      // // the place to do stuff for dice rolls. 
-      // let d20 = message.roll.parts[0].total
-      // if (d20 === 20) html.find(".dice-total").addClass("success")
-      // else if (d20 === 1) html.find(".dice-total").addClass("failure")
-
-      let roll = message.roll.parts[0]
-      //console.log('[dice roll]', roll)
+      if (results.ones > results.dice / 2 && results.successes === 0) {
+         html.find('.dice-total').addClass('glitch')
+         html.find('.dice-total')[0].innerText = 'CRITICAL GLITCH!'
+      } else if (results.ones > results.dice / 2) {
+         html.find('.dice-total').addClass('glitch')
+         html.find('.dice-total').append("<span> & glitch</span>")
+      }
 
    })
-
-
-
-
 
 
    // isEqual helper
