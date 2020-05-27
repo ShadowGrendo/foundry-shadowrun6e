@@ -28,9 +28,11 @@ Hooks.once("init", async function () {
 
    Hooks.on("renderChatMessage", (msg, html, data) => {
       // check for glitches when rolling #d6cs>4
-      if (!msg.isRoll || !msg.isContentVisible || msg.roll.parts[0].faces !== 6 || !msg.roll.formula.match(/cs>4/i)) return
+      if (!msg.isRoll || !msg.isContentVisible || msg.roll.dice[0].faces !== 6 || !msg.roll.formula.match(/cs>4/i)) return
 
-      let results = msg.roll.parts[0].rolls.reduce((accumulator, current) => {
+      console.log('[rolls]', msg.roll)
+
+      let results = msg.roll.dice[0].rolls.reduce((accumulator, current) => {
          if (current.roll === 1) {
             accumulator.ones++
          } else if (current.success) {
@@ -40,14 +42,33 @@ Hooks.once("init", async function () {
          return accumulator
       }, { ones: 0, hits: 0, dice: 0 })
 
+      let hitText = () => {
+         if (msg.roll.formula.match(/ms/i)) {
+            // if the formula contains margin of success, label with 'net hits'
+            // label with 'hits'
+            if (msg.roll.total === '1' || msg.roll.total === '-1') {
+               return 'net hit'
+            } else {
+               return 'net hits'
+            }
+         } else {
+            // label with 'hits'
+            if (msg.roll.total === '1' || msg.roll.total === '-1') {
+               return 'hit'
+            } else {
+               return 'hits'
+            }
+         }
+      }
+
       if (results.ones > results.dice / 2 && results.hits === 0) {
          html.find('.dice-total').addClass('glitch')
          html.find('.dice-total')[0].innerText = 'CRITICAL GLITCH!'
       } else if (results.ones > results.dice / 2) {
          html.find('.dice-total').addClass('glitch')
-         html.find('.dice-total').append(`<span> ${msg.roll.result === '1' ? 'hit' : 'hits'} + glitch</span>`)
+         html.find('.dice-total').append(`<span> ${hitText()} + glitch</span>`)
       } else {
-         html.find('.dice-total').append(`<span> ${msg.roll.result === '1' ? 'hit' : 'hits'}</span>`)
+         html.find('.dice-total').append(`<span> ${hitText()}</span>`)
       }
 
    })
