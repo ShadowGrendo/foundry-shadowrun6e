@@ -431,3 +431,5 @@ We could include various data about as test in the chat message options. i think
 in chatmessages check for glitches when you roll d6 and cs>4
 
 glitches are based on more then half the dice you rolled. So I believe that means exploded dice also count
+
+  n note for tommorow...change the test options to include your current dice pool so its clear that the input is fora additional dice
