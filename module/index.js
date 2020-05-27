@@ -34,18 +34,20 @@ Hooks.once("init", async function () {
          if (current.roll === 1) {
             accumulator.ones++
          } else if (current.success) {
-            accumulator.successes++
+            accumulator.hits++
          }
          accumulator.dice++
          return accumulator
-      }, { ones: 0, successes: 0, dice: 0 })
+      }, { ones: 0, hits: 0, dice: 0 })
 
-      if (results.ones > results.dice / 2 && results.successes === 0) {
+      if (results.ones > results.dice / 2 && results.hits === 0) {
          html.find('.dice-total').addClass('glitch')
          html.find('.dice-total')[0].innerText = 'CRITICAL GLITCH!'
       } else if (results.ones > results.dice / 2) {
          html.find('.dice-total').addClass('glitch')
-         html.find('.dice-total').append("<span> & glitch</span>")
+         html.find('.dice-total').append("<span> hits + glitch</span>")
+      } else {
+         html.find('.dice-total').append("<span> hits</span>")
       }
 
    })
