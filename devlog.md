@@ -434,3 +434,8 @@ glitches are based on more then half the dice you rolled. So I believe that mean
 
 note for tommorow...change the test options to include your current dice pool so its clear that the input is fora additional dice
 
+## 5.27.2020
+
+what next? get the journal working I think. and then see if we can do the markdown module. 
+also, qualities and magic and augments and gear. :)
+
