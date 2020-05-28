@@ -240,7 +240,6 @@
                   </li>
                   {{/each}}
                </ol>
-
             </div>
          </div>
       </div>
@@ -300,11 +299,20 @@
       </div>
       <div class="tab journal" data-group="primary" data-tab="journal">
 
-         <a class="journal-control" data-action="create"><i class="fas fa-plus"></i></a>
+         <div>
+            <span>Journal</span>
+            <a data-control="journal-entries" data-action="create"><i class="fas fa-plus"></i></a>
+         </div>
          <ol>
+            {{#each data.journal}}
+            <li data-id="{{@key}}">
+               <input type="text" data-dtype="String" name="data.journal.{{@key}}.title" value="{{title}}" placeholder="entry title" />
+               <a data-control="journal-entries" data-action="delete"><i class="fas fa-trash"></i></a>
 
+               <!-- todo - time for an inline editor -->
+            </li>
+            {{/each}}
          </ol>
-
       </div>
    </section>
 

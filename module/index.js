@@ -44,14 +44,14 @@ Hooks.once("init", async function () {
          if (msg.roll.formula.match(/ms/i)) {
             // if the formula contains margin of success, label with 'net hits'
             // label with 'hits'
-            if (msg.roll.total === '1' || msg.roll.total === '-1') {
+            if (msg.roll.total === 1 || msg.roll.total === -1) {
                return 'net hit'
             } else {
                return 'net hits'
             }
          } else {
             // label with 'hits'
-            if (msg.roll.total === '1' || msg.roll.total === '-1') {
+            if (msg.roll.total === 1 || msg.roll.total === -1) {
                return 'hit'
             } else {
                return 'hits'

@@ -138,12 +138,12 @@
           "dice": 3
         }
       },
-      "journal": [
-        {
+      "journal": {
+        "0": {
           "title": "entry name",
           "content": ""
         }
-      ],
+      },
       "magic": {
         "traditionAttribute": "logic"
       },
@@ -333,7 +333,6 @@
       "status": {
         "damagePenalty": 0,
         "stunPenalty": 0
-        
       }
     }
   },
