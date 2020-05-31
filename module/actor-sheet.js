@@ -64,8 +64,30 @@ export class ShadowrunActorSheet extends ActorSheet {
       // register listener for knowledge skill controls
       html.find('[data-control=knowledge-skills]').on('click', this.knowledgeSkillsControl.bind(this))
 
+      // register listener for journals
+      html.find('[data-control=journal-entries]').on('click', this.journalEntriesControl.bind(this))
+
       // register listener for rolls
       html.find('[data-test]').on('click', this.rollTest.bind(this))
+
+      // remember that the handling of this, is different in functions and arrow functions. 
+      html.find('[data-editor-markdown]').each(function () {
+         let editor = new EasyMDE({
+            autoDownloadFontAwesome: false,
+            showIcons: ['strikethrough', 'code', 'table', 'redo', 'heading', 'undo', 'clean-block', 'horizontal-rule'],
+            indentWithTabs: false,
+            spellChecker: false,
+            autosave: {
+               enabled: true,
+               delay: 1000,
+               //todo - make this the action unique id
+               uniqueId: 'mde-autosave-demo'
+            },
+            element: this,
+            initialValue: "[set to initial value]"
+         })
+
+      })
 
 
    }
@@ -91,6 +113,50 @@ export class ShadowrunActorSheet extends ActorSheet {
          delete this.object.data.data.skills.knowledge[id]
          // push a delete message to be appended to the formdata update
          this.deleted.push(`data.skills.knowledge.-=${id}`)
+         li.remove()
+      }
+
+      await this._onSubmit(event)
+   }
+
+   async journalEntriesControl(event) {
+      event.preventDefault()
+
+      let a = event.currentTarget
+      let action = a.dataset.action
+      let journal = this.object.data.data.journal
+      let form = this.form
+
+      if (action === 'create') {
+         // add a new entry
+         let next = Object.keys(journal).length
+         let newEntry = document.createElement('li')
+
+
+         // // Enrich the content
+         // content = TextEditor.enrichHTML(content, { secrets: owner, entities: true });
+
+         // // Construct the HTML
+         //let editor = $(`<div class="editor"><div class="editor-content" data-edit="${target}">${content}</div></div>`);
+
+         // // Append edit button
+         // if (button && editable) editor.append($('<a class="editor-edit"><i class="fas fa-edit"></i></a>'));
+         // return new Handlebars.SafeString(editor[0].outerHTML);
+
+
+
+         newEntry.innerHTML = `<input type="text" data-dtype="String" name="data.journal.${next}.title" value="" placeholder="title" />
+         <textarea data-editor-markdown></textarea>
+         <a data-control="journal-entries" data-action="delete"><i class="fas fa-trash"></i></a>`
+
+         form.appendChild(newEntry)
+
+      } else if (action === 'delete') {
+         let li = a.parentElement
+         let id = li.dataset.id
+         delete this.object.data.data.journal[id]
+         // push a delete message to be appended to the formdata update
+         this.deleted.push(`data.journal.-=${id}`)
          li.remove()
       }
 
@@ -154,7 +220,7 @@ export class ShadowrunActorSheet extends ActorSheet {
 
       let options = {
          speaker: { ...ChatMessage.getSpeaker(), ...{ alias: `${game.user.name}${this.actor ? ` for '${this.actor.name}'` : ''}${this.token ? ` as '${this.token.name}'` : ''}` } },
-         flavor: `${event.shiftKey ? 'Shift Key' : ''} ${Names.display(testKey)}`
+         flavor: `${Names.display(testKey)}`
       }
 
       return roll.toMessage(options)
@@ -195,6 +261,13 @@ export class ShadowrunActorSheet extends ActorSheet {
       //    li.parentElement.removeChild(li)
       //    await this._onSubmit(event)
       // }
+   }
+
+   /** @override */
+   async _render(force = false, options = {}) {
+      if (force) this.token = options.token || null;
+
+      return super._render(force, options);
    }
 
    /** @override */
