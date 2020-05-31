@@ -355,12 +355,23 @@
                flex-flow: row nowrap;
                justify-content: space-between;
                align-items: center;
-               
+
+               list-style: url('../assets/edit-solid.svg');
+
                font-size: 1.125rem;
 
                input {
                   margin: .25rem .25rem .25rem 0;
                }
+            }
+
+            summary::-webkit-details-marker {
+               color: transparent;
+               background-image: url(../assets/edit-solid.svg);
+               background-position: center;
+               background-repeat: no-repeat;
+               background-size: contain;
+
             }
 
          }
