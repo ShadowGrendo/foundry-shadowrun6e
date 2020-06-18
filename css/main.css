@@ -240,16 +240,11 @@
       flex-flow: row nowrap;
       justify-content: space-between;
       align-items: center;
-      list-style: url("../assets/edit-solid.svg");
       font-size: 1.125rem; }
       .shadowrun form.character section .journal-content summary input {
         margin: .25rem .25rem .25rem 0; }
-    .shadowrun form.character section .journal-content summary::-webkit-details-marker {
-      color: transparent;
-      background-image: url(../assets/edit-solid.svg);
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: contain; }
+    .shadowrun form.character section .journal-content .editor, .shadowrun form.character section .journal-content .editor-content {
+      height: 288px; }
 
 .shadowrun .window-content {
   height: 100%; }

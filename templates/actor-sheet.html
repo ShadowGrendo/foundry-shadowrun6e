@@ -311,13 +311,14 @@
                   <input type="text" data-dtype="String" name="data.journal.{{@key}}.title" value="{{title}}" placeholder="title" />
                   <a data-control="journal-entries" data-action="delete"><i class="fas fa-trash"></i></a>
                </summary>
-               <textarea data-editor-markdown></textarea>
+               <!-- <textarea data-editor-markdown></textarea> -->
+               {{md-editor content=value target="data.journal.@key.value"}}
             </details>
             {{/each}}
          </div>
       </div>
 
-      
+
    </section>
 
 </form>

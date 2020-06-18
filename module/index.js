@@ -2,6 +2,7 @@ import { ShadowrunActor } from "./actor.js"
 import { ShadowrunItemSheet } from "./item-sheet.js"
 import { ShadowrunActorSheet } from "./actor-sheet.js"
 import { Names } from './shadowrun.js'
+// import { markdown } from './markdown.js'
 
 /* -------------------------------------------- */
 /*  Foundry VTT Initialization                  */
@@ -97,27 +98,61 @@ Hooks.once("init", async function () {
    // Register an inline markdown editor helper
    Handlebars.registerHelper('md-editor', function (options) {
 
-      // texteditor enrich html. 
-
-      let target = options.hash['target'],
-         content = options.hash['content'] || "",
-         button = Boolean(options.hash['button']),
-         owner = Boolean(options.hash['owner']),
-         editable = Boolean(options.hash['editable'])
+      // let target = options.hash['target'],
+      //    content = options.hash['content'] || "",
+      //    button = Boolean(options.hash['button']),
+      //    owner = Boolean(options.hash['owner']),
+      //    editable = Boolean(options.hash['editable'])
 
 
-      if (!target) throw new Error("You must define the name of a target field.")
+      // if (!target) throw new Error("You must define the name of a target field.")
 
       // Enrich the content
       // this will do foundry specific stuff to html. We want to run it, for secrets and such, but we'll have to do it 
-      content = TextEditor.enrichHTML(content, { secrets: owner, entities: true })
+
+      //  debugger
+
+
+      let content = options.hash['content'] || ''
+      // content = TextEditor.enrichHTML(content, { secrets: owner, entities: true })
 
       // Construct the HTML
-      let editor = $(`<div class="editor"><div class="editor-content" data-edit="${target}">${content}</div></div>`)
+      // let editor = $(`<div class="editor"><div class="editor-content" data-edit="${target}">${content}</div></div>`)
 
       // Append edit button
-      if (button && editable) editor.append($('<a class="editor-edit"><i class="fas fa-edit"></i></a>'))
-      return new Handlebars.SafeString(editor[0].outerHTML)
+      // if (button && editable) editor.append($('<a class="editor-edit"><i class="fas fa-edit"></i></a>'))
+
+      // options.data.key is our key! nice
+      // options.hash.content is 
+
+
+      // construct a <textarea> and create the mde
+
+
+      let area = $(`<textarea data-editor="journal-${options.data.key}">${content}</textarea>`)
+
+
+
+      // let editor = new EasyMDE({
+      //    autoDownloadFontAwesome: false,
+      //    showIcons: ['strikethrough', 'code', 'table', 'redo', 'heading', 'undo', 'clean-block', 'horizontal-rule'],
+      //    indentWithTabs: false,
+      //    spellChecker: false,
+      //    // autosave: {
+      //    //    enabled: true,
+      //    //    delay: 1000,
+      //    //    //todo - make this the action unique id
+      //    //    uniqueId: 'mde-autosave-demo'
+      //    // },
+      //    element: area[0],
+      //    initialValue: content
+      // })
+
+
+
+
+
+      return new Handlebars.SafeString(area[0].outerHTML)
 
 
    })

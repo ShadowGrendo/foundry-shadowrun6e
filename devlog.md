@@ -439,3 +439,13 @@ note for tommorow...change the test options to include your current dice pool so
 what next? get the journal working I think. and then see if we can do the markdown module. 
 also, qualities and magic and augments and gear. :)
 
+## 6.17.2020 
+
+Got the initial content of the md editor working. We need to call refresh on the codemirror instance to get the content to show when we expand it. 
+https://github.com/sparksuite/simplemde-markdown-editor/issues/313
+Not sure how I feel about the expansion. some tabs down the left with the titles on them might be a better interface. 
+that would probably still have the content issue, but it would be easier to see the entries and you'd have a larger editing space. 
+
+Still need to figure out how to save the contents somewhere. By default it can save the contents back to the textarea. 
+if we had an event on the text area that triggered when the content changed that could work but I think we would be better off implementing a save button. 
+easier to follow the established pattern. 

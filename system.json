@@ -2,13 +2,14 @@
   "name": "shadowrun6e",
   "title": "Shadowrun 6th World",
   "description": "Shadowrun 6th World game",
-  "version": "0.0.27",
+  "version": "0.0.28",
   "templateVersion": 0,
   "minimumCoreVersion": "0.5.5",
-  "compatibleCoreVersion": "0.6.0",
+  "compatibleCoreVersion": "0.6.2",
   "author": "nevenall",
   "esmodules": [
-    "module/index.js"
+    "module/index.js",
+    "module/markdown.js"
   ],
   "scripts": [
     "scripts/easymde.js"
@@ -28,7 +29,7 @@
   "gridDistance": 1,
   "gridUnits": "m",
   "socket": true,
-  "manifest": "https://raw.githubusercontent.com/Nevenall/SR6-FoundryVTT/master/system.json",
-  "url": "https://github.com/Nevenall/SR6-FoundryVTT",
-  "download": "https://github.com/Nevenall/SR6-FoundryVTT/archive/master.zip"
+  "url": "https://github.com/Nevenall/foundryvtt-shadowrun6e",
+  "manifest": "https://raw.githubusercontent.com/Nevenall/foundryvtt-shadowrun6e/master/system.json",
+  "download": "https://github.com/Nevenall/foundryvtt-shadowrun6e/archive/master.zip"
 }

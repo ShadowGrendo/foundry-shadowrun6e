@@ -70,23 +70,42 @@ export class ShadowrunActorSheet extends ActorSheet {
       // register listener for rolls
       html.find('[data-test]').on('click', this.rollTest.bind(this))
 
-      // remember that the handling of this, is different in functions and arrow functions. 
-      html.find('[data-editor-markdown]').each(function () {
+      // //remember that the handling of this, is different in functions and arrow functions. 
+      // html.find('[data-editor]').each(function () {
+      //    let editor = new EasyMDE({
+      //       autoDownloadFontAwesome: false,
+      //       showIcons: ['strikethrough', 'code', 'table', 'redo', 'heading', 'undo', 'clean-block', 'horizontal-rule'],
+      //       indentWithTabs: false,
+      //       spellChecker: false,
+      //       autosave: {
+      //          enabled: true,
+      //          delay: 1000,
+      //          //todo - make this the action unique id
+      //          uniqueId: 'mde-autosave-demo'
+      //       },
+      //       element: this,
+      //       initialValue: "[set to initial value]"
+      //    })
+      // })
+
+      html.find('[data-editor]').each((i, el) => {
+
+         
          let editor = new EasyMDE({
             autoDownloadFontAwesome: false,
             showIcons: ['strikethrough', 'code', 'table', 'redo', 'heading', 'undo', 'clean-block', 'horizontal-rule'],
             indentWithTabs: false,
             spellChecker: false,
+            forceSync: true,
             autosave: {
                enabled: true,
                delay: 1000,
                //todo - make this the action unique id
-               uniqueId: 'mde-autosave-demo'
+               uniqueId: el.dataset.editor
             },
-            element: this,
-            initialValue: "[set to initial value]"
+            element: el,
+            initialValue: el.value
          })
-
       })
 
 

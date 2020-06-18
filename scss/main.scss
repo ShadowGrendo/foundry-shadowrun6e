@@ -356,7 +356,7 @@
                justify-content: space-between;
                align-items: center;
 
-               list-style: url('../assets/edit-solid.svg');
+               // list-style: url('../assets/edit-solid.svg');
 
                font-size: 1.125rem;
 
@@ -365,14 +365,18 @@
                }
             }
 
-            summary::-webkit-details-marker {
-               color: transparent;
-               background-image: url(../assets/edit-solid.svg);
-               background-position: center;
-               background-repeat: no-repeat;
-               background-size: contain;
-
+            .editor, .editor-content {
+               height: 288px;
             }
+
+            // summary::-webkit-details-marker {
+            //    color: transparent;
+            //    background-image: url(../assets/edit-solid.svg);
+            //    background-position: center;
+            //    background-repeat: no-repeat;
+            //    background-size: contain;
+
+            // }
 
          }
       }

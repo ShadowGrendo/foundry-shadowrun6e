@@ -138,7 +138,12 @@
           "dice": 3
         }
       },
-      "journal": {},
+      "journal": {
+        "0": {
+          "title": "Entry One",
+          "value": "# Hello World\nthis is the first entry"
+        }
+      },
       "magic": {
         "traditionAttribute": "logic"
       },
