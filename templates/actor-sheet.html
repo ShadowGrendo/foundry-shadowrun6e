@@ -298,23 +298,29 @@
       <div class="tab gear" data-group="primary" data-tab="gear">
       </div>
       <div class="tab social" data-group="primary" data-tab="social">
+
       </div>
       <div class="tab journal" data-group="primary" data-tab="journal">
-         <div class="journal-content">
-            <div>
-               <span>Journal</span>
-               <a data-control="journal-entries" data-action="create"><i class="fas fa-plus"></i></a>
-            </div>
-            {{#each data.journal}}
-            <details data-id="{{@key}}">
-               <summary>
-                  <input type="text" data-dtype="String" name="data.journal.{{@key}}.title" value="{{title}}" placeholder="title" />
-                  <a data-control="journal-entries" data-action="delete"><i class="fas fa-trash"></i></a>
-               </summary>
-               <!-- <textarea data-editor-markdown></textarea> -->
-               {{md-editor content=value target="data.journal.@key.value"}}
-            </details>
-            {{/each}}
+         <div class="journal-content" x-data="{ tab: '0' }">
+            <nav class="tabs">
+               <a class="item" data-control="journal-entries" data-action="create" ugmented-ui="tr-clip bl-clip exe"><i class="fas fa-plus"></i></a>
+               {{#each data.journal}}
+               <a class="item" :class="{ 'active': tab === '{{@key}}' }" @click="tab = '{{@key}}'" augmented-ui="tr-clip bl-clip exe">{{title}}</a>
+               {{/each}}
+            </nav>
+            <section>
+               {{#each data.journal}}
+               <div class="tab" x-show="tab === '{{@key}}'">
+                  <div class="summary" data-id="{{@key}}">
+                     <input type="text" data-dtype="String" name="data.journal.{{@key}}.title" value="{{title}}" placeholder="title" />
+                     <a data-control="journal-entries" data-action="delete"><i class="fas fa-trash"></i></a>
+                  </div>
+                  {{md-editor content=value}}
+               </div>
+               {{/each}}
+            </section>
+
+
          </div>
       </div>
 

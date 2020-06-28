@@ -110,49 +110,17 @@ Hooks.once("init", async function () {
       // Enrich the content
       // this will do foundry specific stuff to html. We want to run it, for secrets and such, but we'll have to do it 
 
-      //  debugger
-
-
+     
       let content = options.hash['content'] || ''
       // content = TextEditor.enrichHTML(content, { secrets: owner, entities: true })
 
       // Construct the HTML
       // let editor = $(`<div class="editor"><div class="editor-content" data-edit="${target}">${content}</div></div>`)
 
-      // Append edit button
-      // if (button && editable) editor.append($('<a class="editor-edit"><i class="fas fa-edit"></i></a>'))
 
-      // options.data.key is our key! nice
-      // options.hash.content is 
+      let area = `<textarea data-dtype="String" name="data.journal.${options.data.key}.value" data-editor="journal-${options.data.key}">${content}</textarea>`
 
-
-      // construct a <textarea> and create the mde
-
-
-      let area = $(`<textarea data-editor="journal-${options.data.key}">${content}</textarea>`)
-
-
-
-      // let editor = new EasyMDE({
-      //    autoDownloadFontAwesome: false,
-      //    showIcons: ['strikethrough', 'code', 'table', 'redo', 'heading', 'undo', 'clean-block', 'horizontal-rule'],
-      //    indentWithTabs: false,
-      //    spellChecker: false,
-      //    // autosave: {
-      //    //    enabled: true,
-      //    //    delay: 1000,
-      //    //    //todo - make this the action unique id
-      //    //    uniqueId: 'mde-autosave-demo'
-      //    // },
-      //    element: area[0],
-      //    initialValue: content
-      // })
-
-
-
-
-
-      return new Handlebars.SafeString(area[0].outerHTML)
+      return new Handlebars.SafeString(area)
 
 
    })

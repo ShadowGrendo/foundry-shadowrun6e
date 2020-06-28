@@ -5,18 +5,18 @@
   "version": "0.0.28",
   "templateVersion": 0,
   "minimumCoreVersion": "0.5.5",
-  "compatibleCoreVersion": "0.6.2",
+  "compatibleCoreVersion": "0.6.4",
   "author": "nevenall",
   "esmodules": [
-    "module/index.js",
-    "module/markdown.js"
+    "module/index.js"
   ],
   "scripts": [
-    "scripts/easymde.js"
+    "scripts/alpine.min.js",
+    "scripts/easymde.min.js"
   ],
   "styles": [
     "css/main.css",
-    "css/easymde.css"
+    "css/easymde.min.css"
   ],
   "languages": [
     {

@@ -25,6 +25,7 @@ export class ShadowrunActorSheet extends ActorSheet {
       })
    }
 
+
    /** @override */
    getData() {
       const data = super.getData()
@@ -70,43 +71,39 @@ export class ShadowrunActorSheet extends ActorSheet {
       // register listener for rolls
       html.find('[data-test]').on('click', this.rollTest.bind(this))
 
-      // //remember that the handling of this, is different in functions and arrow functions. 
-      // html.find('[data-editor]').each(function () {
-      //    let editor = new EasyMDE({
-      //       autoDownloadFontAwesome: false,
-      //       showIcons: ['strikethrough', 'code', 'table', 'redo', 'heading', 'undo', 'clean-block', 'horizontal-rule'],
-      //       indentWithTabs: false,
-      //       spellChecker: false,
-      //       autosave: {
-      //          enabled: true,
-      //          delay: 1000,
-      //          //todo - make this the action unique id
-      //          uniqueId: 'mde-autosave-demo'
-      //       },
-      //       element: this,
-      //       initialValue: "[set to initial value]"
-      //    })
-      // })
-
       html.find('[data-editor]').each((i, el) => {
-
-         
          let editor = new EasyMDE({
             autoDownloadFontAwesome: false,
             showIcons: ['strikethrough', 'code', 'table', 'redo', 'heading', 'undo', 'clean-block', 'horizontal-rule'],
             indentWithTabs: false,
             spellChecker: false,
             forceSync: true,
+            uploadImage: true,
+            shortcuts: {
+               "save": "Ctrl-S"
+            },
+            additionalToolbar: ['|', {
+               name: "save",
+               action: (editor) => {
+                  // with force sync on, changes will be written to the textarea where they can be included in formdata.
+                  this._updateObject(new Event('mcesave'), FormData)
+               },
+               className: "fa fa-save",
+               title: "Save",
+
+            }],
+            
             autosave: {
                enabled: true,
                delay: 1000,
-               //todo - make this the action unique id
-               uniqueId: el.dataset.editor
+               uniqueId: `${this.object.id}-${el.dataset.editor}`
             },
             element: el,
             initialValue: el.value
          })
+
       })
+
 
 
    }
@@ -142,6 +139,7 @@ export class ShadowrunActorSheet extends ActorSheet {
       event.preventDefault()
 
       let a = event.currentTarget
+      let nav = a.parentElement
       let action = a.dataset.action
       let journal = this.object.data.data.journal
       let form = this.form
@@ -149,34 +147,19 @@ export class ShadowrunActorSheet extends ActorSheet {
       if (action === 'create') {
          // add a new entry
          let next = Object.keys(journal).length
-         let newEntry = document.createElement('li')
 
+         let newEntry = $(`<input type="text" data-dtype="String" name="data.journal.${next}.title" value="journal entry ${next}" />`)
 
-         // // Enrich the content
-         // content = TextEditor.enrichHTML(content, { secrets: owner, entities: true });
-
-         // // Construct the HTML
-         //let editor = $(`<div class="editor"><div class="editor-content" data-edit="${target}">${content}</div></div>`);
-
-         // // Append edit button
-         // if (button && editable) editor.append($('<a class="editor-edit"><i class="fas fa-edit"></i></a>'));
-         // return new Handlebars.SafeString(editor[0].outerHTML);
-
-
-
-         newEntry.innerHTML = `<input type="text" data-dtype="String" name="data.journal.${next}.title" value="" placeholder="title" />
-         <textarea data-editor-markdown></textarea>
-         <a data-control="journal-entries" data-action="delete"><i class="fas fa-trash"></i></a>`
-
-         form.appendChild(newEntry)
+         form.appendChild(newEntry[0])
 
       } else if (action === 'delete') {
-         let li = a.parentElement
-         let id = li.dataset.id
+
+         let parent = a.parentElement
+         let id = parent.dataset.id
          delete this.object.data.data.journal[id]
          // push a delete message to be appended to the formdata update
          this.deleted.push(`data.journal.-=${id}`)
-         li.remove()
+         parent.remove()
       }
 
       await this._onSubmit(event)
