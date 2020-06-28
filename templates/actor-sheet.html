@@ -240,36 +240,37 @@
                   </li>
                   {{/each}}
                </ol>
-
             </div>
          </div>
       </div>
       <div class="tab combat" data-group="primary" data-tab="combat">
-         <p>Stun: <input type="number" data-dtype="Number" name="data.condition.stun.value" value="{{data.condition.stun.value}}" title="Current Stun" min="0" max="{{data.condition.stun.max}}" />/{{data.condition.stun.max}} ({{data.status.stunPenalty}})</p>
-         <label>adj: </label><input type="number" data-dtype="Number" name="data.condition.stun.adj" value="{{data.condition.stun.adj}}" placeholder="adj" title="Additional Stun Boxes" />
-         <input type="hidden" data-dtype="Number" name="data.condition.stun.max" value="{{data.condition.stun.max}}" />
+         <div class="combat-content">
+            <p>Stun: <input type="number" data-dtype="Number" name="data.condition.stun.value" value="{{data.condition.stun.value}}" title="Current Stun" min="0" max="{{data.condition.stun.max}}" />/{{data.condition.stun.max}} ({{data.status.stunPenalty}})</p>
+            <label>adj: </label><input type="number" data-dtype="Number" name="data.condition.stun.adj" value="{{data.condition.stun.adj}}" placeholder="adj" title="Additional Stun Boxes" />
+            <input type="hidden" data-dtype="Number" name="data.condition.stun.max" value="{{data.condition.stun.max}}" />
 
-         <p>Damage: <input type="number" data-dtype="Number" name="data.condition.damage.value" value="{{data.condition.damage.value}}" title="Current Damage" min="0" max="{{data.condition.damage.max}}" />/{{data.condition.damage.max}} ({{data.status.damagePenalty}})</p>
-         <label>adj: </label><input type="number" data-dtype="Number" name="data.condition.damage.adj" value="{{data.condition.damage.adj}}" placeholder="adj" title="Additional Damage Boxes" />
-         <input type="hidden" data-dtype="Number" name="data.condition.damage.max" value="{{data.condition.damage.max}}" />
+            <p>Damage: <input type="number" data-dtype="Number" name="data.condition.damage.value" value="{{data.condition.damage.value}}" title="Current Damage" min="0" max="{{data.condition.damage.max}}" />/{{data.condition.damage.max}} ({{data.status.damagePenalty}})</p>
+            <label>adj: </label><input type="number" data-dtype="Number" name="data.condition.damage.adj" value="{{data.condition.damage.adj}}" placeholder="adj" title="Additional Damage Boxes" />
+            <input type="hidden" data-dtype="Number" name="data.condition.damage.max" value="{{data.condition.damage.max}}" />
 
-         <p>Overflow: <span>{{data.condition.overflow.value}}</span>/<span>{{data.condition.overflow.max}}</span></p>
-         <label>adj: </label><input type="number" data-dtype="Number" name="data.condition.overflow.adj" value="{{data.condition.overflow.adj}}" placeholder="adj" title="Additional Overflow Boxes" />
+            <p>Overflow: <span>{{data.condition.overflow.value}}</span>/<span>{{data.condition.overflow.max}}</span></p>
+            <label>adj: </label><input type="number" data-dtype="Number" name="data.condition.overflow.adj" value="{{data.condition.overflow.adj}}" placeholder="adj" title="Additional Overflow Boxes" />
 
-         <p>Initiative: <span>{{add data.attributes.reaction.value data.attributes.intuition.value}} + {{data.initiative.physical.dice}}D6</span></p>
-         <label>dice: </label><input type="number" data-dtype="Number" name="data.initiative.physical.dice" value="{{data.initiative.physical.dice}}" placeholder="dice" title="Initiative Dice" max="5" />
+            <p>Initiative: <span>{{add data.attributes.reaction.value data.attributes.intuition.value}} + {{data.initiative.physical.dice}}D6</span></p>
+            <label>dice: </label><input type="number" data-dtype="Number" name="data.initiative.physical.dice" value="{{data.initiative.physical.dice}}" placeholder="dice" title="Initiative Dice" max="5" />
 
-         <p>Astral: <span>{{add data.attributes.intuition.value data.attributes.logic.value}} + {{data.initiative.astral.dice}}D6</span></p>
-         <label>dice: </label><input type="number" data-dtype="Number" name="data.initiative.astral.dice" value="{{data.initiative.astral.dice}}" placeholder="dice" title="Initiative Dice" max="5" />
+            <p>Astral: <span>{{add data.attributes.intuition.value data.attributes.logic.value}} + {{data.initiative.astral.dice}}D6</span></p>
+            <label>dice: </label><input type="number" data-dtype="Number" name="data.initiative.astral.dice" value="{{data.initiative.astral.dice}}" placeholder="dice" title="Initiative Dice" max="5" />
 
-         <p>Matrix AR: <span>{{data.initiative.matrixar.value}} + {{data.initiative.matrixar.dice}}D6</span></p>
-         <label>dice: </label><input type="number" data-dtype="Number" name="data.initiative.matrixar.dice" value="{{data.initiative.matrixar.dice}}" placeholder="dice" title="Initiative Dice" max="5" />
+            <p>Matrix AR: <span>{{data.initiative.matrixar.value}} + {{data.initiative.matrixar.dice}}D6</span></p>
+            <label>dice: </label><input type="number" data-dtype="Number" name="data.initiative.matrixar.dice" value="{{data.initiative.matrixar.dice}}" placeholder="dice" title="Initiative Dice" max="5" />
 
-         <p>Matrix VR Cold: <span>{{data.initiative.matrixvrcold.value}} + {{data.initiative.matrixvrcold.dice}}D6</span></p>
-         <label>dice: </label><input type="number" data-dtype="Number" name="data.initiative.matrixvrcold.dice" value="{{data.initiative.matrixvrcold.dice}}" placeholder="dice" title="Initiative Dice" max="5" />
+            <p>Matrix VR Cold: <span>{{data.initiative.matrixvrcold.value}} + {{data.initiative.matrixvrcold.dice}}D6</span></p>
+            <label>dice: </label><input type="number" data-dtype="Number" name="data.initiative.matrixvrcold.dice" value="{{data.initiative.matrixvrcold.dice}}" placeholder="dice" title="Initiative Dice" max="5" />
 
-         <p>Matrix VR Hot: <span>{{data.initiative.matrixvrhot.value}} + {{data.initiative.matrixvrhot.dice}}D6</span></p>
-         <label>dice: </label><input type="number" data-dtype="Number" name="data.initiative.matrixvrhot.dice" value="{{data.initiative.matrixvrhot.dice}}" placeholder="dice" title="Initiative Dice" max="5" />
+            <p>Matrix VR Hot: <span>{{data.initiative.matrixvrhot.value}} + {{data.initiative.matrixvrhot.dice}}D6</span></p>
+            <label>dice: </label><input type="number" data-dtype="Number" name="data.initiative.matrixvrhot.dice" value="{{data.initiative.matrixvrhot.dice}}" placeholder="dice" title="Initiative Dice" max="5" />
+         </div>
       </div>
       {{#if (isEqual data.nature 'awakened') }}
       <div class="tab magic" data-group="primary" data-tab="magic">
@@ -297,15 +298,33 @@
       <div class="tab gear" data-group="primary" data-tab="gear">
       </div>
       <div class="tab social" data-group="primary" data-tab="social">
+
       </div>
       <div class="tab journal" data-group="primary" data-tab="journal">
+         <div class="journal-content" x-data="{ tab: '0' }">
+            <nav class="tabs">
+               <a class="item" data-control="journal-entries" data-action="create" ugmented-ui="tr-clip bl-clip exe"><i class="fas fa-plus"></i></a>
+               {{#each data.journal}}
+               <a class="item" :class="{ 'active': tab === '{{@key}}' }" @click="tab = '{{@key}}'" augmented-ui="tr-clip bl-clip exe">{{title}}</a>
+               {{/each}}
+            </nav>
+            <section>
+               {{#each data.journal}}
+               <div class="tab" x-show="tab === '{{@key}}'">
+                  <div class="summary" data-id="{{@key}}">
+                     <input type="text" data-dtype="String" name="data.journal.{{@key}}.title" value="{{title}}" placeholder="title" />
+                     <a data-control="journal-entries" data-action="delete"><i class="fas fa-trash"></i></a>
+                  </div>
+                  {{md-editor content=value}}
+               </div>
+               {{/each}}
+            </section>
 
-         <a class="journal-control" data-action="create"><i class="fas fa-plus"></i></a>
-         <ol>
 
-         </ol>
-
+         </div>
       </div>
+
+
    </section>
 
 </form>

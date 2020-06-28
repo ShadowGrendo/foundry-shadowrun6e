@@ -25,6 +25,7 @@ export class ShadowrunActorSheet extends ActorSheet {
       })
    }
 
+
    /** @override */
    getData() {
       const data = super.getData()
@@ -64,8 +65,45 @@ export class ShadowrunActorSheet extends ActorSheet {
       // register listener for knowledge skill controls
       html.find('[data-control=knowledge-skills]').on('click', this.knowledgeSkillsControl.bind(this))
 
+      // register listener for journals
+      html.find('[data-control=journal-entries]').on('click', this.journalEntriesControl.bind(this))
+
       // register listener for rolls
       html.find('[data-test]').on('click', this.rollTest.bind(this))
+
+      html.find('[data-editor]').each((i, el) => {
+         let editor = new EasyMDE({
+            autoDownloadFontAwesome: false,
+            showIcons: ['strikethrough', 'code', 'table', 'redo', 'heading', 'undo', 'clean-block', 'horizontal-rule'],
+            indentWithTabs: false,
+            spellChecker: false,
+            forceSync: true,
+            uploadImage: true,
+            shortcuts: {
+               "save": "Ctrl-S"
+            },
+            additionalToolbar: ['|', {
+               name: "save",
+               action: (editor) => {
+                  // with force sync on, changes will be written to the textarea where they can be included in formdata.
+                  this._updateObject(new Event('mcesave'), FormData)
+               },
+               className: "fa fa-save",
+               title: "Save",
+
+            }],
+            
+            autosave: {
+               enabled: true,
+               delay: 1000,
+               uniqueId: `${this.object.id}-${el.dataset.editor}`
+            },
+            element: el,
+            initialValue: el.value
+         })
+
+      })
+
 
 
    }
@@ -97,6 +135,36 @@ export class ShadowrunActorSheet extends ActorSheet {
       await this._onSubmit(event)
    }
 
+   async journalEntriesControl(event) {
+      event.preventDefault()
+
+      let a = event.currentTarget
+      let nav = a.parentElement
+      let action = a.dataset.action
+      let journal = this.object.data.data.journal
+      let form = this.form
+
+      if (action === 'create') {
+         // add a new entry
+         let next = Object.keys(journal).length
+
+         let newEntry = $(`<input type="text" data-dtype="String" name="data.journal.${next}.title" value="journal entry ${next}" />`)
+
+         form.appendChild(newEntry[0])
+
+      } else if (action === 'delete') {
+
+         let parent = a.parentElement
+         let id = parent.dataset.id
+         delete this.object.data.data.journal[id]
+         // push a delete message to be appended to the formdata update
+         this.deleted.push(`data.journal.-=${id}`)
+         parent.remove()
+      }
+
+      await this._onSubmit(event)
+   }
+
    async rollTest(event) {
       event.preventDefault()
       let element = event.currentTarget
@@ -104,8 +172,6 @@ export class ShadowrunActorSheet extends ActorSheet {
       let test = this.calculated.data.overview.tests[testKey]
 
       if (event.shiftKey) {
-         // todo - if holding shift when the event triggers, first show a dialog with options for rolling options like edge, threshold, and condition
-
          let dialogData = {
             pool: test.pool(),
             adjustPool: 0,
@@ -156,7 +222,7 @@ export class ShadowrunActorSheet extends ActorSheet {
 
       let options = {
          speaker: { ...ChatMessage.getSpeaker(), ...{ alias: `${game.user.name}${this.actor ? ` for '${this.actor.name}'` : ''}${this.token ? ` as '${this.token.name}'` : ''}` } },
-         flavor: `${event.shiftKey ? 'Shift Key' : ''} ${Names.display(testKey)}`
+         flavor: `${Names.display(testKey)}`
       }
 
       return roll.toMessage(options)
@@ -197,6 +263,13 @@ export class ShadowrunActorSheet extends ActorSheet {
       //    li.parentElement.removeChild(li)
       //    await this._onSubmit(event)
       // }
+   }
+
+   /** @override */
+   async _render(force = false, options = {}) {
+      if (force) this.token = options.token || null;
+
+      return super._render(force, options);
    }
 
    /** @override */

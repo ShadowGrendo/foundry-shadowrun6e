@@ -178,6 +178,51 @@
       }
 
       section {
+
+         .overview-content {
+            font-size: .89rem;
+
+            display: flex;
+            flex-flow: row nowrap;
+
+            .tests {
+               flex-basis: 50%;
+
+               table {
+
+                  tbody tr {
+                     transition: all .2s ease-in-out;
+
+                  }
+
+                  tbody tr:hover {
+                     color: white;
+                     background: rgba(0, 0, 0, 0.5);
+                     text-shadow: 1px 1px #000;
+                  }
+
+                  th:nth-of-type(1),
+                  td:nth-of-type(1) {
+                     text-align: left;
+                     padding-left: .25rem;
+                  }
+
+                  th:nth-of-type(2),
+                  td:nth-of-type(2) {
+                     text-align: left;
+                     // padding-left: .25rem;
+                  }
+
+                  th:nth-of-type(3),
+                  td:nth-of-type(3) {
+                     text-align: center;
+                     // padding-left: .25rem;
+                  }
+               }
+
+            }
+         }
+
          .skills-content {
 
             display: flex;
@@ -274,56 +319,52 @@
 
 
             }
-
-
-
-
          }
 
-         .overview-content {
-            font-size: .89rem;
+
+         .journal-content {
+
+            margin: .5rem 0 .5rem 0;
 
             display: flex;
             flex-flow: row nowrap;
 
-            .tests {
-               flex-basis: 50%;
+            >section {
+               width: 100%;
+            }
 
-               table {
+            .tabs {
+               display: flex;
+               flex-flow: column nowrap;
+               justify-content: flex-start;
+               align-items: flex-start;
 
-                  tbody tr {
-                     transition: all .2s ease-in-out;
+               margin-top: 0;
+               margin-right: .5rem;
 
-                  }
+               width: 25ch;
 
-                  tbody tr:hover {
-                     color: white;
-                     background: rgba(0, 0, 0, 0.5);
-                     text-shadow: 1px 1px #000;
-                  }
-
-                  th:nth-of-type(1),
-                  td:nth-of-type(1) {
-                     text-align: left;
-                     padding-left: .25rem;
-                  }
-
-                  th:nth-of-type(2),
-                  td:nth-of-type(2) {
-                     text-align: left;
-                     // padding-left: .25rem;
-                  }
-
-                  th:nth-of-type(3),
-                  td:nth-of-type(3) {
-                     text-align: center;
-                     // padding-left: .25rem;
-                  }
+               a {
+                  flex-grow: 0;
+                  width: 100%;
                }
 
             }
+
+            .summary {
+               display: flex;
+               flex-flow: row nowrap;
+               justify-content: space-between;
+
+               input {
+                  margin-right: .5rem;
+               }
+            }
+
+
          }
       }
+
 
 
 
@@ -341,9 +382,9 @@
       height: 100%;
    }
 
-   .editor {
-      height: 100%;
-   }
+   // .editor {
+   //    height: 100%;
+   // }
 
    // .sheet-header {
    //    height: 100px;

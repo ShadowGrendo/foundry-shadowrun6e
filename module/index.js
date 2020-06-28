@@ -2,6 +2,7 @@ import { ShadowrunActor } from "./actor.js"
 import { ShadowrunItemSheet } from "./item-sheet.js"
 import { ShadowrunActorSheet } from "./actor-sheet.js"
 import { Names } from './shadowrun.js'
+// import { markdown } from './markdown.js'
 
 /* -------------------------------------------- */
 /*  Foundry VTT Initialization                  */
@@ -44,14 +45,14 @@ Hooks.once("init", async function () {
          if (msg.roll.formula.match(/ms/i)) {
             // if the formula contains margin of success, label with 'net hits'
             // label with 'hits'
-            if (msg.roll.total === '1' || msg.roll.total === '-1') {
+            if (msg.roll.total === 1 || msg.roll.total === -1) {
                return 'net hit'
             } else {
                return 'net hits'
             }
          } else {
             // label with 'hits'
-            if (msg.roll.total === '1' || msg.roll.total === '-1') {
+            if (msg.roll.total === 1 || msg.roll.total === -1) {
                return 'hit'
             } else {
                return 'hits'
@@ -97,27 +98,29 @@ Hooks.once("init", async function () {
    // Register an inline markdown editor helper
    Handlebars.registerHelper('md-editor', function (options) {
 
-      // texteditor enrich html. 
-
-      let target = options.hash['target'],
-         content = options.hash['content'] || "",
-         button = Boolean(options.hash['button']),
-         owner = Boolean(options.hash['owner']),
-         editable = Boolean(options.hash['editable'])
+      // let target = options.hash['target'],
+      //    content = options.hash['content'] || "",
+      //    button = Boolean(options.hash['button']),
+      //    owner = Boolean(options.hash['owner']),
+      //    editable = Boolean(options.hash['editable'])
 
 
-      if (!target) throw new Error("You must define the name of a target field.")
+      // if (!target) throw new Error("You must define the name of a target field.")
 
       // Enrich the content
       // this will do foundry specific stuff to html. We want to run it, for secrets and such, but we'll have to do it 
-      content = TextEditor.enrichHTML(content, { secrets: owner, entities: true })
+
+     
+      let content = options.hash['content'] || ''
+      // content = TextEditor.enrichHTML(content, { secrets: owner, entities: true })
 
       // Construct the HTML
-      let editor = $(`<div class="editor"><div class="editor-content" data-edit="${target}">${content}</div></div>`)
+      // let editor = $(`<div class="editor"><div class="editor-content" data-edit="${target}">${content}</div></div>`)
 
-      // Append edit button
-      if (button && editable) editor.append($('<a class="editor-edit"><i class="fas fa-edit"></i></a>'))
-      return new Handlebars.SafeString(editor[0].outerHTML)
+
+      let area = `<textarea data-dtype="String" name="data.journal.${options.data.key}.value" data-editor="journal-${options.data.key}">${content}</textarea>`
+
+      return new Handlebars.SafeString(area)
 
 
    })
