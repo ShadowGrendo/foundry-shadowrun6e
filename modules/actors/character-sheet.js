@@ -1,10 +1,10 @@
-import { CalculateCharacterData, Names } from './shadowrun.js'
+import { CalculateCharacterData, Names } from '../shadowrun.js'
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
  * @extends {ActorSheet}
  */
-export class ShadowrunActorSheet extends ActorSheet {
+export class CharacterSheet extends ActorSheet {
    constructor(...args) {
       super(...args)
 
@@ -18,7 +18,7 @@ export class ShadowrunActorSheet extends ActorSheet {
    static get defaultOptions() {
       return mergeObject(super.defaultOptions, {
          classes: ["shadowrun", "sheet", "actor"],
-         template: "systems/shadowrun6e/templates/actor-sheet.html",
+         template: "systems/shadowrun6e/templates/actors/character-sheet.html",
          width: 1000,
          height: 600,
          tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "overview" }]
@@ -92,7 +92,7 @@ export class ShadowrunActorSheet extends ActorSheet {
                title: "Save",
 
             }],
-            
+
             autosave: {
                enabled: true,
                delay: 1000,
@@ -145,7 +145,7 @@ export class ShadowrunActorSheet extends ActorSheet {
       let form = this.form
 
       if (action === 'create') {
-         // add a new entry
+         // add a new journal entry
          let next = Object.keys(journal).length
 
          let newEntry = $(`<input type="text" data-dtype="String" name="data.journal.${next}.title" value="journal entry ${next}" />`)

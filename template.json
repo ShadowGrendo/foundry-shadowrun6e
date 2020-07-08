@@ -140,8 +140,8 @@
       },
       "journal": {
         "0": {
-          "title": "Entry One",
-          "value": "# Hello World\nthis is the first entry"
+          "title": "Your First Journal Entry",
+          "value": "# Header One\nUse these journals to record whatever you wish associated with your character."
         }
       },
       "magic": {
@@ -338,13 +338,14 @@
   },
   "Item": {
     "types": [
-      "item"
+      "quality"
     ],
-    "item": {
+    "quality": {
+      "keywords": "positive, physical",
+      "karma": 0,
+      "effect": "",
       "description": "",
-      "quantity": 1,
-      "weight": 0,
-      "attributes": {}
+      "association": null
     }
   }
 }

@@ -3,11 +3,11 @@
   "title": "Shadowrun 6th World",
   "description": "Shadowrun 6th World game",
   "version": "0.0.29",
-  "templateVersion": 0,
+  "templateVersion": 1,
   "minimumCoreVersion": "0.5.5",
   "author": "nevenall",
   "esmodules": [
-    "module/index.js"
+    "modules/index.js"
   ],
   "scripts": [
     "scripts/alpine.min.js",
@@ -24,7 +24,13 @@
       "path": "lang/en.json"
     }
   ],
-  "packs": [],
+  "packs": [{
+    "name": "qualities",
+    "label": "Qualities",
+    "system": "shadowrun6e",
+    "path": "./packs/qualities.db",
+    "entity": "Item"
+  }],
   "gridDistance": 1,
   "gridUnits": "m",
   "socket": true,

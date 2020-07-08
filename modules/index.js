@@ -1,6 +1,6 @@
-import { ShadowrunActor } from "./actor.js"
-import { ShadowrunItemSheet } from "./item-sheet.js"
-import { ShadowrunActorSheet } from "./actor-sheet.js"
+import { Character } from "./actors/character.js"
+import { QualitySheet } from "./items/quality-sheet.js"
+import { CharacterSheet } from "./actors/character-sheet.js"
 import { Names } from './shadowrun.js'
 // import { markdown } from './markdown.js'
 
@@ -12,19 +12,19 @@ Hooks.once("init", async function () {
    console.log(`Welcome to Shadowrun 6th World, Chummer!`)
 
    // Define custom Entity classes
-   CONFIG.Actor.entityClass = ShadowrunActor
+   CONFIG.Actor.entityClass = Character
 
    Combat.prototype._getInitiativeFormula = combatant => {
       let data = combatant.actor.data.data
-      // console.log('[initiative]', data)
       return `${data.attributes.reaction.value + data.attributes.intuition.value} + ${data.initiative.physical.dice}d6`
    }
 
    // Register sheet application classes
    Actors.unregisterSheet("core", ActorSheet)
-   Actors.registerSheet("shadowrun", ShadowrunActorSheet, { makeDefault: true })
+   Actors.registerSheet("shadowrun", CharacterSheet, { makeDefault: true })
+
    Items.unregisterSheet("core", ItemSheet)
-   Items.registerSheet("shadowrun", ShadowrunItemSheet, { makeDefault: true })
+   Items.registerSheet("shadowrun", QualitySheet, { types: ['quality'], makeDefault: true })
 
 
    Hooks.on("renderChatMessage", (msg, html, data) => {
@@ -93,8 +93,6 @@ Hooks.once("init", async function () {
       return a + b
    })
 
-
-
    // Register an inline markdown editor helper
    Handlebars.registerHelper('md-editor', function (options) {
 
@@ -110,7 +108,7 @@ Hooks.once("init", async function () {
       // Enrich the content
       // this will do foundry specific stuff to html. We want to run it, for secrets and such, but we'll have to do it 
 
-     
+
       let content = options.hash['content'] || ''
       // content = TextEditor.enrichHTML(content, { secrets: owner, entities: true })
 
@@ -125,6 +123,24 @@ Hooks.once("init", async function () {
 
    })
 
+
+})
+
+
+Hooks.once('ready', async function () {
+
+   const qualities = game.packs.find(p => p.collection === 'shadowrun6e.qualities')
+
+   qualities.locked = false
+
+   qualities.createEntity({
+      "name": "Ambidexterous",
+      "keywords": "positive, physical, imported",
+      "karma": 0,
+      "effect": "",
+      "description": "",
+      "association": null
+   })
 
 
 })

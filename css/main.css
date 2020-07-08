@@ -251,9 +251,21 @@
   min-width: 560px;
   min-height: 420px; }
 
-.shadowrun.sheet.item {
-  min-width: 460px;
-  min-height: 400px; }
+.shadowrun.sheet.quality form {
+  display: flex;
+  flex-flow: column nowrap; }
+  .shadowrun.sheet.quality form > div {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+    align-items: center; }
+    .shadowrun.sheet.quality form > div img {
+      height: 5rem; }
+    .shadowrun.sheet.quality form > div input[type=number] {
+      height: 5rem;
+      width: 5rem; }
+  .shadowrun.sheet.quality form textarea {
+    height: 100%; }
 
 form.test-options {
   font-family: "Friz Quadrata", sans-serif;

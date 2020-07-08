@@ -1,0 +1,12 @@
+<form class="{{cssClass}}" autocomplete="off">
+   <div>
+      <img src="{{item.img}}" data-edit="img" title="{{item.name}}" alt="picture of {{name}}" />
+      <div>
+         <input type="text" data-dtype="String" name="name" value="{{item.name}}" placeholder="name" />
+         <input type="text" data-dtype="String" name="data.keywords" value="{{data.keywords}}" placeholder="positive, physical" />
+         <input type="text" data-dtype="String" name="data.effect" value="{{data.effect}}" placeholder="effect" />
+      </div>
+      <input type="number" data-dtype="Number" name="data.karma" value="{{data.karma}}" placeholder="karma" />
+   </div>
+   <textarea type="text" data-dtype="String" name="data.description">{{data.description}}</textarea>
+</form>

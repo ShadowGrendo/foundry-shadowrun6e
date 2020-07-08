@@ -53,7 +53,7 @@ let metatypes = {
          charisma: { min: 1, max: 5 },
          edge: { min: 1, max: 6 },
       },
-      qualities: ["lowlightvision", "builttough1"]
+      qualities: ["lowlightvision", "builttough:1"]
    },
    troll: {
       attributes: {
@@ -67,7 +67,7 @@ let metatypes = {
          charisma: { min: 1, max: 5 },
          edge: { min: 1, max: 6 },
       },
-      qualities: ["dermaldeposits", "thermographicvision", "builttough2"]
+      qualities: ["dermaldeposits", "thermographicvision", "builttough:2"]
    }
 }
 
@@ -162,7 +162,6 @@ let calculateCharacterData = function (character) {
    character.data.attributes.resonance.value = character.data.attributes.resonance.base + character.data.attributes.resonance.adj - essenceLoss
 
    // set maximums based on metatype
-   // it's not a huge calc, but wish I didn't have to do it every time. 
    let meta = metatypes[character.data.metatype]
    character.data.attributes.body.max = meta.attributes.body.max
    character.data.attributes.agility.max = meta.attributes.agility.max
@@ -382,7 +381,8 @@ let calculateCharacterData = function (character) {
 
    character.data.overview.tests = ordered
 
-   // initiative
+   // initiative, also need gear for the matrix initative
+   // todo - a button to add yourself to the initative in the correct manner. 
    // character.data.initiative.physical.value = character.data.attributes.reaction.value + character.data.attributes.intuition.value
    // character.data.initiative.astral.value = character.data.attributes.intuition.value + character.data.attributes.logic.value
    // character.data.initiative.matrixar.value = character.data.attributes.reaction.value + character.data.attributes.intuition.value
