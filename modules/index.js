@@ -1,7 +1,10 @@
 import { Character } from "./actors/character.js"
 import { QualitySheet } from "./items/quality-sheet.js"
 import { CharacterSheet } from "./actors/character-sheet.js"
-import { Names } from './shadowrun.js'
+import { Names, Qualities } from './shadowrun.js'
+
+
+
 // import { markdown } from './markdown.js'
 
 /* -------------------------------------------- */
@@ -128,19 +131,26 @@ Hooks.once("init", async function () {
 
 
 Hooks.once('ready', async function () {
+   const compendium = game.packs.get('shadowrun6e.qualities')
 
-   const qualities = game.packs.find(p => p.collection === 'shadowrun6e.qualities')
+   compendium.locked = false
 
-   qualities.locked = false
+   let index = (await compendium.getIndex()).reduce((acc, curr) => {
+      acc[curr.name] = curr
+      return acc
+   }, {})
 
-   qualities.createEntity({
-      "name": "Ambidexterous",
-      "keywords": "positive, physical, imported",
-      "karma": 0,
-      "effect": "",
-      "description": "",
-      "association": null
+   Qualities.forEach(async el => {
+      let e = index[el.name]
+      if (e) {
+         console.log("[qualities] update entity", el)
+         // copy id so update works
+         el._id = e._id
+         compendium.updateEntity(el)
+      } else {
+         console.log("[qualities] create entity", el)
+         compendium.createEntity(el)
+      }
    })
-
 
 })

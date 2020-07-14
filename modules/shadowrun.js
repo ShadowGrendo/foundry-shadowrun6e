@@ -394,4 +394,21 @@ let calculateCharacterData = function (character) {
 
 }
 
-export { calculateCharacterData as CalculateCharacterData, metatypes as Metatypes, names as Names }
+
+
+let qualities = [{
+   "name": "Ambidextrous",
+   "type": "quality",
+   "data": {
+      "karma": -4,
+      "effect": "No penalty for off-hand weapon use.",
+      "description": "You are equally adept at using either your right or left side. Whether shooting a gun, throwing a grenade, or kicking a ball, you can switch it up with the best of them.",
+      "association": "",
+      "keywords": "Positive, Physical",
+
+   },
+   "img": "worlds/shadowrun-redmond-vets/icons/hand.svg",
+   "calc": (character) => { }
+}]
+
+export { calculateCharacterData as CalculateCharacterData, metatypes as Metatypes, names as Names, qualities as Qualities }
