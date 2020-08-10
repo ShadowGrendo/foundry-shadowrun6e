@@ -1,12 +1,12 @@
 {
-  "name": "shadowrun6e",
+  "name": "shadowrun6egrendo",
   "title": "Shadowrun 6th World",
   "description": "Shadowrun 6th World game",
   "version": "0.0.28",
   "templateVersion": 0,
   "minimumCoreVersion": "0.5.5",
-  "compatibleCoreVersion": "0.6.4",
-  "author": "nevenall",
+  "compatibleCoreVersion": "0.6.5",
+  "author": "ShadowGrendo",
   "esmodules": [
     "module/index.js"
   ],
