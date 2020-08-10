@@ -22,14 +22,19 @@
     {
       "lang": "en",
       "name": "English",
-      "path": "lang/en.json"
+      "path": "lang/en.json",
+    }
+       {
+      "lang": "de",
+      "name": "Deutsch",
+      "path": "lang/de.json"
     }
   ],
   "packs": [],
   "gridDistance": 1,
   "gridUnits": "m",
   "socket": true,
-  "url": "https://github.com/Nevenall/foundryvtt-shadowrun6e",
-  "manifest": "https://raw.githubusercontent.com/Nevenall/foundryvtt-shadowrun6e/master/system.json",
-  "download": "https://github.com/Nevenall/foundryvtt-shadowrun6e/archive/master.zip"
+  "url": "https://github.com/ShadowGrendo/foundryvtt-shadowrun6e",
+  "manifest": "https://raw.githubusercontent.com/ShadowGrendo/foundryvtt-shadowrun6e/master/system.json",
+  "download": "https://github.com/ShadowGrendo/foundryvtt-shadowrun6e/archive/master.zip"
 }
